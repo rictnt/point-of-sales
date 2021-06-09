@@ -1,0 +1,50 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 09 Jun 2021 22:27:37 at http://new.rapiditltd.net/Dashboard +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://new.rapiditltd.net/Dashboard -O1 "C:\Users\HOPE\Desktop\POS" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+22:28:34	Error: 	"Not Found" (404) at link new.rapiditltd.net/pages/general/profile.html (from new.rapiditltd.net/Dashboard)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Regular.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Regulard41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Regular.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Regular.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Regular.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-SemiBold.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-SemiBoldd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-SemiBold.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-SemiBold.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-SemiBold.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Italic.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Italicd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Italic.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Italic.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Italic.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Light.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Lightd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Light.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Light.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Light.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-ExtraBold.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-ExtraBoldd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-ExtraBold.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-ExtraBold.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-ExtraBold.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Bold.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Boldd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Bold.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Bold.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Bold.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Black.eot (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Blackd41d.eot? (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Black.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Black.woff (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/fonts/overpass/Overpass-Black.ttf (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/images/dashboard/shape-4.html (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Error: 	"Not Found" (404) at link new.rapiditltd.net/images/carousel/img6.jpg (from new.rapiditltd.net/assets/css/style.css)
+22:28:35	Warning: 	Retry after error -4 (No data (connection closed)) at link new.rapiditltd.net/assets/js/datepicker.js (from new.rapiditltd.net/Invoice-Add)
+
+HTTrack Website Copier/3.49-2 mirror complete in 59 seconds : 122 links scanned, 82 files written (3438528 bytes overall) [730848 bytes received at 12387 bytes/sec], 3433248 bytes transferred using HTTP compression in 115 files, ratio 18%, 17.4 requests per connection
+(38 errors, 1 warnings, 0 messages)

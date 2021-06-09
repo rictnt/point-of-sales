@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+new.rapiditltd.net	TRUE	/	FALSE	1999999999	ci_session	e02d85108f28587b592a0ee08c9c4c3c274a5206
+

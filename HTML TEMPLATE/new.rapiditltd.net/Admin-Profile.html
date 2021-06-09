@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from new.rapiditltd.net/Admin-Profile by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 16:28:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>RapidHisab - Profile Settings</title>
+
+  <link rel="stylesheet" href="assets/vendors/core/core.css">
+	<link rel="stylesheet" href="assets/fonts/feather-font/css/iconfont.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <link rel="stylesheet" href="assets/vendors/dropify/dist/dropify.min.css">
+</head>
+<body>
+	<div class="main-wrapper">
+		
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="sidebar-brand">
+          Rapid<span>Hisab</span>
+        </a>
+        <div class="sidebar-toggler not-active">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="sidebar-body">
+        <ul class="nav">          
+          <li class="nav-item">
+            <a href="Dashboard.html" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Dashboard</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#invoice" role="button" aria-expanded="false" aria-controls="invoice">
+              <i class="link-icon" data-feather="file-text"></i>
+              <span class="link-title">Invoice</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="invoice">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Invoice-Add.html" class="nav-link">New Invoice</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Invoice-Manage.html" class="nav-link">Manage Invoice</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Invoice-Settings.html" class="nav-link">Invoice Settings</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
+              <i class="link-icon" data-feather="clipboard"></i>
+              <span class="link-title">Category</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="category">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Category-Add.html" class="nav-link">Add Category</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Category-Manage.html" class="nav-link">Manage Category</a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false" aria-controls="product">
+              <i class="link-icon" data-feather="shopping-bag"></i>
+              <span class="link-title">Product</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="product">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Product-Add.html" class="nav-link">Add Product</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Product-Manage.html" class="nav-link">Manage Product</a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#customer" role="button" aria-expanded="false" aria-controls="customer">
+              <i class="link-icon" data-feather="user-plus"></i>
+              <span class="link-title">Customer</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="customer">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Customer-Add.html" class="nav-link">Add Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Customer-Manage.html" class="nav-link">Manage Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Customer-Due.html" class="nav-link">Due Customer</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#supplier" role="button" aria-expanded="false" aria-controls="supplier">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Supplier</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="supplier">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Supplier-Add.html" class="nav-link">Add Supplier</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Supplier-Manage.html" class="nav-link">Manage Supplier</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Supplier-Due.html" class="nav-link">Due Supplier</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#purchase" role="button" aria-expanded="false" aria-controls="purchase">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Purchase</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="purchase">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Purchase-Add.html" class="nav-link">Add Purchase</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Purchase-Manage.html" class="nav-link">Manage Purchase</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#return" role="button" aria-expanded="false" aria-controls="return">
+              <i class="link-icon" data-feather="refresh-ccw"></i>
+              <span class="link-title">Return</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="return">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Return-Add.html" class="nav-link">Add Return</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Stock-Return.html" class="nav-link">Stock Return List</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Supplier-Return.html" class="nav-link">Supplier Return List</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Wastage-Return.html" class="nav-link">Wastage Return List</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#payment" role="button" aria-expanded="false" aria-controls="payment">
+              <i class="link-icon" data-feather="pocket"></i>
+              <span class="link-title">Payment</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="payment">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Add-Payment.html" class="nav-link">Make Payment</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Manage-Payment.html" class="nav-link">Manage Payment</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#expense" role="button" aria-expanded="false" aria-controls="expense">
+              <i class="link-icon" data-feather="trending-down"></i>
+              <span class="link-title">Expense</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="expense">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Expense-Category-Add.html" class="nav-link">Expense Category</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Add-Expense.html" class="nav-link">Add Expense</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#stock" role="button" aria-expanded="false" aria-controls="stock">
+              <i class="link-icon" data-feather="check-circle"></i>
+              <span class="link-title">Stock</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="stock">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Stock-Report.html" class="nav-link">Stock Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Manage Stock Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#reports" role="button" aria-expanded="false" aria-controls="reports">
+              <i class="link-icon" data-feather="bar-chart-2"></i>
+              <span class="link-title">Report</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="reports">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Today-Sales-Report.html" class="nav-link">Todays Sale Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Monthly-Sales-Report.html" class="nav-link">Monthly Sale Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Today-Purchase-Report.html" class="nav-link">Todays Purchase Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Monthly-Purchase-Report.html" class="nav-link">Monthly Purchase Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Total-Sale-Report.html" class="nav-link">Total Sale Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Total-Purchase-Report.html" class="nav-link">Total Purchase Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Total-Expense-Report.html" class="nav-link">Total Expense Report</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Total-Profit-Report.html" class="nav-link">Total Profit Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#users" role="button" aria-expanded="false" aria-controls="users">
+              <i class="link-icon" data-feather="user-check"></i>
+              <span class="link-title">Users</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="users">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Add-User.html" class="nav-link">Add User</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Manage-User.html" class="nav-link">User List</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Role-Permission.html" class="nav-link">Role Permission</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#bank" role="button" aria-expanded="false" aria-controls="bank">
+              <i class="link-icon" data-feather="briefcase"></i>
+              <span class="link-title">Bank</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="bank">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Add-Bank.html" class="nav-link">Add Bank</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Bank-Transaction.html" class="nav-link">Bank Transaction</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Bank-Manage.html" class="nav-link">Manage Bank</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#barcode" role="button" aria-expanded="false" aria-controls="barcode">
+              <i class="link-icon" data-feather="bar-chart-2"></i>
+              <span class="link-title">Barcode</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="barcode">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="Create-Barcode.html" class="nav-link">Create Barcode</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Barcode-List.html" class="nav-link">Barcode List</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Barcode-Print.html" class="nav-link">Print Barcode</a>
+                </li>
+                <li class="nav-item">
+                  <a href="Barcode-Settings.html" class="nav-link">Barcode Settings</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="All-Settings.html" class="nav-link">
+              <i class="link-icon" data-feather="settings"></i>
+              <span class="link-title">Settings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="Admin-Profile.html" class="nav-link">
+              <i class="link-icon" data-feather="user"></i>
+              <span class="link-title">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="link-icon" data-feather="log-out"></i>
+              <span class="link-title">Logout</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>		<div class="page-wrapper">
+				
+<nav class="navbar">
+				<a href="#" class="sidebar-toggler">
+					<i data-feather="menu"></i>
+				</a>
+				<div class="navbar-content">
+					
+					<ul class="navbar-nav">
+						<li>
+							<select name="cars" id="cars">
+							  <option value="volvo">Volvo</option>
+							  <option value="saab">Saab</option>
+							  <option value="mercedes">Mercedes</option>
+							  <option value="audi">Audi</option>
+							</select>
+						</li> 
+						<li class="nav-item dropdown nav-profile">
+							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img src="assets/images/faces/face1.jpg" alt="profile">
+							</a>
+							<div class="dropdown-menu" aria-labelledby="profileDropdown">
+								<div class="dropdown-header d-flex flex-column align-items-center">
+									<div class="figure mb-3">
+										<img src="assets/images/faces/face1.jpg" alt="">
+									</div>
+									<div class="info text-center">
+										<p class="name font-weight-bold mb-0">Amiah Burton</p>
+										<p class="email text-muted mb-3">amiahburton@gmail.com</p>
+									</div>
+								</div>
+								<div class="dropdown-body">
+									<ul class="profile-nav p-0 pt-3">
+										<li class="nav-item">
+											<a href="pages/general/profile.html" class="nav-link">
+												<i data-feather="user"></i>
+												<span>Profile</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a href="javascript:;" class="nav-link">
+												<i data-feather="edit"></i>
+												<span>Edit Profile</span>
+											</a>
+										</li>
+										
+										<li class="nav-item">
+											<a href="javascript:;" class="nav-link">
+												<i data-feather="log-out"></i>
+												<span>Log Out</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+
+
+				<div class="page-content">
+ 						
+<div class="row">
+	<div class="col-md-12 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h6 class="card-title">Update Admin Profile</h6>
+				<form class="forms-sample row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="colFormLabelSm">Name</label>
+							<input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="colFormLabelSm">Email</label>
+							<input type="email" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="colFormLabelSm">Phone No</label>
+							<input type="number" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="colFormLabelSm">Username</label>
+							<input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="colFormLabelSm">Profile Picture</label>
+							<input type="file" class="dropify" data-default-file="Upload Image" />
+						</div>
+					</div>
+					
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary mr-2">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Change Password -->
+
+<div class="row">
+	<div class="col-md-12 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h6 class="card-title">Change Password</h6>
+				<form class="forms-sample row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="colFormLabelSm">Current Password</label>
+							<input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="colFormLabelSm">New Password</label>
+							<input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="colFormLabelSm">Confirm Password</label>
+							<input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+						</div>
+					</div>
+					
+					
+					<button type="submit" class="btn btn-primary mr-2">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+				</div>
+     				<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+				<p class="text-muted text-center text-md-left">Copyright © 2020 <a href="#" target="_blank">RapidHisab</a>. All rights reserved</p>
+				<p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
+			</footer>
+
+
+		</div>
+	</div>
+  
+    
+
+ 
+	<script src="assets/vendors/core/core.js"></script>
+  <script src="assets/vendors/dropify/dist/dropify.min.js"></script>
+            <script src="assets/js/dropify.js"></script>
+
+            <script>
+
+              $('.dropify').dropify();
+            </script>	<script src="assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="assets/js/template.js"></script>
+  
+  
+
+ 
+
+</body>
+
+<!-- Mirrored from new.rapiditltd.net/Admin-Profile by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 16:28:34 GMT -->
+</html>
+
