@@ -35,6 +35,7 @@
                                     <tr>
                                         <th>Category ID</th>
                                         <th>Category Name</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,7 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
+                                            <td>{{ $category->status ? 'Active':'Inactive' }}</td>
                                             <td>
                                                 <div class="rapid_action">
                                                     <button class="btn btn-outline-primary"> <i data-feather="edit"
