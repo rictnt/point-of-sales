@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('admin/vendors/core/core.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/custom-style.css') }}">
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
 </head>
 
