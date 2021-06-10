@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Barcode;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 
-class BarcodeController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class BarcodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Barcode  $barcode
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(Barcode $barcode)
+    public function show(Purchase $purchase)
     {
         //
     }
@@ -52,10 +52,10 @@ class BarcodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Barcode  $barcode
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barcode $barcode)
+    public function edit(Purchase $purchase)
     {
         //
     }
@@ -64,10 +64,10 @@ class BarcodeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Barcode  $barcode
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barcode $barcode)
+    public function update(Request $request, Purchase $purchase)
     {
         //
     }
@@ -75,10 +75,10 @@ class BarcodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Barcode  $barcode
+     * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barcode $barcode)
+    public function destroy(Purchase $purchase)
     {
         //
     }

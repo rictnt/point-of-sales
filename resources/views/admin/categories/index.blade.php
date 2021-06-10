@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Add Category</h6>
-                        <form action="{{ route('categories.store') }}" method="POST" class="forms-sample">
+                        <form action="{{ route('admin.categories.store') }}" method="POST" class="forms-sample">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Category Name</label>
@@ -74,7 +74,7 @@
 @push('page-scripts')
     <script>
         function deleteItem(id){
-            let url = `{{ route('categories.index') }}/${id}`;
+            let url = `{{ route('admin.categories.index') }}/${id}`;
             $('#deleteForm').attr('action', url).submit();
         }
     </script>

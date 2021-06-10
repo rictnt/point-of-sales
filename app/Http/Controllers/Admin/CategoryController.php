@@ -24,7 +24,7 @@ class CategoryController extends Controller
             'name' => 'required|string|min:3|max:50|unique:categories,name'
         ]);
         Category::create($request->only(['name']));
-        return redirect()->route('categories.index');
+        return back();
     }
     
     public function show(Category $category)
@@ -45,6 +45,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return back();
     }
 }
