@@ -262,10 +262,10 @@
                 <div class="collapse" id="users">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add User</a>
+                            <a href="{{ route('admin.users.create') }}" class="nav-link">Add User</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">User List</a>
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">User List</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Role Permission</a>
