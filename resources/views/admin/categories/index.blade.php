@@ -8,7 +8,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Add Category</h6>
-
                         <form action="{{ route('categories.store') }}" method="POST" class="forms-sample">
                             @csrf
                             <div class="form-group row">
@@ -33,8 +32,8 @@
                             <table id="dataTableExample" class="table cell-border">
                                 <thead>
                                     <tr>
-                                        <th>Category ID</th>
-                                        <th>Category Name</th>
+                                        <th>ID</th>
+                                        <th>Name</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
