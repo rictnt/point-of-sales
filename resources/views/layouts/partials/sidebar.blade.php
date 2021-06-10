@@ -108,10 +108,10 @@
                 <div class="collapse" id="supplier">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Supplier</a>
+                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Supplier</a>
+                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">Manage Supplier</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Due Supplier</a>

@@ -10,5 +10,6 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->as('admin.')->g
         'categories' => CategoryController::class,
         // 'products' => ProductController::class,
         'customers' => CustomerController::class,
+        'suppliers' => SupplierController::class,
     ]); 
 });
