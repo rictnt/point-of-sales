@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.dashboard');
 
-Route::prefix('admin')->resources([
+Route::resources([
     // 'invoices' => App\Http\Controllers\Admin\InvoicesController::class,
     'categories' => App\Http\Controllers\Admin\CategoryController::class,
     // 'products' => App\Http\Controllers\Admin\ProductController::class,
