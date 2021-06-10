@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Point Of Sale System - Dashoboard</title>
+    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
+
     <link rel="stylesheet" href="{{ asset('admin/vendors/core/core.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/custom-style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" />
 </head>
 
 <body>
@@ -28,6 +31,14 @@
     <script src="{{ asset('admin/vendors/core/core.js') }}"></script>
     <script src="{{ asset('admin/vendors/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/js/template.js') }}"></script>
+
+    <!-- Toastr script CDN -->
+    <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+    <!-- Toastr Scripts render -->
+    {!! Notify::message() !!}
+
+
     @stack('page-scripts')
 </body>
 
