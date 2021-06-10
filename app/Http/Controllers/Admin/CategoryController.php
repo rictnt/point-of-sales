@@ -12,12 +12,12 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin.categories.index', compact('categories'));
     }
-    
+
     public function create()
     {
         //
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -26,22 +26,37 @@ class CategoryController extends Controller
         Category::create($request->only(['name']));
         return back();
     }
-    
+
     public function show(Category $category)
     {
         //
     }
-    
+
     public function edit(Category $category)
     {
         //
     }
-    
+
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+            'status' => 'nullable'
+            ]);
+
+        if ($request->name) {
+            $category->update($request->only(['name']));
+        }
+
+        if ($request->status == 'toogle') {
+            $category->update([
+                'status' => !$category->status,
+            ]);
+        }
+
+        return back();
     }
-    
+
     public function destroy(Category $category)
     {
         $category->delete();

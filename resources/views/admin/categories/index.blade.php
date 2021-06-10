@@ -43,13 +43,26 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
-                                            <td>{{ $category->status ? 'Active':'Inactive' }}</td>
+                                            <td class="{{ $category->status ? 'text-success' : 'text-danger' }}">
+                                                {{ $category->status ? 'Active' : 'Inactive' }}</td>
                                             <td>
                                                 <div class="rapid_action">
-                                                    <button class="btn btn-outline-primary"> <i data-feather="edit"
-                                                            style="height: 15px;width: 15px;"></i></button>
-                                                    <button onclick="deleteItem({{ $category->id }})" class="btn btn-outline-danger"><i data-feather="trash"
-                                                            style="height: 15px;width: 15px;"></i></button>
+                                                    <button onclick="updateItem({{ $category->id }},null,'toogle')"
+                                                        class="btn {{ $category->status ? 'btn-outline-danger' : 'btn-outline-success' }}">
+                                                        <i data-feather="{{ $category->status ? 'eye-off' : 'eye' }}"
+                                                            style="height: 15px;width: 15px;"></i>
+                                                    </button>
+                                                    <button
+                                                        onclick="updateItem({{ $category->id }},'{{ $category->name }}')"
+                                                        class="btn btn-outline-primary" data-toggle="modal"
+                                                        data-target="#editModal"><i data-feather="edit"
+                                                            style="height: 15px;width: 15px;"></i>
+                                                    </button>
+                                                    <button
+                                                        onclick="confirm('Are you sure want to delete this item?') ? deleteItem({{ $category->id }}):false"
+                                                        class="btn btn-outline-danger"><i data-feather="trash"
+                                                            style="height: 15px;width: 15px;"></i>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -63,7 +76,34 @@
         </div>
     </div>
 
-    {{-- Item Delete Form --}}
+    {{-- Edit modal --}}
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Edit Category</h6>
+                    </div>
+                    <div class="card-body">
+                        <form id="updateForm" method="POST">
+                            @csrf
+                            @method('put')
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <input type="hidden" name="status">
+                            <div class="form-group text-right">
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Delete Form - Hidden --}}
     <form id="deleteForm" class="d-none" method="POST">
         @csrf
         @method('delete')
@@ -73,9 +113,30 @@
 
 @push('page-scripts')
     <script>
-        function deleteItem(id){
-            let url = `{{ route('admin.categories.index') }}/${id}`;
-            $('#deleteForm').attr('action', url).submit();
+        // Make dinamic form action url by id
+        function makeUrl(id) {
+            return `{{ route('admin.categories.index') }}/${id}`;
         }
+
+        function deleteItem(id) {
+            $('#deleteForm').attr('action', makeUrl(id)).submit();
+        }
+
+        function updateItem(id,name,status) {
+
+            // set action on the form 
+            $('#updateForm').attr('action', makeUrl(id));
+
+            // set forms input values 
+            if (name) {
+                $('#updateForm input[name=name]').val(name);
+            }
+
+            if (status == 'toogle') {
+                $('#updateForm input[name=status]').val(status);
+                $('#updateForm').submit();
+            }
+        }
+
     </script>
 @endpush
