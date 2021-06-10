@@ -24,7 +24,6 @@ class CategoryController extends Controller
             'name' => 'required|string|min:3|max:50|unique:categories,name'
         ]);
         Category::create($request->only(['name']));
-        notify()->success('Category Added Successfully', 'Success');
         return back();
     }
 
@@ -62,7 +61,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        notify()->info('Category Deleted Successfully', 'Success');
         return back();
     }
 }
