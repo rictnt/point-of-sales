@@ -23,25 +23,26 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($suppliers as $supplier)
-                                    <tr>
-                                        <td>{{ $supplier->id }}</td>                   
-                                        <td>{{ $supplier->name }}</td>                   
-                                        <td>{{ $supplier->email }}</td>                   
-                                        <td>{{ $supplier->mobile }}</td>                   
-                                        <td>{{ $supplier->address }}</td>                   
-                                        <td>{{ $supplier->details }}</td>                   
-                                        <td>
-                                            <div class="rapid_action">
-                                                <a href="{{ route('admin.suppliers.edit', $supplier->id) }}" class="btn btn-outline-primary"> <i data-feather="edit"
-                                                        style="height: 15px;width: 15px;"></i></a>
-                                                        <button
+                                        <tr>
+                                            <td>{{ $supplier->id }}</td>
+                                            <td>{{ $supplier->name }}</td>
+                                            <td>{{ $supplier->email }}</td>
+                                            <td>{{ $supplier->mobile }}</td>
+                                            <td>{{ $supplier->address }}</td>
+                                            <td>{{ $supplier->details }}</td>
+                                            <td>
+                                                <div class="rapid_action">
+                                                    <a href="{{ route('admin.suppliers.edit', $supplier->id) }}"
+                                                        class="btn btn-outline-primary"> <i data-feather="edit"
+                                                            style="height: 15px;width: 15px;"></i></a>
+                                                    <button
                                                         onclick="confirm('Are you sure want to delete this item?') ? deleteItem({{ $supplier->id }}):false"
                                                         class="btn btn-outline-danger"><i data-feather="trash"
                                                             style="height: 15px;width: 15px;"></i>
                                                     </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -53,9 +54,7 @@
     </div>
 @endsection
 
-@section('hidden')
-    @include('admin.components.delete-form')
-@endsection
+@include('admin.components.delete-form')
 
 @push('page-scripts')
     <script>
@@ -66,5 +65,6 @@
         function deleteItem(id) {
             $('#deleteForm').attr('action', makeUrl(id)).submit();
         }
+
     </script>
 @endpush

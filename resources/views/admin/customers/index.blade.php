@@ -51,9 +51,7 @@
     </div>
 @endsection
 
-@section('hidden')
-    @include('admin.components.delete-form')
-@endsection
+@include('admin.components.delete-form')
 
 @push('page-scripts')
     <script>
