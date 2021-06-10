@@ -28,16 +28,6 @@
                                         <input type="text" name="password" class="form-control" placeholder="Password">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Select Group:</label>
-                                    <div class="col-sm-9">
-                                        <select name="role" class="js-example-basic-single w-100">
-                                            <option value="TX">Staff</option>
-                                            <option value="NY">User</option>
-                                            <option value="FL">Play Boy</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -53,22 +43,16 @@
                                         <input type="text" name="username" class="form-control" placeholder="Username">
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Login Permission:</label>
-                                    <div class="col-sm-9">
-                                        <div class="form-group">
-                                            <select name="status" class="js-example-basic-single w-100">
-                                                <option value="1">Enable</option>
-                                                <option value="0">Disable</option>
-                                            </select>
-                                        </div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md text-right">
+                                        <button type="submit" class="btn btn-primary mr-2">Add</button>
+                                    <a href="{{ route('admin.users.index') }}" class="btn btn-danger">Cancel</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary mr-2">Create</button>
-                            <a href="{{ route('admin.users.index') }}" class="btn btn-danger">Cancel</a>
+
                         </form>
                     </div>
                 </div>
