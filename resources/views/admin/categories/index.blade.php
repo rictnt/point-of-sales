@@ -1,9 +1,8 @@
 @extends('layouts.app')
+
 @section('main')
     <div class="page-content">
-
-
-        <div class="row">
+         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -102,18 +101,14 @@
             </div>
         </div>
     </div>
+@endsection
 
-    {{-- Delete Form - Hidden --}}
-    <form id="deleteForm" class="d-none" method="POST">
-        @csrf
-        @method('delete')
-    </form>
-
+@section('hidden')
+    @include('admin.components.delete-form')
 @endsection
 
 @push('page-scripts')
     <script>
-        // Make dinamic form action url by id
         function makeUrl(id) {
             return `{{ route('admin.categories.index') }}/${id}`;
         }
@@ -122,7 +117,7 @@
             $('#deleteForm').attr('action', makeUrl(id)).submit();
         }
 
-        function updateItem(id,name,status) {
+        function updateItem(id, name, status) {
 
             // set action on the form 
             $('#updateForm').attr('action', makeUrl(id));

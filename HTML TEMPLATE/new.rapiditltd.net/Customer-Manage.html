@@ -2,7 +2,9 @@
 <html lang="en-US">
 
 <!-- Mirrored from new.rapiditltd.net/Customer-Manage by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 16:28:32 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,29 +12,32 @@
   <title>RapidHisab - Manage Customer</title>
 
   <link rel="stylesheet" href="assets/vendors/core/core.css">
-	<link rel="stylesheet" href="assets/fonts/feather-font/css/iconfont.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/fonts/feather-font/css/iconfont.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
-  
-        <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-        <style>
-                table {
-                  border-collapse: collapse;
-                  width: 100%;
-                }
-                td, th {
-                  border: 1px solid #dddddd;
-                  text-align: left;
-                  padding: 8px;
-                }
-            </style>
-        
+
+  <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+
 </head>
+
 <body>
-	<div class="main-wrapper">
-		
-		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar">
+  <div class="main-wrapper">
+
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
           Rapid<span>Hisab</span>
@@ -44,16 +49,17 @@
         </div>
       </div>
       <div class="sidebar-body">
-        <ul class="nav">          
+        <ul class="nav">
           <li class="nav-item">
             <a href="Dashboard.html" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#invoice" role="button" aria-expanded="false" aria-controls="invoice">
+            <a class="nav-link" data-toggle="collapse" href="#invoice" role="button" aria-expanded="false"
+              aria-controls="invoice">
               <i class="link-icon" data-feather="file-text"></i>
               <span class="link-title">Invoice</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -73,7 +79,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
+            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
+              aria-controls="category">
               <i class="link-icon" data-feather="clipboard"></i>
               <span class="link-title">Category</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -86,12 +93,13 @@
                 <li class="nav-item">
                   <a href="Category-Manage.html" class="nav-link">Manage Category</a>
                 </li>
-                
+
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false" aria-controls="product">
+            <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false"
+              aria-controls="product">
               <i class="link-icon" data-feather="shopping-bag"></i>
               <span class="link-title">Product</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -104,12 +112,13 @@
                 <li class="nav-item">
                   <a href="Product-Manage.html" class="nav-link">Manage Product</a>
                 </li>
-                
+
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#customer" role="button" aria-expanded="false" aria-controls="customer">
+            <a class="nav-link" data-toggle="collapse" href="#customer" role="button" aria-expanded="false"
+              aria-controls="customer">
               <i class="link-icon" data-feather="user-plus"></i>
               <span class="link-title">Customer</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -129,7 +138,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#supplier" role="button" aria-expanded="false" aria-controls="supplier">
+            <a class="nav-link" data-toggle="collapse" href="#supplier" role="button" aria-expanded="false"
+              aria-controls="supplier">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Supplier</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -149,7 +159,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#purchase" role="button" aria-expanded="false" aria-controls="purchase">
+            <a class="nav-link" data-toggle="collapse" href="#purchase" role="button" aria-expanded="false"
+              aria-controls="purchase">
               <i class="link-icon" data-feather="shopping-cart"></i>
               <span class="link-title">Purchase</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -166,7 +177,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#return" role="button" aria-expanded="false" aria-controls="return">
+            <a class="nav-link" data-toggle="collapse" href="#return" role="button" aria-expanded="false"
+              aria-controls="return">
               <i class="link-icon" data-feather="refresh-ccw"></i>
               <span class="link-title">Return</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -188,9 +200,10 @@
               </ul>
             </div>
           </li>
-          
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#payment" role="button" aria-expanded="false" aria-controls="payment">
+            <a class="nav-link" data-toggle="collapse" href="#payment" role="button" aria-expanded="false"
+              aria-controls="payment">
               <i class="link-icon" data-feather="pocket"></i>
               <span class="link-title">Payment</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -207,7 +220,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#expense" role="button" aria-expanded="false" aria-controls="expense">
+            <a class="nav-link" data-toggle="collapse" href="#expense" role="button" aria-expanded="false"
+              aria-controls="expense">
               <i class="link-icon" data-feather="trending-down"></i>
               <span class="link-title">Expense</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -224,7 +238,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#stock" role="button" aria-expanded="false" aria-controls="stock">
+            <a class="nav-link" data-toggle="collapse" href="#stock" role="button" aria-expanded="false"
+              aria-controls="stock">
               <i class="link-icon" data-feather="check-circle"></i>
               <span class="link-title">Stock</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -241,7 +256,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#reports" role="button" aria-expanded="false" aria-controls="reports">
+            <a class="nav-link" data-toggle="collapse" href="#reports" role="button" aria-expanded="false"
+              aria-controls="reports">
               <i class="link-icon" data-feather="bar-chart-2"></i>
               <span class="link-title">Report</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -276,7 +292,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#users" role="button" aria-expanded="false" aria-controls="users">
+            <a class="nav-link" data-toggle="collapse" href="#users" role="button" aria-expanded="false"
+              aria-controls="users">
               <i class="link-icon" data-feather="user-check"></i>
               <span class="link-title">Users</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -296,7 +313,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#bank" role="button" aria-expanded="false" aria-controls="bank">
+            <a class="nav-link" data-toggle="collapse" href="#bank" role="button" aria-expanded="false"
+              aria-controls="bank">
               <i class="link-icon" data-feather="briefcase"></i>
               <span class="link-title">Bank</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -316,7 +334,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#barcode" role="button" aria-expanded="false" aria-controls="barcode">
+            <a class="nav-link" data-toggle="collapse" href="#barcode" role="button" aria-expanded="false"
+              aria-controls="barcode">
               <i class="link-icon" data-feather="bar-chart-2"></i>
               <span class="link-title">Barcode</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -356,138 +375,146 @@
               <span class="link-title">Logout</span>
             </a>
           </li>
-          
+
         </ul>
       </div>
-    </nav>		<div class="page-wrapper">
-				
-<nav class="navbar">
-				<a href="#" class="sidebar-toggler">
-					<i data-feather="menu"></i>
-				</a>
-				<div class="navbar-content">
-					
-					<ul class="navbar-nav">
-						<li>
-							<select name="cars" id="cars">
-							  <option value="volvo">Volvo</option>
-							  <option value="saab">Saab</option>
-							  <option value="mercedes">Mercedes</option>
-							  <option value="audi">Audi</option>
-							</select>
-						</li> 
-						<li class="nav-item dropdown nav-profile">
-							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="assets/images/faces/face1.jpg" alt="profile">
-							</a>
-							<div class="dropdown-menu" aria-labelledby="profileDropdown">
-								<div class="dropdown-header d-flex flex-column align-items-center">
-									<div class="figure mb-3">
-										<img src="assets/images/faces/face1.jpg" alt="">
-									</div>
-									<div class="info text-center">
-										<p class="name font-weight-bold mb-0">Amiah Burton</p>
-										<p class="email text-muted mb-3">amiahburton@gmail.com</p>
-									</div>
-								</div>
-								<div class="dropdown-body">
-									<ul class="profile-nav p-0 pt-3">
-										<li class="nav-item">
-											<a href="pages/general/profile.html" class="nav-link">
-												<i data-feather="user"></i>
-												<span>Profile</span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
-												<i data-feather="edit"></i>
-												<span>Edit Profile</span>
-											</a>
-										</li>
-										
-										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
-												<i data-feather="log-out"></i>
-												<span>Log Out</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
+    </nav>
+    <div class="page-wrapper">
+
+      <nav class="navbar">
+        <a href="#" class="sidebar-toggler">
+          <i data-feather="menu"></i>
+        </a>
+        <div class="navbar-content">
+
+          <ul class="navbar-nav">
+            <li>
+              <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+            </li>
+            <li class="nav-item dropdown nav-profile">
+              <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img src="assets/images/faces/face1.jpg" alt="profile">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                <div class="dropdown-header d-flex flex-column align-items-center">
+                  <div class="figure mb-3">
+                    <img src="assets/images/faces/face1.jpg" alt="">
+                  </div>
+                  <div class="info text-center">
+                    <p class="name font-weight-bold mb-0">Amiah Burton</p>
+                    <p class="email text-muted mb-3">amiahburton@gmail.com</p>
+                  </div>
+                </div>
+                <div class="dropdown-body">
+                  <ul class="profile-nav p-0 pt-3">
+                    <li class="nav-item">
+                      <a href="pages/general/profile.html" class="nav-link">
+                        <i data-feather="user"></i>
+                        <span>Profile</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link">
+                        <i data-feather="edit"></i>
+                        <span>Edit Profile</span>
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link">
+                        <i data-feather="log-out"></i>
+                        <span>Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
 
 
-				<div class="page-content">
- 						<!-- Manage Customer -->
-<div class="row">
-	<div class="col-md-12 grid-margin stretch-card">
-		<div class="card">
-			<div class="card-body">
-				<h6 class="card-title">Manage Customer</h6>
-				<div class="table-responsive cell-border">
-					<table id="dataTableExample" class="table cell-border">
-						<thead>
-							<tr>
-								<th>Sl No</th>
-								<th>Category</th>
-								<th>Name</th>
-								<th>E-mail</th>
-								<th>Mobile</th>
-								<th>Address</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Apple</td>
-								<td><a href="Customer-Ledger.html">Katrina Kaif</a></td>
-								<td>katrina@gmail.com </td>
-								<td>013245665</td>
-								<td>Khulna</td>
-								<td>
-									<div class="rapid_action">
-										<button class="btn btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-xl"> <i data-feather="edit" style="height: 15px;width: 15px;"></i></button>
-										<button class="btn btn-outline-danger"><i data-feather="trash" style="height: 15px;width: 15px;"></i></button>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-				</div>
-     				<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-				<p class="text-muted text-center text-md-left">Copyright © 2020 <a href="#" target="_blank">RapidHisab</a>. All rights reserved</p>
-				<p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
-			</footer>
+      <div class="page-content">
+        <!-- Manage Customer -->
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">Manage Customer</h6>
+                <div class="table-responsive cell-border">
+                  <table id="dataTableExample" class="table cell-border">
+                    <thead>
+                      <tr>
+                        <th>Sl No</th>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Apple</td>
+                        <td><a href="Customer-Ledger.html">Katrina Kaif</a></td>
+                        <td>katrina@gmail.com </td>
+                        <td>013245665</td>
+                        <td>Khulna</td>
+                        <td>
+                          <div class="rapid_action">
+                            <button class="btn btn-outline-primary" data-toggle="modal"
+                              data-target=".bd-example-modal-xl"> <i data-feather="edit"
+                                style="height: 15px;width: 15px;"></i></button>
+                            <button class="btn btn-outline-danger"><i data-feather="trash"
+                                style="height: 15px;width: 15px;"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <p class="text-muted text-center text-md-left">Copyright © 2020 <a href="#" target="_blank">RapidHisab</a>. All
+          rights reserved</p>
+        <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i
+            class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
+      </footer>
 
 
-		</div>
-	</div>
-  
-    
+    </div>
+  </div>
 
- 
-	<script src="assets/vendors/core/core.js"></script>
+
+
+
+  <script src="assets/vendors/core/core.js"></script>
   <script src="assets/vendors/datatables.net/jquery.dataTables.js"></script>
-            <script src="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-            <script src="assets/js/data-table.js"></script>	<script src="assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="assets/js/data-table.js"></script>
+  <script src="assets/vendors/feather-icons/feather.min.js"></script>
   <script src="assets/js/template.js"></script>
-  
-  
 
- 
+
+
+
 
 </body>
 
 <!-- Mirrored from new.rapiditltd.net/Customer-Manage by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 16:28:32 GMT -->
-</html>
 
+</html>

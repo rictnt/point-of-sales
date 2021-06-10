@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +21,9 @@
             @yield('main')
             @include('layouts.partials.footer')
         </div>
+    </div>
+    <div style="display:none">
+        @yield('hidden')
     </div>
     <script src="{{ asset('admin/vendors/core/core.js') }}"></script>
     <script src="{{ asset('admin/vendors/feather-icons/feather.min.js') }}"></script>
