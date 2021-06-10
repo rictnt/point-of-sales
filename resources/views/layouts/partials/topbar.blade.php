@@ -4,14 +4,6 @@
     </a>
     <div class="navbar-content">
         <ul class="navbar-nav">
-            <li>
-                <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </li>
             <li class="nav-item dropdown nav-profile">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">

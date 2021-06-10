@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Rapid<span>Hisab</span>
+            LARA<span>POS</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -49,10 +49,10 @@
                 <div class="collapse" id="category">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('categories.index') }}" class="nav-link">Add Category</a>
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Add Category</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('categories.index') }}" class="nav-link">Manage Category</a>
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Category</a>
                         </li>
 
                     </ul>
@@ -87,10 +87,10 @@
                 <div class="collapse" id="customer">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Customer</a>
+                            <a href="{{ route('admin.customers.create') }}" class="nav-link">Add Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Customer</a>
+                            <a href="{{ route('admin.customers.index') }}" class="nav-link">Manage Customer</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Due Customer</a>
@@ -108,10 +108,10 @@
                 <div class="collapse" id="supplier">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Supplier</a>
+                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Supplier</a>
+                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">Manage Supplier</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Due Supplier</a>
@@ -262,10 +262,10 @@
                 <div class="collapse" id="users">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add User</a>
+                            <a href="{{ route('admin.users.create') }}" class="nav-link">Add User</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">User List</a>
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">User List</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Role Permission</a>
