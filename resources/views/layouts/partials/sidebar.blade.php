@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Rapid<span>Hisab</span>
+            LARA<span>POS</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>

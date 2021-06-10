@@ -1,1 +1,1 @@
-# Laravel Point of sale (POS) system
+# Point Of Sale (POS) System in PHP Laravel 8
