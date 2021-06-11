@@ -28,6 +28,7 @@ class CustomerController extends Controller
         ]);
 
         Customer::create($request->all());
+        notify()->info('Added Successfully', 'Success');
         return back();
     }
 
@@ -51,12 +52,14 @@ class CustomerController extends Controller
         ]);
 
         $customer->update($request->all());
+        notify()->info('Updated Successfully', 'Success');
         return back();
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
+        notify()->info('Deleted Successfully', 'Success');
         return back();
     }
 }

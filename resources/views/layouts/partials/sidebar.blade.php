@@ -268,7 +268,7 @@
                             <a href="{{ route('admin.users.index') }}" class="nav-link">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Role Permission</a>
+                            <a href="{{ route('admin.permissions.index') }}" class="nav-link">Role Permission</a>
                         </li>
                     </ul>
                 </div>

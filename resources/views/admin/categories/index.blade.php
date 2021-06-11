@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add Category</h6>
+                        <h6 class="card-title">Add New Category</h6>
                         <form action="{{ route('admin.categories.store') }}" method="POST" class="forms-sample">
                             @csrf
                             <div class="form-group row">
@@ -16,7 +16,7 @@
                                     <input type="text" name="name" class="form-control" placeholder="Ex: Man Fashion">
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                    <button type="submit" class="btn btn-primary form-control">Add</button>
                                 </div>
                             </div>
                         </form>
@@ -104,9 +104,7 @@
     </div>
 @endsection
 
-@section('hidden')
-    @include('admin.components.delete-form')
-@endsection
+@include('admin.components.delete-form')
 
 @push('page-scripts')
     <script>
