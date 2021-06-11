@@ -14,7 +14,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.expenses.expense_category');
     }
 
     /**
@@ -35,7 +35,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // echo "Okay";
     }
 
     /**

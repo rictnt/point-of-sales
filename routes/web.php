@@ -12,5 +12,7 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->as('admin.')->g
         'customers' => CustomerController::class,
         'suppliers' => SupplierController::class,
         'users' => UserController::class,
+        'expense_categories' => ExpenseCategoryController::class,
+        'expenses' => ExpenseController::class,
     ]); 
 });
