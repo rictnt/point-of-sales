@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2">255 <i data-feather="users"
+                                        <h3 class="mb-2">{{ $counter['customers'] }} <i data-feather="users"
                                                 style="height: 30px;width: 30px;margin-bottom: 7px;"></i></h3>
                                     </div>
                                 </div>
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2 text-success">165 <i data-feather="users"
+                                        <h3 class="mb-2 text-success">{{ $counter['suppliers'] }} <i data-feather="users"
                                                 style="height: 30px;width: 30px;margin-bottom: 7px;"></i></h3>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2 text-info">56,236 ৳</h3>
+                                        <h3 class="mb-2 text-info">{{ $counter['purchase'] }} ৳</h3>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2 text-warning">50,000 ৳</h3>
+                                        <h3 class="mb-2 text-warning">{{ $counter['total_sale'] }} ৳</h3>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2 text-success">10,000 ৳</h3>
+                                        <h3 class="mb-2 text-success">{{ $counter['total_profit'] }} ৳</h3>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <h3 class="mb-2 text-danger">000 ৳</h3>
+                                        <h3 class="mb-2 text-danger">{{ $counter['total_loss'] }} ৳</h3>
                                     </div>
                                 </div>
                             </div>

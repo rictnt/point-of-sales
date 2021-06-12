@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // all public routes here
 
+
+
 Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
 
