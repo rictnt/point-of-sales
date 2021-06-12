@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('invoices/settings', [App\Http\Controllers\Admin\InvoiceController::class, 'settings'])->name('invoices.settings');
 
 Route::resources([
-    // 'invoices' => InvoicesController::class,
+    'invoices' => InvoiceController::class,
     'categories' => CategoryController::class,
-    // 'products' => ProductController::class,
+    'products' => ProductController::class,
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
     'users' => UserController::class,
