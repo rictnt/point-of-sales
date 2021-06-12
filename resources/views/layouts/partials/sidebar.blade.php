@@ -190,10 +190,10 @@
                 <div class="collapse" id="expense">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Expense Category</a>
+                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Expense Category</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Expense</a>
+                            <a href="{{ route('admin.expenses.index') }}" class="nav-link">Add Expense</a>
                         </li>
                     </ul>
                 </div>
