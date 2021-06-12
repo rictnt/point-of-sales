@@ -65,7 +65,7 @@ class ExpenseController extends Controller
 
         $expense->update($request->all());
         notify()->success('Updated Successfully', 'Success');
-        return redirect('/admin/expenses');
+        return redirect(route('admin.expense_categories.index'));
     }
 
     public function destroy(Expense $expense)

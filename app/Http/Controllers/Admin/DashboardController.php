@@ -12,9 +12,9 @@ class DashboardController extends Controller
     public function index(){
 
         $counter = [
-            'customers' => Customer::count(),
-            'suppliers' => Supplier::count(),
-            'purchase' => Purchase::count(),
+            'customers' => 0,
+            'suppliers' => 0,
+            'purchase' => 0,
             'total_sale' => 0,
             'total_profit' => 0,
             'total_loss' => 0,

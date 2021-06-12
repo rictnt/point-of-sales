@@ -16,7 +16,7 @@ class ExpenseCategoryController extends Controller
     public function index()
     {
         $expense_categories = ExpenseCategory::all();
-        return view('admin.expenses_category.expense_category', compact('expense_categories'));
+        return view('admin.expense_categories.index', compact('expense_categories'));
     }
 
     /**

@@ -1,8 +1,10 @@
 @extends('layouts.app')
-@section('main')
+
 @push('page-css')
 <link rel="stylesheet" href="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
 @endpush
+
+@section('main')
 <div class="page-content">
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
@@ -11,7 +13,6 @@
                     <h6 class="card-title">Add Expense</h6>
                     <form action="{{ route('admin.expenses.store') }}" method="POST" class="forms-sample row">
                         @csrf
-
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Select Category:</label>
