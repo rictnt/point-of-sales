@@ -16,7 +16,7 @@ class ExpenseCategoryController extends Controller
     public function index()
     {
         $expense_categories = ExpenseCategory::all();
-        return view('admin.expenses.expense_category', compact('expense_categories'));
+        return view('admin.expenses_category.expense_category', compact('expense_categories'));
     }
 
     /**
@@ -100,8 +100,10 @@ class ExpenseCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ExpenseCategory $expense_category)
     {
-        echo "Okay From Delete";
+        $expense_category->delete();
+        notify()->info('Deleted Successfully', 'Success');
+        return back();
     }
 }

@@ -11,4 +11,6 @@ Route::resources([
     'suppliers' => SupplierController::class,
     'users' => UserController::class,
     'permissions' => PermissionController::class,
+    'expense_categories' => ExpenseCategoryController::class,
+    'expenses' => ExpenseController::class,
 ]);

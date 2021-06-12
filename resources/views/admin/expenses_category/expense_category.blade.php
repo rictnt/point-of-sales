@@ -109,14 +109,9 @@
     </div>
 @endsection
 
-@section('hidden')
-    @include('admin.components.delete-form')
-@endsection
 
-<form id="deleteForm" method="POST">
-    @csrf
-    @method('delete')
-</form>
+@include('admin.components.delete-form')
+
 
 @push('page-scripts')
     <script>
