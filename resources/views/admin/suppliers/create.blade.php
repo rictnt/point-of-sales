@@ -6,6 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Add Supplier</h4>
+                    @include('admin.components.errors')
                     <form action="{{ route('admin.suppliers.store') }}" method="POST">
                         @csrf
                         <div class="form-group row">

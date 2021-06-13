@@ -24,7 +24,7 @@ class CategoryController extends Controller
             'name' => 'required|string|min:3|max:50|unique:categories,name'
         ]);
         Category::create($request->only(['name']));
-        notify()->success('Added Successfully', 'Success');
+        notify()->success('New category has been added', 'Success');
         return back();
     }
 
@@ -47,14 +47,14 @@ class CategoryController extends Controller
 
         if ($request->name) {
             $category->update($request->only(['name']));
-            notify()->success('Updated Successfully', 'Success');
+            notify()->success('Category has been updated', 'Success');
         }
 
         if ($request->status == 'toogle') {
             $category->update([
                 'status' => !$category->status,
             ]);
-            notify()->success('Status Updated Successfully', 'Success');
+            notify()->success('Category status has been updated', 'Success');
         }
         return back();
     }
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        notify()->info('Deleted Successfully', 'Success');
+        notify()->success('Category has been deleted', 'Success');
         return back();
     }
 }

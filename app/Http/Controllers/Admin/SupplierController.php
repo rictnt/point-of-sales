@@ -29,7 +29,8 @@ class SupplierController extends Controller
         ]);
         Supplier::create($request->all());
         notify()->success('Added Successfully', 'Success');
-        return back();
+        
+        return redirect(route('admin.suppliers.index'));
     }
 
     public function show(Supplier $supplier)

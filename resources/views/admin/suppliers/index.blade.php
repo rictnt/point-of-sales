@@ -35,11 +35,13 @@
                                                     <a href="{{ route('admin.suppliers.edit', $supplier->id) }}"
                                                         class="btn btn-outline-primary"> <i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i></a>
-                                                    <button
-                                                        onclick="confirm('Are you sure want to delete this item?') ? deleteItem({{ $supplier->id }}):false"
-                                                        class="btn btn-outline-danger"><i data-feather="trash"
+                                                            <button
+                                                            data-toggle="modal"
+                                                            data-target="#deleteModal"
+                                                            onclick="setDeleteForm({{ $supplier->id }})"
+                                                            class=" btn btn-outline-danger"><i data-feather="trash"
                                                             style="height: 15px;width: 15px;"></i>
-                                                    </button>
+                                                        </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -54,7 +56,7 @@
     </div>
 @endsection
 
-@include('admin.components.delete-form')
+@include('admin.components.delete-modal')
 
 @push('page-scripts')
     <script>
@@ -62,9 +64,10 @@
             return `{{ route('admin.suppliers.index') }}/${id}`;
         }
 
-        function deleteItem(id) {
-            $('#deleteForm').attr('action', makeUrl(id)).submit();
-        }
+        
+        function setDeleteForm(id) {
+            $('#deleteForm').attr('action', makeUrl(id));
 
+        }
     </script>
 @endpush

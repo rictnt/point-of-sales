@@ -3,6 +3,9 @@
 <link rel="stylesheet" href="{{ asset('admin/fonts/feather-font/css/iconfont.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
 
+{{-- datatables --}}
+<link rel="stylesheet" href="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+
 {{-- Toastr JS --}}
 <link rel="stylesheet" href="{{ asset('admin/vendors/notify/toastr.min.css') }}" />
 
