@@ -94,7 +94,7 @@
                             @method('put')
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                             <input type="hidden" name="status">
                             <div class="form-group text-right">
