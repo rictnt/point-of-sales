@@ -8,6 +8,7 @@ Route::resources([
     'invoices' => InvoiceController::class,
     'categories' => CategoryController::class,
     'products' => ProductController::class,
+    'units' => UnitController::class,
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
     'users' => UserController::class,

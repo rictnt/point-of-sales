@@ -59,6 +59,30 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#brand" role="button" aria-expanded="false"
+                    aria-controls="brand">
+                    <i class="link-icon" data-feather="clipboard"></i>
+                    <span class="link-title">Brand Unit</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="brand">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.brands.index') }}" class="nav-link">Add Brand</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.units.index') }}" class="nav-link">Add Unit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false"
                     aria-controls="product">
                     <i class="link-icon" data-feather="shopping-bag"></i>
