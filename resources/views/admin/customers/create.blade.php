@@ -6,14 +6,15 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Add Customer</h4>
-                    <form action="{{ route('admin.customers.store') }}" method="POST">
+                    @include('admin.components.errors')
+                    <form action="{{ route('admin.customers.store') }}" method="POST" class="needs-validation">
                         @csrf
                         <div class="form-group row">
                             <div class="col-lg-3">
                                 <label class="col-form-label">Name</label>
                             </div>
                             <div class="col-lg-6">
-                                <input name="name" class="form-control" maxlength="25" type="text" placeholder="Customer Name">
+                                <input name="name" class="form-control" maxlength="25" type="text" placeholder="Customer Name" required>
                             </div>
                         </div>
                         <div class="form-group row">
