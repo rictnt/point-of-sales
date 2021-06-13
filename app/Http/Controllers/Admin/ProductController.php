@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -35,7 +38,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'category_id' => 'required|integer',
+        //     'brand_id' => 'required|integer',
+        //     'unit_id' => 'required|'max:200,
+        //     'tax' => 'required|',
+        //     'name' => 'required|max:100',
+        //     'serial' => 'required|integer',
+        //     'model' => 'required|max:200',
+        //     'purchase_price' => 'required|integer',
+        //     'selling_price' => 'required|integer',
+        //     'details' => 'required|max:5000',
+        //     'image' => 'required | mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:10000',
+        // ]);
+        
+        $product =  Product::create($request->except('image'));
+
+
+        $imagePath = $request->image->store('product');
+
+        $product->update([
+            'image' => $imagePath
+        ]);
+
+        notify()->info('Added Successfully', 'Success');
+        return back();
     }
 
     /**
