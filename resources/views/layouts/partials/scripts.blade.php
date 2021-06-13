@@ -7,4 +7,4 @@
 @include('layouts.partials.notify')
 
 {{-- Indivisual Page Scripts --}}
-@stack('page-scripts')
+@stack('page-js')
