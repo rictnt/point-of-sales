@@ -6,19 +6,21 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Add New Product</h6>
+                    @include('admin.components.errors')
+
                     <form class="forms-sample row" action="{{ Route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Product Name:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Product Name" name="product_name">
+                                    <input type="text" class="form-control" placeholder="Product Name" name="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Model:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Model" name="product_model">
+                                    <input type="text" class="form-control" placeholder="Model" name="model">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -38,7 +40,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Serial Number:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control"placeholder="Serial Number" name="serial_number">
+                                    <input type="text" class="form-control"placeholder="Serial Number" name="serial">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -57,8 +59,8 @@
                                 <label class="col-sm-3 col-form-label">Unit:</label>
                                 <div class="col-sm-9">
                                     <div class="form-group">
-                                        <select class="js-example-basic-single w-100" name="product_unit">
-                                            <option value="TX">Cash</option>
+                                        <select class="js-example-basic-single w-100" name="unit_id">
+                                            <option value="1">Cash</option>
                                             <option value="NY">Meter</option>
                                             <option value="FL">Inch</option>
                                             <option value="KN">kg</option>
@@ -70,17 +72,17 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Tax / Vat(%):</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control"placeholder="Enter Vat" name="tax_vat">
+                                    <input type="text" class="form-control"placeholder="Enter Vat" name="tax">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Product Details:</label>
-                            <textarea class="form-control" rows="13" placeholder="Product Details" name="product_details"></textarea>
+                            <textarea class="form-control" rows="13" placeholder="Product Details" name="details"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Upload Product Image:</label>
-                            <input type="file" id="myDropify" class="border" name="product_image">
+                            <input type="file" id="myDropify" class="border" name="image">
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Save</button>
                         <a href="{{ route('admin.products.index') }}" class="btn btn-danger">Cancel</a>
