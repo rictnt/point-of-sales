@@ -28,13 +28,13 @@
                 <div class="collapse" id="invoice">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">New Invoice</a>
+                            <a href="{{ route('admin.invoices.create') }}" class="nav-link">New Invoice</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Invoice</a>
+                            <a href="{{ route('admin.invoices.index') }}" class="nav-link">Manage Invoice</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Invoice Settings</a>
+                            <a href="{{ route('admin.invoices.settings') }}" class="nav-link">Invoice Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -95,7 +95,7 @@
                             <a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Product</a>
+                            <a href="{{ route('admin.products.index') }}" class="nav-link">Manage Product</a>
                         </li>
 
                     </ul>
@@ -214,10 +214,10 @@
                 <div class="collapse" id="expense">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Expense Category</a>
+                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Expense Category</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Expense</a>
+                            <a href="{{ route('admin.expenses.index') }}" class="nav-link">Add Expense</a>
                         </li>
                     </ul>
                 </div>

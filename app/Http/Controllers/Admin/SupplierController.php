@@ -28,6 +28,7 @@ class SupplierController extends Controller
             'details' => 'required',
         ]);
         Supplier::create($request->all());
+        notify()->success('Added Successfully', 'Success');
         return back();
     }
 
@@ -52,6 +53,7 @@ class SupplierController extends Controller
         ]);
         
         $supplier->update($request->all());
+        notify()->success('Updated Successfully', 'Success');
         return back();
     }
 
