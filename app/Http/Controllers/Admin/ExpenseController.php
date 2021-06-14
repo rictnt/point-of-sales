@@ -12,15 +12,15 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        $categories = ExpenseCategory::all();
-        $users = User::all();
         $expenses = Expense::all();
-        return view('admin.expenses.index', compact('categories', 'users', 'expenses'));
+        return view('admin.expenses.index', compact('expenses'));
     }
 
     public function create()
     {
-        //
+        $categories = ExpenseCategory::all();
+        $users = User::all();
+        return view('admin.expenses.create', compact('categories', 'users'));
     }
 
     public function store(Request $request)

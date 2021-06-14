@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Unit;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all()->load(['unit', 'brand', 'category']);
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -27,7 +29,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        $units = Unit::all();
+        $brands = Brand::all();
+        return view('admin.products.create', compact('categories', 'units', 'brands'));
     }
 
     /**
@@ -54,14 +58,15 @@ class ProductController extends Controller
         
         $product =  Product::create($request->except('image'));
 
+        $product =  new Product($request->except('image'));
 
-        $imagePath = $request->image->store('product');
+        if ($request->file('image')) {
+            $product->image = $request->image->store('product');
+        }
+        
+        $product->save();
 
-        $product->update([
-            'image' => $imagePath
-        ]);
-
-        notify()->info('Added Successfully', 'Success');
+        notify()->info('Product has been added', 'Success');
         return back();
     }
 
@@ -96,7 +101,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        notify()->success('Product has been updated', 'Success');
+        return back();
     }
 
     /**
@@ -107,6 +113,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        notify()->success('Product has been deleted', 'Success');
+        return back();
     }
 }

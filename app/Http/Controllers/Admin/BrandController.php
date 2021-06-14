@@ -19,55 +19,71 @@ class BrandController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50|unique:brands,name'
         ]);
-        Brand::create($request->only(['name']));
-        notify()->success('New brand has been added', 'Success');
+
+        Brand::create($request->all());
+        notify()->success('Brand has been added', 'Success');
         return back();
     }
 
-    public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  Brand $brand
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Brand $brand)
     {
         //
     }
 
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Brand $brand
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Brand $brand)
     {
         //
     }
 
-    public function update(Request $request, Brand $brands)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Brand $brand
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Brand $brand)
     {
-        echo $brands::all();
-        // $request->validate([
-        //     'name' => 'nullable|string|min:3|max:50|unique:categories,name',
-        //     'status' => 'nullable'
-        //     ]);
+        $request->validate([
+            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+            'status' => 'nullable'
+            ]);
 
-        // if ($request->name) {
-        //     $brands->update($request->only(['name']));
-        //     notify()->success('Brands has been updated', 'Success');
-        // }
+        if ($request->name) {
+            $brand->update($request->only(['name']));
+            notify()->success('brand has been updated', 'Success');
+        }
 
-        // if ($request->status == 'toogle') {
-        //     echo $brands;
-        //     $brands->update([
-        //         'status' => !$brands->status,
-        //     ]);
-        //     notify()->success('Brands status has been updated', 'Success');
-        // }
-        // return back();
+        if ($request->status == 'toogle') {
+            $brand->update([
+                'status' => !$brand->status,
+            ]);
+            notify()->success('Brand status has been updated', 'Success');
+        }
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brands)
+    public function destroy(Brand $brand)
     {
-        echo $brands;
-        die();
-        $brands->delete();
+        $brand->delete();
         notify()->success('Brand has been deleted', 'Success');
         return back();
     }

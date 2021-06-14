@@ -23,30 +23,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><a href="Product-Details.html">Apple</a></td>
-                                        <td><a href="Product-Details.html">iphone</a></td>
-                                        <td>678</td>
-                                        <td>de456</td>
-                                        <td>$879</td>
-                                        <td>$950</td>
-                                        <td>
-                                            <div class="figure mb-3">
-                                                <img src="assets/images/faces/face1.jpg" alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="rapid_action">
-                                                <button class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target=".bd-example-modal-xl"> <i data-feather="edit"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                                <button class="btn btn-outline-danger"><i data-feather="trash"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{ $product->category->name ?? 'nai' }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->model }}</td>
+                                            <td>{{ $product->serial }}</td>
+                                            <td>{{ $product->cost_price }}</td>
+                                            <td>{{ $product->sell_price }}</td>
+                                            <td>
+                                                <div class="figure mb-3">
+                                                    <img src="assets/images/faces/face1.jpg" alt="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="rapid_action">
+                                                    <button class="btn btn-outline-primary" data-toggle="modal"
+                                                        data-target=".bd-example-modal-xl"> <i data-feather="edit"
+                                                            style="height: 15px;width: 15px;"></i></button>
+                                                    <button class="btn btn-outline-danger"><i data-feather="trash"
+                                                            style="height: 15px;width: 15px;"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
+                                    @endforeach
 
                                 </tbody>
                             </table>

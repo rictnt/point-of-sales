@@ -40,18 +40,18 @@ class UnitController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50|unique:units,name'
         ]);
-        Unit::create($request->only(['name']));
-        notify()->success('Added Successfully', 'Success');
+        Unit::create($request->all());
+        notify()->success('Unit has been added', 'Success');
         return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Unit $unit
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Unit $unit)
     {
         //
     }
@@ -59,10 +59,10 @@ class UnitController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Unit $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Unit $unit)
     {
         //
     }
@@ -71,18 +71,34 @@ class UnitController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  Unit $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Unit $unit)
     {
-        //
+        $request->validate([
+            'name' => 'nullable|string|min:3|max:50|unique:units,name',
+            'status' => 'nullable'
+        ]);
+
+        if ($request->name) {
+            $unit->update($request->only(['name']));
+            notify()->success('Unit has been updated', 'Success');
+        }
+
+        if ($request->status == 'toogle') {
+            $unit->update([
+                'status' => !$unit->status,
+            ]);
+            notify()->success('Unit status has been updated', 'Success');
+        }
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  Unit $unit
      * @return \Illuminate\Http\Response
      */
     public function destroy(Unit $units)
