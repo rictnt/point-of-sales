@@ -59,13 +59,13 @@ class ProductController extends Controller
         $product =  new Product($request->except('image'));
 
         if ($request->file('image')) {
-            $product->image = $request->image->store('product');
+            $product->image = $request->image->store('images/products');
         }
         
         $product->save();
 
-        notify()->info('Product has been added', 'Success');
-        return back();
+        notify()->success('Product has been added', 'Success');
+        return redirect(route('admin.products.index'));
     }
 
     /**

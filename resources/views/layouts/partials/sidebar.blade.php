@@ -53,14 +53,15 @@
                             <a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.products.index') }}" class="nav-link">List Product</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.products.index') }}" class="nav-link">Manage Product</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Categories</a>
                         </li>

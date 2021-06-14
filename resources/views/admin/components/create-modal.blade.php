@@ -11,7 +11,7 @@
                             <input type="text" name="name" class="form-control">
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
                         </div>
                     </form>

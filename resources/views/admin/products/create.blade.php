@@ -32,14 +32,14 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Purchase Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 20"
+                                        <input type="number" class="form-control" placeholder="Ex: 20"
                                             name="cost_price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Sell Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 25"
+                                        <input type="number" class="form-control" placeholder="Ex: 25"
                                             name="sell_price" required>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Tax / Vat(%):</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 10" name="tax">
+                                        <input type="number" class="form-control" placeholder="Ex: 10" name="tax" value="0">
                                     </div>
                                 </div>
                             </div>

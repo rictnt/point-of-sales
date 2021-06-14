@@ -14,8 +14,7 @@
                                         <th>Sl No</th>
                                         <th>Category</th>
                                         <th>Name</th>
-                                        <th>Model</th>
-                                        <th>Serial Number</th>
+                                        <th>SKU</th>
                                         <th>Buy Price</th>
                                         <th>Sell Price</th>
                                         <th>Image</th>
@@ -28,13 +27,12 @@
                                             <td>1</td>
                                             <td>{{ $product->category->name ?? 'nai' }}</td>
                                             <td>{{ $product->name }}</td>
-                                            <td>{{ $product->model }}</td>
-                                            <td>{{ $product->serial }}</td>
+                                            <td>{{ $product->sku }}</td>
                                             <td>{{ $product->cost_price }}</td>
                                             <td>{{ $product->sell_price }}</td>
                                             <td>
                                                 <div class="figure mb-3">
-                                                    <img src="assets/images/faces/face1.jpg" alt="">
+                                                    <img src="{{ url('uploads/' . $product->image) }}" alt="">
                                                 </div>
                                             </td>
                                             <td>
@@ -42,8 +40,11 @@
                                                     <button class="btn btn-outline-primary" data-toggle="modal"
                                                         data-target=".bd-example-modal-xl"> <i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i></button>
-                                                    <button class="btn btn-outline-danger"><i data-feather="trash"
-                                                            style="height: 15px;width: 15px;"></i></button>
+                                                    <button data-toggle="modal" data-target="#deleteModal"
+                                                        onclick="setDeleteForm({{ $product->id }})"
+                                                        class=" btn btn-outline-danger"><i data-feather="trash"
+                                                            style="height: 15px;width: 15px;"></i>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -58,4 +59,9 @@
             </div>
         </div>
     </div>
+    @include('admin.components.delete-modal',['module' => 'product'])
 @endsection
+
+@push('page-js')
+    @include('admin.components.crud-js')
+@endpush
