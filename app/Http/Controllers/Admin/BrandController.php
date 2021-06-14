@@ -1,40 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $brands = Brand::all();
         return view('admin.brands.index', compact('brands'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -78,13 +57,13 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+            'name' => 'nullable|string|min:3|max:50|unique:brands,name,' .$brand->id,
             'status' => 'nullable'
             ]);
 
         if ($request->name) {
             $brand->update($request->only(['name']));
-            notify()->success('brand has been updated', 'Success');
+            notify()->success('Brand has been updated', 'Success');
         }
 
         if ($request->status == 'toogle') {
