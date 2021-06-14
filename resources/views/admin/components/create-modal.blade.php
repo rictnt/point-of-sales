@@ -11,8 +11,8 @@
                             <input type="text" name="name" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </form>
                 </div>

@@ -45,15 +45,15 @@ class ProductController extends Controller
         $request->validate([
             'category_id' => 'required|numeric',
             'brand_id' => 'required|numeric',
-            'unit_id' => 'required|numeric|max:11',
-            'tax' => 'nullable',
-            'name' => 'required|max:100|min:2',
-            'serial' => 'required|numeric',
-            'model' => 'nullable|max:200',
-            'purchase_price' => 'required|integer|not_in:0',
-            'selling_price' => 'required|integer|not_in:0',
+            'unit_id' => 'required|numeric',
+
+            'name' => 'required|string|max:100|min:2',
+            'sku' => 'required|string|uniq:products,sku',
+            'cost_price' => 'required|not_in:0',
+            'sell_price' => 'required|not_in:0',
+            'tax' => 'integer',
             'details' => 'required|max:500',
-            'image' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
+            'image' => 'nullable|file|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
         ]);
         
         $product =  Product::create($request->except('image'));
@@ -61,13 +61,13 @@ class ProductController extends Controller
         $product =  new Product($request->except('image'));
 
         if ($request->file('image')) {
-            $product->image = $request->image->store('product');
+            $product->image = $request->image->store('images/products');
         }
         
         $product->save();
 
-        notify()->info('Product has been added', 'Success');
-        return back();
+        notify()->success('Product has been added', 'Success');
+        return redirect(route('admin.products.index'));
     }
 
     /**

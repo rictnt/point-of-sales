@@ -44,10 +44,10 @@
         </div>
     </div>
 
+    @include('admin.components.create-modal', ['module' => 'unit'])
+    @include('admin.components.edit-modal', ['module' => 'unit'])
+    @include('admin.components.delete-modal', ['module' => 'unit'])
 @endsection
-@include('admin.components.create-modal', ['module'=>'unit'])
-@include('admin.components.edit-modal', ['module'=>'unit'])
-@include('admin.components.delete-modal', ['module' =>'unit'])
 
 @push('page-js')
     @include('admin.components.crud-js')

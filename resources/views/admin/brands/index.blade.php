@@ -42,10 +42,10 @@
             </div>
         </div>
     </div>
+    @include('admin.components.create-modal', ['module'=>'brand'])
+    @include('admin.components.edit-modal', ['module'=>'brand'])
+    @include('admin.components.delete-modal', ['module' =>'brand'])
 @endsection
-@include('admin.components.create-modal', ['module'=>'brand'])
-@include('admin.components.edit-modal', ['module'=>'brand'])
-@include('admin.components.delete-modal', ['module' =>'brand'])
 
 @push('page-js')
     @include('admin.components.crud-js')

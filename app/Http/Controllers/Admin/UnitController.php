@@ -38,8 +38,9 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|min:3|max:50|unique:units,name'
+            'name' => 'string|unique:units,name'
         ]);
+        
         Unit::create($request->all());
         notify()->success('Unit has been added', 'Success');
         return back();

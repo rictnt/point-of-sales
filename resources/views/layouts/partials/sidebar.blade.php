@@ -53,14 +53,19 @@
                             <a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.products.index') }}" class="nav-link">List Product</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a href="{{ route('admin.products.index') }}" class="nav-link">Manage Product</a>
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Categories</a>
                         </li>
+
                     </ul>
                 </div>
             </li>
@@ -310,7 +315,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="All-Settings.html" class="nav-link">
+                <a href="{{ route('admin.settings') }}" class="nav-link">
                     <i class="link-icon" data-feather="settings"></i>
                     <span class="link-title">Settings</span>
                 </a>
