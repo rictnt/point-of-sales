@@ -6,8 +6,11 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add New Category</h6>
-
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title">Add New Category</h6>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addUnitModal">Add New
+                                Unit</button>
+                        </div>
                         @include('admin.components.errors')
 
                         <form action="{{ route('admin.categories.store') }}" method="POST" class="needs-validation"
@@ -58,17 +61,14 @@
                                                     </button>
                                                     <button
                                                         onclick="setEditForm({{ $category->id }},'{{ $category->name }}')"
-                                                        class="btn btn-outline-primary"
-                                                        data-toggle="modal"
+                                                        class="btn btn-outline-primary" data-toggle="modal"
                                                         data-target="#editModal"><i data-feather="edit"
-                                                        style="height: 15px;width: 15px;"></i>
+                                                            style="height: 15px;width: 15px;"></i>
                                                     </button>
-                                                    <button
-                                                        data-toggle="modal"
-                                                        data-target="#deleteModal"
+                                                    <button data-toggle="modal" data-target="#deleteModal"
                                                         onclick="setDeleteForm({{ $category->id }})"
                                                         class=" btn btn-outline-danger"><i data-feather="trash"
-                                                        style="height: 15px;width: 15px;"></i>
+                                                            style="height: 15px;width: 15px;"></i>
                                                     </button>
                                                 </div>
                                             </td>
@@ -83,6 +83,8 @@
         </div>
     </div>
 
+    {{-- Create Modal --}}
+    @include('admin.units.inc.create-modal')
     {{-- #editForm --}}
     @include('admin.components.edit-modal', ['module' => 'category'])
     {{-- #deleteForm --}}
@@ -110,8 +112,9 @@
                 $('#editForm').submit();
             }
         }
+
     </script>
-    
+
     @include('admin.components.form-validation-js')
 
 @endpush

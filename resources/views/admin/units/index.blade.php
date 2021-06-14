@@ -2,32 +2,17 @@
 
 @section('main')
     <div class="page-content">
-
+        @include('admin.components.errors')
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add New Unit</h6>
-                        <form action="{{ route('admin.units.store') }}" method="POST" class="forms-sample">
-                            @csrf
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Unit Name</label>
-                                <div class="col-md-4">
-                                    <input type="text" name="unit_name" class="form-control" placeholder="Ex: New Product">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary form-control">Add</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="card-title">Unit List</h6>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add New
+                                Unit</button>
+                        </div>
 
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title">Unites List</h6>
                         <div class="table-responsive cell-border">
                             <table id="dataTableExample" class="table cell-border">
                                 <thead>
@@ -52,8 +37,7 @@
                                                         <i data-feather="{{ $unit->status ? 'eye-off' : 'eye' }}"
                                                             style="height: 15px;width: 15px;"></i>
                                                     </button>
-                                                    <button
-                                                        onclick="updateItem({{ $unit->id }},'{{ $unit->name }}')"
+                                                    <button onclick="updateItem({{ $unit->id }},'{{ $unit->name }}')"
                                                         class="btn btn-outline-primary" data-toggle="modal"
                                                         data-target="#editModal"><i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i>
@@ -76,61 +60,7 @@
         </div>
     </div>
 
-    {{-- Edit modal --}}
-    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="card">
-                    <div class="card-header">
-                        <h6>Edit Category</h6>
-                    </div>
-                    <div class="card-body">
-                        <form id="updateForm" method="POST">
-                            @csrf
-                            @method('put')
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <input type="hidden" name="status">
-                            <div class="form-group text-right">
-                                <button class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+    @include('admin.components.create-modal',['module' => 'unit'])
+    @include('admin.components.delete-modal')
+    
 @endsection
-
-@include('admin.components.delete-modal')
-
-{{-- @push('page-js')
-    <script>
-        function makeUrl(id) {
-            return `{{ route('admin.categories.index') }}/${id}`;
-        }
-
-        function deleteItem(id) {
-            $('#deleteForm').attr('action', makeUrl(id)).submit();
-        }
-
-        function updateItem(id, name, status) {
-
-            // set action on the form 
-            $('#updateForm').attr('action', makeUrl(id));
-
-            // set forms input values 
-            if (name) {
-                $('#updateForm input[name=name]').val(name);
-            }
-
-            if (status == 'toogle') {
-                $('#updateForm input[name=status]').val(status);
-                $('#updateForm').submit();
-            }
-        }
-
-    </script>
-@endpush --}}
