@@ -57,13 +57,13 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+            'name' => 'nullable|string|min:3|max:50|unique:brands,name,' .$brand->id,
             'status' => 'nullable'
             ]);
 
         if ($request->name) {
             $brand->update($request->only(['name']));
-            notify()->success('brand has been updated', 'Success');
+            notify()->success('Brand has been updated', 'Success');
         }
 
         if ($request->status == 'toogle') {

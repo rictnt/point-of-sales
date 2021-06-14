@@ -31,26 +31,9 @@
                                             <td class="{{ $unit->status ? 'text-success' : 'text-danger' }}">
                                                 {{ $unit->status ? 'Active' : 'Inactive' }}</td>
                                                 <td>
-                                                    <div class="rapid_action">
-                                                        <button onclick="setEditForm({{ $unit->id }},null,'toogle')"
-                                                            class="btn {{ $unit->status ? 'btn-outline-danger' : 'btn-outline-success' }}">
-                                                            <i data-feather="{{ $unit->status ? 'eye-off' : 'eye' }}"
-                                                                style="height: 15px;width: 15px;"></i>
-                                                        </button>
-                                                        <button
-                                                            onclick="setEditForm({{ $unit->id }},'{{ $unit->name }}')"
-                                                            class="btn btn-outline-primary" data-toggle="modal"
-                                                            data-target="#editModal"><i data-feather="edit"
-                                                                style="height: 15px;width: 15px;"></i>
-                                                        </button>
-                                                        <button data-toggle="modal" data-target="#deleteModal"
-                                                            onclick="setDeleteForm({{ $unit->id }})"
-                                                            class=" btn btn-outline-danger"><i data-feather="trash"
-                                                                style="height: 15px;width: 15px;"></i>
-                                                        </button>
-                                                    </div>
+                                                    @include('admin.components.table-buttons', ['item' => $unit])
                                                 </td>
-                                        </tr>
+                                            </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -61,32 +44,13 @@
         </div>
     </div>
 
-    @include('admin.components.create-modal', ['module' => 'unit'])
-    @include('admin.components.edit-modal', ['module' => 'unit'])
-    @include('admin.components.delete-modal', ['module' => 'unit'])
-
 @endsection
+@include('admin.components.create-modal', ['module'=>'unit'])
+@include('admin.components.edit-modal', ['module'=>'unit'])
+@include('admin.components.delete-modal', ['module' =>'unit'])
 
 @push('page-js')
-    <script>
-        function makeUrl(id) {
-            return `{{ route('admin.units.index') }}/${id}`;
-        }
-
-        function setDeleteForm(id) {
-            $('#deleteForm').attr('action', makeUrl(id));
-        }
-
-        function setEditForm(id, name, status) {
-            $('#editForm').attr('action', makeUrl(id));
-            if (name) {
-                $('#editForm input[name=name]').val(name);
-            }
-            if (status == 'toogle') {
-                $('#editForm input[name=status]').val(status);
-                $('#editForm').submit();
-            }
-        }
-    </script>
-    
+    @include('admin.components.crud-js')
+    @include('admin.components.form-validation-js')
 @endpush
+    

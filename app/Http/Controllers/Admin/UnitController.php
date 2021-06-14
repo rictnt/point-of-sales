@@ -76,8 +76,9 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
+
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:units,name',
+            'name' => 'nullable|string|min:3|max:50|unique:units,name,' .$unit->id,
             'status' => 'nullable'
         ]);
 
@@ -101,9 +102,9 @@ class UnitController extends Controller
      * @param  int  Unit $unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unit $units)
+    public function destroy(Unit $unit)
     {
-        $deleted = $units->delete();
+        $unit->delete();
         notify()->success('Unit has been deleted', 'Success');
         return back();
     }

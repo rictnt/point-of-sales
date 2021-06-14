@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="page-content">
-
+        @include('admin.components.errors')
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -48,6 +48,6 @@
 @include('admin.components.delete-modal', ['module' =>'brand'])
 
 @push('page-js')
-   
+    @include('admin.components.crud-js')
     @include('admin.components.form-validation-js')
 @endpush
