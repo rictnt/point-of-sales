@@ -25,7 +25,7 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>1</td>
-                                            <td>{{ $product->category->name ?? 'nai' }}</td>
+                                            <td>{{ $product->category->name ?? '' }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->sku }}</td>
                                             <td>{{ $product->cost_price }}</td>
@@ -37,8 +37,7 @@
                                             </td>
                                             <td>
                                                 <div class="rapid_action">
-                                                    <button class="btn btn-outline-primary" data-toggle="modal"
-                                                        data-target=".bd-example-modal-xl"> <i data-feather="edit"
+                                                    <button onclick="alert('working on it')" class="btn btn-outline-primary"> <i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i></button>
                                                     <button data-toggle="modal" data-target="#deleteModal"
                                                         onclick="setDeleteForm({{ $product->id }})"

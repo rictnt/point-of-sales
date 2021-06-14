@@ -48,7 +48,7 @@ class ProductController extends Controller
             'unit_id' => 'required|integer',
 
             'name' => 'required|string',
-            'sku' => 'required|string',
+            'sku' => 'required|string|uniq:products,sku',
             'cost_price' => 'required',
             'sell_price' => 'required',
             'tax' => 'integer',
