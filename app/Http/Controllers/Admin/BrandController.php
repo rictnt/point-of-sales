@@ -1,82 +1,60 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $brands = Brand::all();
-        return view('admin.brands.index', Compact('brands'));
+        return view('admin.brands.index', compact('brands'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'brand_name' => 'required|string|min:3|max:50|unique:brands,brand_name'
+            'name' => 'required|string|min:3|max:50|unique:brands,name'
         ]);
-        Brand::create($request->only(['brand_name']));
-        notify()->success('Added Successfully', 'Success');
+        Brand::create($request->only(['name']));
+        notify()->success('New brand has been added', 'Success');
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brands)
     {
-        //
+        echo $brands::all();
+        // $request->validate([
+        //     'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+        //     'status' => 'nullable'
+        //     ]);
+
+        // if ($request->name) {
+        //     $brands->update($request->only(['name']));
+        //     notify()->success('Brands has been updated', 'Success');
+        // }
+
+        // if ($request->status == 'toogle') {
+        //     echo $brands;
+        //     $brands->update([
+        //         'status' => !$brands->status,
+        //     ]);
+        //     notify()->success('Brands status has been updated', 'Success');
+        // }
+        // return back();
     }
 
     /**
@@ -85,8 +63,12 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brands)
     {
-        //
+        echo $brands;
+        die();
+        $brands->delete();
+        notify()->success('Brand has been deleted', 'Success');
+        return back();
     }
 }

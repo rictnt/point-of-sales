@@ -38,19 +38,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'category_id' => 'required|integer',
-        //     'brand_id' => 'required|integer',
-        //     'unit_id' => 'required|'max:200,
-        //     'tax' => 'required|',
-        //     'name' => 'required|max:100',
-        //     'serial' => 'required|integer',
-        //     'model' => 'required|max:200',
-        //     'purchase_price' => 'required|integer',
-        //     'selling_price' => 'required|integer',
-        //     'details' => 'required|max:5000',
-        //     'image' => 'required | mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:10000',
-        // ]);
+        $request->validate([
+            'category_id' => 'required|numeric',
+            'brand_id' => 'required|numeric',
+            'unit_id' => 'required|numeric|max:11',
+            'tax' => 'nullable',
+            'name' => 'required|max:100|min:2',
+            'serial' => 'required|numeric',
+            'model' => 'nullable|max:200',
+            'purchase_price' => 'required|integer|not_in:0',
+            'selling_price' => 'required|integer|not_in:0',
+            'details' => 'required|max:500',
+            'image' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
+        ]);
         
         $product =  Product::create($request->except('image'));
 

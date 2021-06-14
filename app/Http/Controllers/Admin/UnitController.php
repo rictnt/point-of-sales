@@ -38,9 +38,9 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'unit_name' => 'required|string|min:3|max:50|unique:units,unit_name'
+            'name' => 'required|string|min:3|max:50|unique:units,name'
         ]);
-        Unit::create($request->only(['unit_name']));
+        Unit::create($request->only(['name']));
         notify()->success('Added Successfully', 'Success');
         return back();
     }
@@ -85,8 +85,10 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Unit $units)
     {
-        //
+        $deleted = $units->delete();
+        notify()->success('Unit has been deleted', 'Success');
+        return back();
     }
 }

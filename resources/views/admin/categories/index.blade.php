@@ -17,7 +17,7 @@
                                 <label class="col-md-2 col-form-label">Category Name</label>
                                 <div class="col-md-4">
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        placeholder="Ex: Man Fashion" required>
+                                        placeholder="Ex: Man Fashion" c>
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-primary">Add Category</button>
@@ -106,6 +106,7 @@
                 $('#editForm input[name=name]').val(name);
             }
             if (status == 'toogle') {
+                alert(status)
                 $('#editForm input[name=status]').val(status);
                 $('#editForm').submit();
             }
