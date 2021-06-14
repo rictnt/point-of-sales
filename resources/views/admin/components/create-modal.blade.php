@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Add New {{ $module }}</h6>
-                    <form action="{{ route('admin.'.$module.'s.store') }}" method="POST">
+                    <form action="{{ request()->url() }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
