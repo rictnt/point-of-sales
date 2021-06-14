@@ -41,6 +41,7 @@ class ExpenseCategoryController extends Controller
             'name' => 'required|string|min:3|max:50|unique:expense_categories,name'
         ]);
         ExpenseCategory::create($request->only(['name']));
+        notify()->success('Expense category has been added', 'Success');
         return back();
     }
 

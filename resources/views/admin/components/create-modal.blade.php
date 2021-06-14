@@ -4,11 +4,11 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Add New {{ $module }}</h6>
-                    <form action="{{ request()->url() }}" method="POST">
+                    <form action="{{ request()->url() }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="form-group text-right">
                             <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
