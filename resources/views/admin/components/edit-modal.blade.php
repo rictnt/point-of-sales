@@ -14,8 +14,8 @@
                             </div>
                             <input type="hidden" name="status">
                             <div class="form-group text-right">
-                                <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Save</button>
+                                <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
                             </div>
                         </form>
                     </div>
