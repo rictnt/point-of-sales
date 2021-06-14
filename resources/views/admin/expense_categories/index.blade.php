@@ -109,10 +109,10 @@
 @endsection
 
 
-@include('admin.components.delete-form')
+@include('admin.components.delete-modal')
 
 
-@push('page-scripts')
+@push('page-js')
     <script>
         function makeUrl(id) {
             return `{{ route('admin.expense_categories.index') }}/${id}`;

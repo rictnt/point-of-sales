@@ -4,11 +4,11 @@
             <div class="modal-content">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Delete {{ $item ?? 'item' }}</h6>
+                        <h6 class="card-title">Delete {{ $module ?? 'item' }}</h6>
                         <form id="deleteForm" method="POST">
                             @csrf
                             @method('delete')
-                            <p>Are you sure want to delete this {{ $item ?? 'item' }}?</p>
+                            <p>Are you sure want to delete this {{ $module ?? 'item' }}?</p>
                             <div class="form-group text-right">
                                 <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
                                 <button type="submit" class="btn btn-danger">Delete</button>

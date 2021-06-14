@@ -153,10 +153,10 @@
 @endsection
 
 
-@include('admin.components.delete-form')
+@include('admin.components.delete-modal')
 
 
-@push('page-scripts')
+@push('page-js')
 <script src="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('admin/js/datepicker.js') }}"></script>
 

@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Update Category</h6>
+                        <h6 class="card-title">Update {{ $module }}</h6>
                         <form id="editForm" method="POST">
                             @csrf
                             @method('put')

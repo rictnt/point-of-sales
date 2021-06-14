@@ -20,14 +20,13 @@ class CreateProductsTable extends Migration
             $table->foreignId('unit_id');
             
             $table->string('name');
-            $table->integer('serial');
-            $table->string('model');
-            $table->float('purchase_price')->nullable();
-            $table->float('selling_price');
-            $table->string('tax');
-            $table->longText('details');
+            $table->string('sku');
+            $table->float('cost_price');
+            $table->float('sell_price');
+            $table->string('tax')->nullable();
+            $table->text('details')->nullable();
             $table->string('image')->nullable();
-            $table->integer('status')->default(1);
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

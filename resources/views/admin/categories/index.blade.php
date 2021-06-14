@@ -84,9 +84,9 @@
     </div>
 
     {{-- #editForm --}}
-    @include('admin.categories.inc.edit-modal')
+    @include('admin.components.edit-modal', ['module' => 'category'])
     {{-- #deleteForm --}}
-    @include('admin.components.delete-modal',['item' => 'category'])
+    @include('admin.components.delete-modal', ['module' => 'category'])
 
 @endsection
 

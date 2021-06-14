@@ -39,49 +39,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
-                    aria-controls="category">
-                    <i class="link-icon" data-feather="clipboard"></i>
-                    <span class="link-title">Category</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="category">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Add Category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Category</a>
-                        </li>
 
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#brand" role="button" aria-expanded="false"
-                    aria-controls="brand">
-                    <i class="link-icon" data-feather="clipboard"></i>
-                    <span class="link-title">Brand Unit</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="brand">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.brands.index') }}" class="nav-link">Add Brand</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.units.index') }}" class="nav-link">Add Unit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false"
                     aria-controls="product">
@@ -97,10 +55,70 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.products.index') }}" class="nav-link">Manage Product</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
+                        </li>
 
                     </ul>
                 </div>
             </li>
+
+            {{-- <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
+                    aria-controls="category">
+                    <i class="link-icon" data-feather="grid"></i>
+                    <span class="link-title">Category</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="category">
+                    <ul class="nav sub-menu">
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Category</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li> --}}
+           
+            
+{{-- 
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#brand" role="button" aria-expanded="false"
+                    aria-controls="brand">
+                    <i class="link-icon" data-feather="bookmark"></i>
+                    <span class="link-title">Brand</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="brand">
+                    <ul class="nav sub-menu">
+
+                        
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#unit" role="button" aria-expanded="false"
+                    aria-controls="unit">
+                    <i class="link-icon" data-feather="hexagon"></i>
+                    <span class="link-title">Unit</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="unit">
+                    <ul class="nav sub-menu">
+
+                        
+
+                    </ul>
+                </div>
+            </li> --}}
+
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#customer" role="button" aria-expanded="false"
                     aria-controls="customer">
@@ -214,7 +232,8 @@
                 <div class="collapse" id="expense">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Expense Category</a>
+                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Expense
+                                Category</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.expenses.index') }}" class="nav-link">Add Expense</a>

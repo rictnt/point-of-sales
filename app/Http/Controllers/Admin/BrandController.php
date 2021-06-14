@@ -16,7 +16,7 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        return view('admin.brands.index', Compact('brands'));
+        return view('admin.brands.index', compact('brands'));
     }
 
     /**
@@ -38,20 +38,21 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'brand_name' => 'required|string|min:3|max:50|unique:brands,brand_name'
+            'name' => 'required|string|min:3|max:50|unique:brands,name'
         ]);
-        Brand::create($request->only(['brand_name']));
-        notify()->success('Added Successfully', 'Success');
+
+        Brand::create($request->all());
+        notify()->success('Brand has been added', 'Success');
         return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Brand $brand)
     {
         //
     }
@@ -59,10 +60,10 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -71,22 +72,40 @@ class BrandController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
+            'status' => 'nullable'
+            ]);
+
+        if ($request->name) {
+            $brand->update($request->only(['name']));
+            notify()->success('brand has been updated', 'Success');
+        }
+
+        if ($request->status == 'toogle') {
+            $brand->update([
+                'status' => !$brand->status,
+            ]);
+            notify()->success('Brand status has been updated', 'Success');
+        }
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        notify()->success('Brand has been deleted', 'Success');
+        return back();
     }
 }

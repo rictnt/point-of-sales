@@ -58,7 +58,7 @@
 
 @include('admin.components.delete-modal')
 
-@push('page-scripts')
+@push('page-js')
     <script>
         function makeUrl(id) {
             return `{{ route('admin.suppliers.index') }}/${id}`;
