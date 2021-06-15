@@ -11,58 +11,60 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Settings</h6>
-                        <form class="forms-sample row">
+                        <form action="{{ route('admin.settings.update', $setting->id) }}" method="POST" enctype="multipart/form-data" class="forms-sample row">
+                            @csrf
+                            @method('put')
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Name</label>
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Name</label>
+                                    <input type="text" value="{{ $setting->company_name }}" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Address</label>
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Address</label>
+                                    <input type="text" value="{{ $setting->company_addr }}" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Address 2</label>
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Address 2</label>
+                                    <input type="text" value="{{ $setting->company_addr2 }}" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Phone</label>
-                                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Phone</label>
+                                    <input type="number" value="{{ $setting->company_phone }}" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Email</label>
-                                    <input type="email" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Email</label>
+                                    <input type="email" value="{{ $setting->company_email }} " class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Website</label>
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                                    <label>Company Website</label>
+                                    <input type="text" value="{{ $setting->company_website }}" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Logo</label>
+                                    <label>Company Logo</label>
                                     <input type="file" class="dropify" data-default-file="Upload Image" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Invoice Logo</label>
+                                    <label>Company Invoice Logo</label>
                                     <input type="file" class="dropify" data-default-file="Upload Image" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="colFormLabelSm">Company Fav-Icon Logo</label>
+                                    <label>Company Fav-Icon Logo</label>
                                     <input type="file" class="dropify" data-default-file="Upload Image" />
                                 </div>
                             </div>
