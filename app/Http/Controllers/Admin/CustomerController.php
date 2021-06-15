@@ -21,14 +21,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'address' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:customers,email',
+            'mobile' => 'required|string',
+            'address' => 'nullable|string',
         ]);
 
         Customer::create($request->all());
-        notify()->info('Added Successfully', 'Success');
+        notify()->info('Customer has been added', 'Success');
         return back();
     }
 
@@ -45,21 +45,22 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'address' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:customers,email',
+            'mobile' => 'required|string',
+            'address' => 'nullable|string',
         ]);
 
         $customer->update($request->all());
-        notify()->info('Updated Successfully', 'Success');
+        notify()->info('Customer has been updated', 'Success');
+
         return back();
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        notify()->info('Deleted Successfully', 'Success');
+        notify()->info('Customer has been deleted', 'Success');
         return back();
     }
 }

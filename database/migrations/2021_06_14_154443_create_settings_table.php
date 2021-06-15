@@ -21,9 +21,9 @@ class CreateSettingsTable extends Migration
             $table->string('company_phone');
             $table->string('company_email');
             $table->string('company_website');
-            $table->string('company_logo');
-            $table->string('invoice_logo');
-            $table->string('fav_icon');
+            $table->string('company_logo')->nullable();
+            $table->string('invoice_logo')->nullable();
+            $table->string('fav_icon')->nullable();
             $table->timestamps();
         });
     }
