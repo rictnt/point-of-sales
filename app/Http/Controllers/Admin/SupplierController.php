@@ -21,15 +21,16 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'address' => 'required',
-            'details' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:suppliers,email',
+            'mobile' => 'required|string|unique:suppliers,mobile',
+            'address' => 'nullable|string',
+            'details' => 'nullable|string',
         ]);
+
         Supplier::create($request->all());
-        notify()->success('Added Successfully', 'Success');
-        
+        notify()->success('Supplier has been added', 'Success');
+
         return redirect(route('admin.suppliers.index'));
     }
 
@@ -46,21 +47,22 @@ class SupplierController extends Controller
     public function update(Request $request, Supplier $supplier)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'address' => 'required',
-            'details' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:suppliers,email',
+            'mobile' => 'required|string|unique:suppliers,mobile',
+            'address' => 'nullable|string',
+            'details' => 'nullable|string',
         ]);
-        
+
         $supplier->update($request->all());
-        notify()->success('Updated Successfully', 'Success');
+        notify()->success('Supplier has been updated', 'Success');
         return back();
     }
 
     public function destroy(Supplier $supplier)
     {
         $supplier->delete();
+        notify()->success('Supplier has been deleted', 'Success');
         return back();
     }
 }

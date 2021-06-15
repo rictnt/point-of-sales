@@ -18,8 +18,8 @@ class CreateSuppliersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('mobile');
-            $table->string('address');
-            $table->string('details');
+            $table->string('address')->nullable();
+            $table->string('details')->nullable();
             $table->timestamps();
         });
     }

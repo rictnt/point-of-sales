@@ -44,7 +44,7 @@ class TransactionController extends Controller
             'bank_id' => 'required',
             'transaction_type' => 'required',
             'amount' => 'required|integer',
-            'description' => 'nullable|text',
+            'description' => 'nullable|string',
         ]);
 
         Transaction::create($request->all());
