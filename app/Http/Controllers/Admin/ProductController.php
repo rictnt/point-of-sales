@@ -43,18 +43,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|integer',
-            'brand_id' => 'required|integer',
-            'unit_id' => 'required|integer',
+            'category_id' => 'required|numeric',
+            'brand_id' => 'required|numeric',
+            'unit_id' => 'required|numeric',
 
-            'name' => 'required|string',
+            'name' => 'required|string|max:100|min:2',
             'sku' => 'required|string|uniq:products,sku',
-            'cost_price' => 'required',
-            'sell_price' => 'required',
+            'cost_price' => 'required|not_in:0',
+            'sell_price' => 'required|not_in:0',
             'tax' => 'integer',
-            'details' => 'required|max:5000',
-            'image' => 'file|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
+            'details' => 'required|max:500',
+            'image' => 'nullable|file|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
         ]);
+        
+        $product =  Product::create($request->except('image'));
 
         $product =  new Product($request->except('image'));
 

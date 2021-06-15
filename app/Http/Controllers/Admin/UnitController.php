@@ -77,8 +77,9 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
+
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:units,name',
+            'name' => 'nullable|string|min:3|max:50|unique:units,name,' .$unit->id,
             'status' => 'nullable'
         ]);
 
