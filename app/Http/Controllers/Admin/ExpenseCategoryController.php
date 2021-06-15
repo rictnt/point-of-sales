@@ -40,8 +40,9 @@ class ExpenseCategoryController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50|unique:expense_categories,name'
         ]);
-        ExpenseCategory::create($request->only(['name']));
-        notify()->success('Expense category has been added', 'Success');
+        
+        ExpenseCategory::create($request->all());
+        notify()->success('Category has been added');
         return back();
     }
 
@@ -83,14 +84,14 @@ class ExpenseCategoryController extends Controller
 
         if ($request->name) {
             $expense_category->update($request->only(['name']));
-            notify()->success('Category Updated Successfully', 'Success');
+            notify()->success('Category has been updated', 'Success');
         }
 
         if ($request->status == 'toogle') {
             $expense_category->update([
                 'status' => !$expense_category->status,
             ]);
-            notify()->success('Expense Category Status Updated Successfully', 'Success');
+            notify()->success('Category Status has been updated', 'Success');
         }
         return back();
     }
@@ -104,7 +105,7 @@ class ExpenseCategoryController extends Controller
     public function destroy(ExpenseCategory $expense_category)
     {
         $expense_category->delete();
-        notify()->info('Deleted Successfully', 'Success');
+        notify()->success('Category status has been deleted', 'Success');
         return back();
     }
 }

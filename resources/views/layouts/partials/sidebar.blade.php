@@ -121,10 +121,10 @@
                 <div class="collapse" id="purchase">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Purchase</a>
+                            <a href="{{ route('admin.purchases.create') }}" class="nav-link">Add Purchase</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Purchase</a>
+                            <a href="{{ route('admin.purchases.index') }}" class="nav-link">Manage Purchase</a>
                         </li>
                     </ul>
                 </div>

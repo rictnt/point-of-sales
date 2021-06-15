@@ -14,7 +14,7 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.purchases.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.purchases.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

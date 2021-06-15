@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->date('date')->default(today());
             $table->string('transaction_type');
             $table->bigInteger('amount');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
