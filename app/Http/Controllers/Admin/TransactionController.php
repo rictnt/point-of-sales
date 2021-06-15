@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Bank;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class BankController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class BankController extends Controller
      */
     public function index()
     {
+       return $transactions = Transaction::all();
         $banks = Bank::all();
-        return view('admin.banks.index', compact('banks'));
+        return view('admin.banks.transactions.index', compact('transactions','banks'));
     }
 
     /**
@@ -25,7 +27,8 @@ class BankController extends Controller
      */
     public function create()
     {
-        return view('admin.banks.create');
+        $banks = Bank::all();
+        return view('admin.banks.transactions.create', compact('banks'));
     }
 
     /**
@@ -36,18 +39,18 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        Bank::create($request->all());
-        notify()->success('Bank has been added','Success');
-        return redirect(route('admin.banks.index'));
+        Transaction::create($request->all());
+        notify()->success('Transaction has been placed', 'Success');
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Bank $bank)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -55,10 +58,10 @@ class BankController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bank $bank)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -67,10 +70,10 @@ class BankController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bank $bank)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -78,13 +81,11 @@ class BankController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy(Transaction $transaction)
     {
-        $bank->delete();
-        notify()->success('Bank has been deleted', 'Success');
-        return back();
+        //
     }
 }

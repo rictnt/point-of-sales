@@ -279,13 +279,13 @@
                 <div class="collapse" id="bank">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Bank</a>
+                            <a href="{{ route('admin.banks.create') }}" class="nav-link">Add Bank</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Bank Transaction</a>
+                            <a href="{{ route('admin.transactions.create') }}" class="nav-link">Bank Transaction</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Bank</a>
+                            <a href="{{ route('admin.banks.index') }}" class="nav-link">Manage Bank</a>
                         </li>
                     </ul>
                 </div>

@@ -13,6 +13,8 @@ Route::resources([
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
     'users' => UserController::class,
+    'banks' => BankController::class,
+    'transactions' => TransactionController::class,
     'permissions' => PermissionController::class,
     'expense_categories' => ExpenseCategoryController::class,
     'expenses' => ExpenseController::class,
