@@ -19,6 +19,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        {{-- <th>Description</th> --}}
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -28,6 +29,7 @@
                                         <tr>
                                             <td>{{ $unit->id }}</td>
                                             <td>{{ $unit->name }}</td>
+                                            {{-- <td>{{ $unit->description }}</td> --}}
                                             <td class="{{ $unit->status ? 'text-success' : 'text-danger' }}">
                                                 {{ $unit->status ? 'Active' : 'Inactive' }}</td>
                                             <td>
@@ -67,4 +69,5 @@
 
 @push('page-js')
     @include('admin.components.crud-js')
+    @include('admin.components.form-validation-js')
 @endpush

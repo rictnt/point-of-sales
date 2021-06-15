@@ -38,7 +38,7 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'string|unique:units,name'
+            'name' => 'required|string|unique:units,name'
         ]);
         
         Unit::create($request->all());
@@ -78,8 +78,7 @@ class UnitController extends Controller
     public function update(Request $request, Unit $unit)
     {
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:units,name',
-            'status' => 'nullable'
+            'name' => 'required|string|unique:units,name'
         ]);
 
         if ($request->name) {
