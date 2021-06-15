@@ -36,6 +36,14 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'branch' => 'required|string',
+            'account_name' => 'required|string',
+            'account_no' => 'required|integer',
+            'address' => 'nullable|string',
+        ]);
+
         Bank::create($request->all());
         notify()->success('Bank has been added','Success');
         return redirect(route('admin.banks.index'));

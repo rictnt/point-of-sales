@@ -39,6 +39,14 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'date' => 'required|date',
+            'bank_id' => 'required',
+            'transaction_type' => 'required',
+            'amount' => 'required|integer',
+            'description' => 'nullable|text',
+        ]);
+
         Transaction::create($request->all());
         notify()->success('Transaction has been placed', 'Success');
         return back();

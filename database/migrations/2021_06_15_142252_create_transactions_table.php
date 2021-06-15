@@ -15,11 +15,11 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bank_id');
+            $table->foreignId('bank_id')->constrained();
             $table->date('date')->default(today());
             $table->string('transaction_type');
             $table->bigInteger('amount');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
