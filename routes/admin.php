@@ -12,6 +12,7 @@ Route::resources([
     'units' => UnitController::class,
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
+    'purchases' => PurchaseController::class,
     'users' => UserController::class,
     'banks' => BankController::class,
     'transactions' => TransactionController::class,
