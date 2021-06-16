@@ -17,7 +17,7 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-
+            {{-- Invoice --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#invoice" role="button" aria-expanded="false"
                     aria-controls="invoice">
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
             </li>
-
+            {{-- Product --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#product" role="button" aria-expanded="false"
                     aria-controls="product">
@@ -61,7 +61,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Categories</a>
                         </li>
@@ -69,48 +69,27 @@
                     </ul>
                 </div>
             </li>
+            {{-- People --}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#customer" role="button" aria-expanded="false"
-                    aria-controls="customer">
+                <a class="nav-link" data-toggle="collapse" href="#people" role="button" aria-expanded="false"
+                    aria-controls="people">
                     <i class="link-icon" data-feather="user-plus"></i>
-                    <span class="link-title">Customer</span>
+                    <span class="link-title">Peoples</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="customer">
+                <div class="collapse" id="people">
                     <ul class="nav sub-menu">
+
                         <li class="nav-item">
-                            <a href="{{ route('admin.customers.create') }}" class="nav-link">Add Customer</a>
+                            <a href="{{ route('admin.customers.index') }}" class="nav-link">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.customers.index') }}" class="nav-link">Manage Customer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Due Customer</a>
+                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">Suppliers</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#supplier" role="button" aria-expanded="false"
-                    aria-controls="supplier">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Supplier</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="supplier">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">Manage Supplier</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Due Supplier</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            {{-- Purchase --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#purchase" role="button" aria-expanded="false"
                     aria-controls="purchase">
@@ -129,6 +108,7 @@
                     </ul>
                 </div>
             </li>
+            {{-- Return --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#return" role="button" aria-expanded="false"
                     aria-controls="return">
@@ -153,7 +133,7 @@
                     </ul>
                 </div>
             </li>
-
+            {{-- Payments --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#payment" role="button" aria-expanded="false"
                     aria-controls="payment">
@@ -172,6 +152,7 @@
                     </ul>
                 </div>
             </li>
+            {{-- Expense --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#expense" role="button" aria-expanded="false"
                     aria-controls="expense">
@@ -181,19 +162,21 @@
                 </a>
                 <div class="collapse" id="expense">
                     <ul class="nav sub-menu">
-                       
+
                         <li class="nav-item">
                             <a href="{{ route('admin.expenses.create') }}" class="nav-link">Add Expenses</a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.expenses.index') }}" class="nav-link">Manage Expenses</a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Manage Categories</a>
+                            <a href="{{ route('admin.expense_categories.index') }}" class="nav-link">Manage
+                                Categories</a>
                         </li>
                     </ul>
                 </div>
             </li>
+            {{-- Stock --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#stock" role="button" aria-expanded="false"
                     aria-controls="stock">
@@ -212,6 +195,7 @@
                     </ul>
                 </div>
             </li>
+            {{-- Report --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#reports" role="button" aria-expanded="false"
                     aria-controls="reports">
@@ -248,6 +232,7 @@
                     </ul>
                 </div>
             </li>
+            {{-- Users --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#users" role="button" aria-expanded="false"
                     aria-controls="users">
@@ -269,20 +254,18 @@
                     </ul>
                 </div>
             </li>
+            {{-- Transactions --}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#bank" role="button" aria-expanded="false"
-                    aria-controls="bank">
+                <a class="nav-link" data-toggle="collapse" href="#transaction" role="button" aria-expanded="false"
+                    aria-controls="transaction">
                     <i class="link-icon" data-feather="briefcase"></i>
-                    <span class="link-title">Bank</span>
+                    <span class="link-title">Transactions</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="bank">
+                <div class="collapse" id="transaction">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.banks.create') }}" class="nav-link">Add Bank</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.transactions.create') }}" class="nav-link">Bank Transaction</a>
+                            <a href="{{ route('admin.transactions.create') }}" class="nav-link">Make Transaction</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.banks.index') }}" class="nav-link">Manage Bank</a>
@@ -290,6 +273,7 @@
                     </ul>
                 </div>
             </li>
+            {{-- Barcode --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#barcode" role="button" aria-expanded="false"
                     aria-controls="barcode">
@@ -314,18 +298,21 @@
                     </ul>
                 </div>
             </li>
+            {{-- Settings --}}
             <li class="nav-item">
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="settings"></i>
                     <span class="link-title">Settings</span>
                 </a>
             </li>
+            {{-- Profile --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
                     <span class="link-title">Profile</span>
                 </a>
             </li>
+            {{-- Logout --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="link-icon" data-feather="log-out"></i>
