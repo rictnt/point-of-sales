@@ -43,11 +43,18 @@
                                             name="sell_price" required>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Alert Stock Quantity:</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="Ex: 2"
+                                            name="alert_stock_quantity">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Category:</label>
+                                    <label class="col-sm-3 col-form-label">Select Category:</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <select class="js-example-basic-single w-100" name="category_id" required>
@@ -61,7 +68,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Brand:</label>
+                                    <label class="col-sm-3 col-form-label">Select Brand:</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <select class="js-example-basic-single w-100" name="brand_id" required>
@@ -74,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Unit:</label>
+                                    <label class="col-sm-3 col-form-label">Select Unit:</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <select class="js-example-basic-single w-100" name="unit_id" required>
@@ -82,6 +89,20 @@
                                                 @foreach ($units as $unit)
                                                     <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                                 @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Select Barcode:</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <select class="js-example-basic-single w-100" name="barcode_id">
+                                                <option value="">Select Barcode</option>
+                                                <option value="1">Code 128 (C128)</option>
+                                                <option value="2">Code 39 (C39)</option>
+                                                <option value="3">EAN-13</option>
+                                                <option value="4">UPC-A</option>
                                             </select>
                                         </div>
                                     </div>
