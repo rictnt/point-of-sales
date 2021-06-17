@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('brand_id');
             $table->foreignId('unit_id');
             
-            $table->string('name')->unique()->nullable(false);
+            $table->string('name')->unique();
             $table->integer('alert_stock_quantity')->nullable();
             $table->string('barcode_id')->nullable();
             $table->string('barcode')->nullable();
