@@ -133,12 +133,11 @@ class ProductController extends Controller
         $product->barcode = $this->createBarCode($product);
 
         if ($request->file('image')) {
-            $product->image = $request->image->store('images/products');
-
             if(Storage::exists($product->image)) {
-
-                // unlink($product->image); //delete from storage
-            }
+                Storage::delete($product->image);
+             }
+             
+            $product->image = $request->image->store('images/products');
         }
 
         $product->save();
