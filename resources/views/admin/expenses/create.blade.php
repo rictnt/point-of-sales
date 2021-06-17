@@ -1,6 +1,11 @@
 @extends('layouts.app')
+
+@push('page-css')
+    <link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+@endpush
+
 @section('main')
-<div class="page-content">
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -46,17 +51,18 @@
                                     </select>
                                 </div>
                             </div>
-                            
-                            
-                            
-                            
+
+
+
+
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Date:</label>
                                 <div class="col-sm-9">
                                     <div class="input-group date datepicker" id="datePickerExample">
-                                        <input name="expense_date" type="text" class="form-control"><span class="input-group-addon"><i data-feather="calendar"></i></span>
+                                        <input name="expense_date" type="text" class="form-control"><span
+                                            class="input-group-addon"><i data-feather="calendar"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -67,37 +73,42 @@
                                         <select name="expense_by" class="js-example-basic-single w-100">
                                             <option value="">--SELECT--</option>
                                             {{-- @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach --}}
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach --}}
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Payment Amount:</label>
                                 <div class="col-sm-9">
-                                    <input value="{{ old('amount') }}" name="amount" type="text" class="form-control"placeholder="Payment Amount">
+                                    <input value="{{ old('amount') }}" name="amount" type="text" class="form-control"
+                                        placeholder="Payment Amount">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Description:</label>
-                                <textarea name="description" class="form-control" rows="5" placeholder="Description">{{ old('description') }}</textarea>
+                                <textarea name="description" class="form-control" rows="5"
+                                    placeholder="Description">{{ old('description') }}</textarea>
                             </div>
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary mr-2">Add Expense</button>
-                        
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @endsection
 
 @push('page-js')
-    @include('admin.components.form-validation-js')
+    <script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('admin/js/select2.js') }}"></script>
+    <script src="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('admin/js/datepicker.js') }}"></script>
 @endpush

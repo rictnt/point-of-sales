@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandsTable extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->foreignId('bank_id');
+            $table->date('date')->default(today());
+            $table->string('transaction_type');
+            $table->bigInteger('amount');
             $table->text('description')->nullable();
-            $table->string('status')->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('transactions');
     }
 }

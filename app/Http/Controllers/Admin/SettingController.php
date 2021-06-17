@@ -14,7 +14,18 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('admin.settings');
+        $setting = Setting::firstOrCreate([
+            'company_name' => 'Soft IT',
+            'company_addr' => 'Dhaka, Bangladesh',
+            'company_addr2' => '',
+            'company_phone' => '123456789',
+            'company_email' => 'example@mail.com',
+            'company_website' => 'www.example.com',
+            'company_logo' => '',
+            'invoice_logo' => '',
+            'fav_icon' => '',
+        ]);
+        return view('admin.settings', compact('setting'));
     }
 
     /**
@@ -35,7 +46,7 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +80,9 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        $setting->update($request->all());
+        notify()->success('Setting has been updated','Success');
+        return back();
     }
 
     /**

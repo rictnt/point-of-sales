@@ -14,7 +14,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+        $banks = Bank::all();
+        return view('admin.banks.index', compact('banks'));
     }
 
     /**
@@ -24,7 +25,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.banks.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'branch' => 'required|string',
+            'account_name' => 'required|string',
+            'account_no' => 'required|integer',
+            'address' => 'nullable|string',
+        ]);
+
+        Bank::create($request->all());
+        notify()->success('Bank has been added','Success');
+        return redirect(route('admin.banks.index'));
     }
 
     /**
@@ -80,6 +91,8 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        //
+        $bank->delete();
+        notify()->success('Bank has been deleted', 'Success');
+        return back();
     }
 }

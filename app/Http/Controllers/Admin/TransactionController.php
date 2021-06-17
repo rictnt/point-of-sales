@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Purchase;
+use App\Models\Bank;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class PurchaseController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        return view('admin.purchases.index');
+       return $transactions = Transaction::all();
+        $banks = Bank::all();
+        return view('admin.banks.transactions.index', compact('transactions','banks'));
     }
 
     /**
@@ -24,7 +27,8 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        return view('admin.purchases.create');
+        $banks = Bank::all();
+        return view('admin.banks.transactions.create', compact('banks'));
     }
 
     /**
@@ -35,16 +39,26 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $request->validate([
+            'date' => 'required|date',
+            'bank_id' => 'required',
+            'transaction_type' => 'required',
+            'amount' => 'required|integer',
+            'description' => 'nullable|string',
+        ]);
+
+        Transaction::create($request->all());
+        notify()->success('Transaction has been placed', 'Success');
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Purchase $purchase)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -52,10 +66,10 @@ class PurchaseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchase $purchase)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -64,10 +78,10 @@ class PurchaseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchase $purchase)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -75,10 +89,10 @@ class PurchaseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Purchase $purchase)
+    public function destroy(Transaction $transaction)
     {
         //
     }

@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('invoices/settings', [App\Http\Controllers\Admin\InvoiceController::class, 'settings'])->name('invoices.settings');
 
-Route::get('settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings');
-
 Route::resources([
     'invoices' => InvoiceController::class,
     'categories' => CategoryController::class,
@@ -14,9 +12,14 @@ Route::resources([
     'units' => UnitController::class,
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
+    'purchases' => PurchaseController::class,
     'users' => UserController::class,
+    'banks' => BankController::class,
+    'transactions' => TransactionController::class,
     'permissions' => PermissionController::class,
     'expense_categories' => ExpenseCategoryController::class,
     'expenses' => ExpenseController::class,
+
     'barcodes' => BarcodeController::class,
+    'settings' => SettingController::class,
 ]);
