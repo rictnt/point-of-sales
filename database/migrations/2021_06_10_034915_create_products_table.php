@@ -23,7 +23,8 @@ class CreateProductsTable extends Migration
             $table->integer('alert_stock_quantity')->nullable();
             $table->string('barcode_id')->nullable();
             $table->string('barcode')->nullable();
-            $table->string('sku');
+            $table->string('weight')->nullable();
+            $table->string('sku')->nullable();
             $table->float('cost_price');
             $table->float('sell_price');
             $table->string('tax')->nullable();
