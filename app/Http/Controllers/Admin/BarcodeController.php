@@ -82,4 +82,30 @@ class BarcodeController extends Controller
     {
         //
     }
+
+
+    public static function createBarCode($post){
+        $barcode_type = $post->barcode_id ?? 1;
+        $number = $post->outlet_id . $post->id;
+
+        if ($barcode_type == 4) { // UPC-A
+            $code = '200' . str_pad($number, 8, '0');
+        }
+        else{ // EAN-13 , Others
+            $code = '200' . str_pad($number, 9, '0');
+        }
+
+        
+        $weightflag = true;
+        $sum = 0;
+        for ($i = strlen($code) - 1; $i >= 0; $i--)
+        {
+            $sum += (int)$code[$i] * ($weightflag?3:1);
+            $weightflag = !$weightflag;
+        }
+        $code .= (10 - ($sum % 10)) % 10;
+
+        return $code;
+
+    }
 }
