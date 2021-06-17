@@ -175,6 +175,7 @@ class ProductController extends Controller
 
         $weightflag = true;
         $sum = 0;
+
         for ($i = strlen($code) - 1; $i >= 0; $i--) {
             $sum += (int)$code[$i] * ($weightflag ? 3 : 1);
             $weightflag = !$weightflag;
