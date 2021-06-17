@@ -9,52 +9,54 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add New Product</h6>
+                        <h6 class="card-title">Edit Product</h6>
                         
                         @include('admin.components.errors')
 
-                        <form class="needs-validation row" action="{{ Route('admin.products.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+                        <form class="needs-validation row" action="{{ Route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data" novalidate>
                             @csrf
+                            @method('put')
+
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Name:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: Apple" name="name" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">SKU:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="123" name="sku" required>
+                                        <input type="text" class="form-control" value="{{ $product->name }}" placeholder="Ex: Apple" name="name" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Purchase Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 20"
+                                        <input type="number" class="form-control" value="{{ $product->cost_price }}" placeholder="Ex: 20"
                                             name="cost_price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Sell Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 25"
+                                        <input type="number" class="form-control" value="{{ $product->sell_price }}" placeholder="Ex: 25"
                                             name="sell_price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Alert Stock Quantity:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 2"
+                                        <input type="number" class="form-control" value="{{ $product->alert_stock_quantity }}" placeholder="Ex: 2"
                                             name="alert_stock_quantity">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">SKU:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="SKU"
+                                        <input type="text" class="form-control" value="{{ $product->sku }}" placeholder="SKU"
                                             name="sku">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Weight:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="{{ $product->weight }}" placeholder="Ex: 10 kg" name="weight" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +69,7 @@
                                             <select class="js-example-basic-single w-100" name="category_id" required>
                                                 <option value="">Select Category</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option {{ $category->id == $product->category_id ? 'selected':'' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -81,7 +83,7 @@
                                             <select class="js-example-basic-single w-100" name="brand_id" required>
                                                 <option value="">Select Brand</option>
                                                 @foreach ($brands as $brand)
-                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                    <option {{ $brand->id == $product->brand_id ? 'selected':'' }} value="{{ $brand->id }}">{{ $brand->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -94,7 +96,7 @@
                                             <select class="js-example-basic-single w-100" name="unit_id" required>
                                                 <option value="">Select Unit</option>
                                                 @foreach ($units as $unit)
-                                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                                    <option {{ $unit->id == $product->unit_id ? 'selected':'' }} value="{{ $unit->id }}">{{ $unit->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -105,11 +107,11 @@
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <select class="js-example-basic-single w-100" name="barcode_id">
-                                                <option value="">Select Barcode</option>
-                                                <option value="1">Code 128 (C128)</option>
-                                                <option value="2">Code 39 (C39)</option>
-                                                <option value="3">EAN-13</option>
-                                                <option value="4">UPC-A</option>
+                                                <option  value="">Select Barcode</option>
+                                                <option {{ $product->barcode_id == '1' ? 'selected':'' }} value="1">Code 128 (C128)</option>
+                                                <option {{ $product->barcode_id == '2' ? 'selected':'' }} value="2">Code 39 (C39)</option>
+                                                <option {{ $product->barcode_id == '3' ? 'selected':'' }} value="3">EAN-13</option>
+                                                <option {{ $product->barcode_id == '4' ? 'selected':'' }} value="4">UPC-A</option>
                                             </select>
                                         </div>
                                     </div>
@@ -117,20 +119,14 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Tax / Vat(%):</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 10" name="tax" value="0">
+                                        <input type="number" class="form-control" placeholder="Ex: 10" name="tax" value="{{ $product->tax }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Weight:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 10 kg" name="weight" value="0">
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Product Details:</label>
-                                <textarea class="form-control" rows="13" placeholder="Describe your product details here"
-                                    name="details"></textarea>
+                                <textarea class="form-control" rows="13" placeholder="Describe your product details here" name="details">{{ $product->details }}</textarea>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Upload Product Image:</label>

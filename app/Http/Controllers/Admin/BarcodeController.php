@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Barcode;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BarcodeController extends Controller
@@ -12,9 +13,9 @@ class BarcodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        //
+        return view('admin.barcode.index', compact('product'));
     }
 
     /**
