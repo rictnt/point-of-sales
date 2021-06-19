@@ -67,7 +67,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a href="{{ route('admin.barcodes.index') }}" class="nav-link">Print Barcode</a>
+                            <a href="{{ route('admin.barcodes.create') }}" class="nav-link">Print Barcode</a>
                         </li>
 
                     </ul>
