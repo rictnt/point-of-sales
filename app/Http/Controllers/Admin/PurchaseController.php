@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Purchase;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -24,7 +25,8 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        return view('admin.purchases.create');
+        $suppliers = Supplier::all();
+        return view('admin.purchases.create', compact('suppliers'));
     }
 
     /**

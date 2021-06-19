@@ -1,9 +1,4 @@
 @extends('layouts.app')
-@push('page-css')
-    <link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
-@endpush
-
 
 @section('main')
     <div class="page-content">
@@ -80,9 +75,5 @@
 @endsection
 
 @push('page-js')
-    <script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('admin/js/select2.js') }}"></script>
-    <script src="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('admin/js/datepicker.js') }}"></script>
     @include('admin.components.form-validation-js')
 @endpush
