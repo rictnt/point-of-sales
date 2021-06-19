@@ -34,6 +34,7 @@
           <th>Sell Price</th>
           <th>Quantity</th>
           <th>Discount</th>
+          <th>Expire</th>
           <th>Total</th>
           <th>Action</th>
         </tr>
@@ -59,6 +60,7 @@
         <td>
           <input
             v-model="product.cost_price"
+            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
@@ -66,6 +68,7 @@
         <td>
           <input
             v-model="product.sell_price"
+            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
@@ -73,6 +76,7 @@
         <td>
           <input
             v-model="product.qty"
+            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
@@ -80,13 +84,17 @@
         <td>
           <input
             v-model="product.discount"
+            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
         </td>
         <td>
+          <input v-model="product.expire" type="date" class="form-control" />
+        </td>
+        <td>
           <input
-            :value="getTotal(product)"
+            :value="product.intotal"
             type="text"
             class="form-control"
             readonly
@@ -104,7 +112,12 @@
           <td colspan="5"></td>
           <td>Grand Total:</td>
           <td>
-            <input value="123" type="text" class="form-control" readonly />
+            <input
+              :value="grandTotal"
+              type="text"
+              class="form-control"
+              readonly
+            />
           </td>
           <td></td>
         </tr>
@@ -120,6 +133,7 @@ export default {
       search: "",
       foundProducts: [],
       addedProducts: [],
+      grandTotal: 0,
     };
   },
   methods: {
@@ -139,32 +153,45 @@ export default {
     },
 
     addProduct(newProduct) {
-
-      let find = this.addedProducts.find((product) => product.id == newProduct.id);
+      let find = this.addedProducts.find(
+        (product) => product.id == newProduct.id
+      );
 
       if (!find) {
         newProduct.qty = 1;
         newProduct.discount = 0;
-        newProduct.intotal = (newProduct.cost_price * newProduct.qty);
+        newProduct.intotal = newProduct.cost_price * newProduct.qty;
         this.addedProducts.push(newProduct);
-
       } else {
         toastr.info("Product Already Added");
       }
       this.search = "";
       this.foundProducts = [];
+      this.grandTotal();
     },
 
     removeProduct(newProduct) {
       this.addedProducts.pop((product) => product.id == newProduct.id);
+      this.grandTotal();
+
     },
 
-    getTotal(product) {
-         let total = product.cost_price * product.qty;
+    updateTotal(gotProduct) {
+      this.addedProducts.forEach((product) => {
+        if (product.id == gotProduct.id) {
+          product.intotal = product.cost_price * product.qty;
           if (!isNaN(product.discount)) {
-            total -= product.discount;
+            product.intotal -= product.discount;
           }
-        return total;
+        }
+      });
+      this.grandTotal();
+    },
+
+    grandTotal() {
+      this.grandTotal = this.addedProducts.reduce((a, b) => {
+        a.intotal + b.intotal;
+      }, 0);
     },
   },
 };
