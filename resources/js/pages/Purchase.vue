@@ -16,7 +16,7 @@
             class="list-group-item cursor-pointer"
             v-for="product in foundProducts"
             :key="product.id"
-            @click="addProduct(product.id)"
+            @click="addProduct(product)"
           >
             {{ product.name }}
           </li>
@@ -33,6 +33,7 @@
           <th>Cost Price</th>
           <th>Sell Price</th>
           <th>Quantity</th>
+          <th>Discount</th>
           <th>Total</th>
           <th>Action</th>
         </tr>
@@ -40,41 +41,70 @@
 
       <tr v-for="product in addedProducts" :key="product.id">
         <td>
-          <input :value="product.id" type="text" class="form-control" readonly/>
+          <input
+            :value="product.id"
+            type="text"
+            class="form-control"
+            readonly
+          />
         </td>
         <td>
-          <input :value="product.name" type="text" class="form-control" readonly/>
+          <input
+            :value="product.name"
+            type="text"
+            class="form-control"
+            readonly
+          />
         </td>
         <td>
-          <input :value="product.cost_price" type="text" class="form-control" />
+          <input
+            v-model="product.cost_price"
+            type="text"
+            class="form-control"
+          />
         </td>
         <td>
-          <input :value="product.sell_price" type="text" class="form-control" />
+          <input
+            v-model="product.sell_price"
+            type="text"
+            class="form-control"
+          />
         </td>
         <td>
-          <input value="1" type="text" class="form-control" />
+          <input
+            v-model="product.qty"
+            type="text"
+            class="form-control"
+          />
         </td>
         <td>
-          <input value="1" type="text" class="form-control" />
+          <input
+            v-model="product.discount"
+            type="text"
+            class="form-control"
+          />
         </td>
         <td>
-          <button
-            @click="removeProduct"
-            type="button"
-            class="btn btn-danger"
-          >
-            Delete
+          <input
+            :value="getTotal(product)"
+            type="text"
+            class="form-control"
+            readonly
+          />
+        </td>
+        <td>
+          <button @click="removeProduct" type="button" class="btn btn-danger">
+            X
           </button>
         </td>
       </tr>
 
       <tfoot>
         <tr>
-          <td colspan="4">
-          </td>
+          <td colspan="5"></td>
           <td>Grand Total:</td>
           <td>
-            <input type="text" class="form-control" readonly />
+            <input value="123" type="text" class="form-control" readonly />
           </td>
           <td></td>
         </tr>
@@ -84,8 +114,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-
 export default {
   data() {
     return {
@@ -95,10 +123,9 @@ export default {
     };
   },
   methods: {
-    
     async getProduct() {
       let route = `/api/products?q=${this.search}`;
-      if (this.search != '') {
+      if (this.search != "") {
         await axios(route)
           .then((res) => {
             this.foundProducts = res.data ?? "";
@@ -111,15 +138,16 @@ export default {
       }
     },
 
-    addProduct(id) {
-      let currentProduct = this.foundProducts.find(product => product.id == id)
-      let checkIfExist = this.addedProducts.find(
-        (product) => product.id == id
-      );
+    addProduct(newProduct) {
 
-      if (!checkIfExist) {
-        currentProduct.qty = 1
-        this.addedProducts.push(currentProduct);
+      let find = this.addedProducts.find((product) => product.id == newProduct.id);
+
+      if (!find) {
+        newProduct.qty = 1;
+        newProduct.discount = 0;
+        newProduct.intotal = (newProduct.cost_price * newProduct.qty);
+        this.addedProducts.push(newProduct);
+
       } else {
         toastr.info("Product Already Added");
       }
@@ -127,29 +155,17 @@ export default {
       this.foundProducts = [];
     },
 
-    removeProduct(id) {
-      this.addedProducts.pop((product) => product.id == id);
+    removeProduct(newProduct) {
+      this.addedProducts.pop((product) => product.id == newProduct.id);
     },
 
-    decreaseQty(id){
-
-    return this.addedProducts.filter(product => {
-       if (product.id == id && product.qty != 1) {
-           product.qty -= 1
-       }
-       return product
-     })
+    getTotal(product) {
+         let total = product.cost_price * product.qty;
+          if (!isNaN(product.discount)) {
+            total -= product.discount;
+          }
+        return total;
     },
-
-    increaseQty(id){
-
-    return this.addedProducts.filter(product => {
-       if (product.id == id) {
-         product.qty += 1
-       }
-       return product
-     })
-    }
   },
 };
 </script>

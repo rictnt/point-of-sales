@@ -15,6 +15,11 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->integer('total_amount');
+            $table->string('discount');
+            $table->string('discount_type');
+            $table->integer('discount_amount');
+            $table->date('expire_date');
             $table->timestamps();
         });
     }
