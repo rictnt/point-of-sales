@@ -1,6 +1,8 @@
 <template>
   <div class="form-group row">
-    <label class="col-sm-3 col-form-label">Select Product:</label>
+    <label class="col-sm-3 col-form-label"
+      >Select Product to add in list:</label
+    >
     <div class="col-sm-9">
       <input
         @keyup="getProduct"
@@ -33,61 +35,48 @@
           <th>Cost Price</th>
           <th>Sell Price</th>
           <th>Quantity</th>
-          <th>Discount</th>
           <th>Expire</th>
+          <th>Discount</th>
           <th>Total</th>
           <th>Action</th>
         </tr>
       </thead>
 
       <tr v-for="product in added_products" :key="product.id">
-        <td>
-          <input
-            :value="product.id"
-            type="text"
-            class="form-control"
-            readonly
-          />
-        </td>
-        <td>
-          <input
-            :value="product.name"
-            type="text"
-            class="form-control"
-            readonly
-          />
-        </td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
         <td>
           <input
             v-model="product.cost_price"
-            type="text"
+            type="number"
             class="form-control"
           />
         </td>
         <td>
           <input
             v-model="product.sell_price"
-            type="text"
+            type="number"
             class="form-control"
           />
         </td>
         <td>
-          <input v-model="product.qty" type="text" class="form-control" />
-        </td>
-        <td>
-          <input v-model="product.discount" type="text" class="form-control" />
-        </td>
-        <td>
-          <input v-model="product.expire" type="date" class="form-control" />
+          <input v-model="product.qty" type="number" class="form-control" />
         </td>
         <td>
           <input
-            :value="(product.total = getTotal(product))"
-            type="text"
-            class="form-control"
-            readonly
+            v-model="product.expire"
+            type="date"
+            class="form-control date"
           />
         </td>
+        <td>
+          <input
+            v-model="product.discount"
+            type="number"
+            class="form-control"
+          />
+        </td>
+        <td  class="text-center font-weight-bold">{{ (product.total = getTotal(product)) }}</td>
         <td>
           <button
             @click="removeProduct(product)"
@@ -99,22 +88,35 @@
         </td>
       </tr>
 
-      <tfoot>
+      <tfoot class="bg-light font-weight-bold">
         <tr>
-          <td colspan="6"></td>
-          <td>Grand Total:</td>
-          <td>
+          <td colspan="7" class="text-right">Sub Total = </td>
+          <td class="text-center">{{ getSubTotal }}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="7" class="text-right">
+             Discount in Sub-total (-)
+          </td>
+          <td class="text-center">
             <input
-              :value="getGrandTotal"
-              type="text"
-              class="form-control"
-              readonly
+              v-model="discount_in_total"
+              type="number"
+              class="form-control text-center"
             />
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="7" class="text-right">Net Payable Amount = </td>
+          <td class="text-center">
+            {{ getNetAmount }}
           </td>
           <td></td>
         </tr>
       </tfoot>
     </table>
+    <!-- {{ added_products }} -->
   </div>
 </template>
 
@@ -125,7 +127,10 @@ export default {
       search: "",
       found_products: [],
       added_products: [],
-      grand_total: 0,
+      sub_total: 0,
+      net_amount: 0,
+      discount_total: 0,
+      discount_in_total: 0,
     };
   },
   methods: {
@@ -147,12 +152,17 @@ export default {
     addProduct(p) {
       let find = this.added_products.find((product) => product.id == p.id);
 
-      if (!find) {
+      if (find) {
+        // toastr.info("Product Already Added");
+        this.added_products.forEach(product => {
+          if (find.id == product.id) {
+            product.qty++
+          }
+        });
+      } else {
         p.qty = 1;
         p.discount = 0;
         this.added_products.push(p);
-      } else {
-        toastr.info("Product Already Added");
       }
       this.search = "";
       this.found_products = [];
@@ -163,22 +173,38 @@ export default {
         (product) => product.id != p.id
       );
     },
-    
-    getTotal(p) {
-      console.log('get total called');
 
-      return (p.cost_price * p.qty) - p.discount;
+    getTotal(p) {
+      console.log("get total called");
+
+      return p.cost_price * p.qty - p.discount;
     },
   },
   computed: {
-    getGrandTotal() {
+    getDiscountTotal() {
+      console.log("discount total called");
+
+      this.discount_total = this.added_products.reduce(
+        (value, product) => value + parseInt(product.discount),
+        0
+      );
+      return this.discount_total;
+    },
+
+    getSubTotal() {
       console.log("grand total called");
 
-      this.grand_total = this.added_products.reduce(
+      let total = this.added_products.reduce(
         (value, product) => value + product.total,
         0
       );
-      return this.grand_total;
+      return (this.sub_total = total - this.discount_total);
+    },
+
+    getNetAmount() {
+      console.log("net amount called");
+
+      return (this.net_amount = this.sub_total - this.discount_in_total);
     },
   },
 };

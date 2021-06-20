@@ -21,7 +21,7 @@
                           <div class="col-sm-4">
                             <div class="form-group">
                               <label class="control-label">Purchase Date</label>
-                              <div class="input-group date datepicker" id="datePickerExample">
+                              <div class="input-group date datepicker">
                                 <input type="text" class="form-control" /><span
                                   class="input-group-addon"
                                   ><i data-feather="calendar"></i
