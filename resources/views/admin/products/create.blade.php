@@ -10,56 +10,57 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Add New Product</h6>
-                        
+
                         @include('admin.components.errors')
 
-                        <form class="needs-validation row" action="{{ Route('admin.products.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+                        <form class="needs-validation row" action="{{ Route('admin.products.store') }}" method="POST"
+                            enctype="multipart/form-data" novalidate>
                             @csrf
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Name:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: Apple" name="name" required>
+                                        <input type="text" class="form-control" placeholder="Ex: Apple" name="name"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">SKU:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="123" name="sku" required>
+                                        <input type="text" class="form-control" placeholder="SKU" name="sku">
                                     </div>
                                 </div>
-                                
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Purchase Price:</label>
+                                    <label class="col-sm-3 col-form-label">Cost Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 20"
+                                        <input type="number" class="form-control" placeholder="Default cost price"
                                             name="cost_price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Sell Price:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 25"
+                                        <input type="number" class="form-control" placeholder="Default unit price"
                                             name="sell_price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Alert Stock Quantity:</label>
+                                    <label class="col-sm-3 col-form-label">Stock Alert:</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" placeholder="Ex: 2"
                                             name="alert_stock_quantity">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">SKU:</label>
+                                 <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Weight:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="SKU"
-                                            name="sku">
+                                        <input type="text" class="form-control" placeholder="Ex: 10 kg" name="weight"
+                                            value="0">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                               
+
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Select Category:</label>
                                     <div class="col-sm-9">
@@ -81,7 +82,7 @@
                                             <select class="js-example-basic-single w-100" name="brand_id" required>
                                                 <option value="">Select Brand</option>
                                                 @foreach ($brands as $brand)
-                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -120,12 +121,7 @@
                                         <input type="number" class="form-control" placeholder="Ex: 10" name="tax" value="0">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Weight:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 10 kg" name="weight" value="0">
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Product Details:</label>
@@ -136,8 +132,10 @@
                                 <label>Upload Product Image:</label>
                                 <input type="file" id="myDropify" class="border" name="image">
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a href="{{ route('admin.products.index') }}" class="btn btn-danger">Cancel</a>
+                            <div>
+                                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                <a href="{{ route('admin.products.index') }}" class="btn btn-danger">Cancel</a>
+                            </div>
                         </form>
                     </div>
                 </div>
