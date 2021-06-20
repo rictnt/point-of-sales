@@ -19,6 +19,7 @@ Route::resources([
     'permissions' => PermissionController::class,
     'expense_categories' => ExpenseCategoryController::class,
     'expenses' => ExpenseController::class,
+    'stocks' => StockController::class,
 
     'barcodes' => BarcodeController::class,
     'settings' => SettingController::class,
