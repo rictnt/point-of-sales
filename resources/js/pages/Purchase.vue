@@ -10,11 +10,11 @@
         autofocus
         placeholder="Enter product name or ID"
       />
-      <div v-if="foundProducts.length">
+      <div v-if="found_products.length">
         <ul class="list-group">
           <li
             class="list-group-item cursor-pointer"
-            v-for="product in foundProducts"
+            v-for="product in found_products"
             :key="product.id"
             @click="addProduct(product)"
           >
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" v-if="added_products.length">
     <table>
       <thead>
         <tr>
@@ -40,7 +40,7 @@
         </tr>
       </thead>
 
-      <tr v-for="product in addedProducts" :key="product.id">
+      <tr v-for="product in added_products" :key="product.id">
         <td>
           <input
             :value="product.id"
@@ -60,7 +60,6 @@
         <td>
           <input
             v-model="product.cost_price"
-            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
@@ -68,40 +67,33 @@
         <td>
           <input
             v-model="product.sell_price"
-            @keyup="updateTotal(product)"
             type="text"
             class="form-control"
           />
         </td>
         <td>
-          <input
-            v-model="product.qty"
-            @keyup="updateTotal(product)"
-            type="text"
-            class="form-control"
-          />
+          <input v-model="product.qty" type="text" class="form-control" />
         </td>
         <td>
-          <input
-            v-model="product.discount"
-            @keyup="updateTotal(product)"
-            type="text"
-            class="form-control"
-          />
+          <input v-model="product.discount" type="text" class="form-control" />
         </td>
         <td>
           <input v-model="product.expire" type="date" class="form-control" />
         </td>
         <td>
           <input
-            :value="product.intotal"
+            :value="(product.total = getTotal(product))"
             type="text"
             class="form-control"
             readonly
           />
         </td>
         <td>
-          <button @click="removeProduct" type="button" class="btn btn-danger">
+          <button
+            @click="removeProduct(product)"
+            type="button"
+            class="btn btn-danger"
+          >
             X
           </button>
         </td>
@@ -109,11 +101,11 @@
 
       <tfoot>
         <tr>
-          <td colspan="5"></td>
+          <td colspan="6"></td>
           <td>Grand Total:</td>
           <td>
             <input
-              :value="grandTotal"
+              :value="getGrandTotal"
               type="text"
               class="form-control"
               readonly
@@ -131,9 +123,9 @@ export default {
   data() {
     return {
       search: "",
-      foundProducts: [],
-      addedProducts: [],
-      grandTotal: 0,
+      found_products: [],
+      added_products: [],
+      grand_total: 0,
     };
   },
   methods: {
@@ -142,56 +134,51 @@ export default {
       if (this.search != "") {
         await axios(route)
           .then((res) => {
-            this.foundProducts = res.data ?? "";
+            this.found_products = res.data ?? "";
           })
           .catch((e) => {
             error = console.log(e.message);
           });
       } else {
-        this.foundProducts = [];
+        this.found_products = [];
       }
     },
 
-    addProduct(newProduct) {
-      let find = this.addedProducts.find(
-        (product) => product.id == newProduct.id
-      );
+    addProduct(p) {
+      let find = this.added_products.find((product) => product.id == p.id);
 
       if (!find) {
-        newProduct.qty = 1;
-        newProduct.discount = 0;
-        newProduct.intotal = newProduct.cost_price * newProduct.qty;
-        this.addedProducts.push(newProduct);
+        p.qty = 1;
+        p.discount = 0;
+        this.added_products.push(p);
       } else {
         toastr.info("Product Already Added");
       }
       this.search = "";
-      this.foundProducts = [];
-      this.grandTotal();
+      this.found_products = [];
     },
 
-    removeProduct(newProduct) {
-      this.addedProducts.pop((product) => product.id == newProduct.id);
-      this.grandTotal();
-
+    removeProduct(p) {
+      this.added_products = this.added_products.filter(
+        (product) => product.id != p.id
+      );
     },
+    
+    getTotal(p) {
+      console.log('get total called');
 
-    updateTotal(gotProduct) {
-      this.addedProducts.forEach((product) => {
-        if (product.id == gotProduct.id) {
-          product.intotal = product.cost_price * product.qty;
-          if (!isNaN(product.discount)) {
-            product.intotal -= product.discount;
-          }
-        }
-      });
-      this.grandTotal();
+      return (p.cost_price * p.qty) - p.discount;
     },
+  },
+  computed: {
+    getGrandTotal() {
+      console.log("grand total called");
 
-    grandTotal() {
-      this.grandTotal = this.addedProducts.reduce((a, b) => {
-        a.intotal + b.intotal;
-      }, 0);
+      this.grand_total = this.added_products.reduce(
+        (value, product) => value + product.total,
+        0
+      );
+      return this.grand_total;
     },
   },
 };

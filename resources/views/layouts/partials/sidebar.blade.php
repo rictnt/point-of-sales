@@ -288,7 +288,7 @@
                 <div class="collapse" id="barcode">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="v" class="nav-link">Create Barcode</a>
+                            <a href="{{ route('admin.barcodes.create') }}" class="nav-link">Create Barcode</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Barcode List</a>
