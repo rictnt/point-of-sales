@@ -56,20 +56,17 @@
                             <a href="{{ route('admin.products.index') }}" class="nav-link">List Product</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.barcodes.create') }}" class="nav-link">Print Barcode</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.units.index') }}" class="nav-link">Manage Unit</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.brands.index') }}" class="nav-link">Manage Brand</a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Categories</a>
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Manage Category</a>
                         </li>
-                        
-                        <li class="nav-item">
-                            <a href="{{ route('admin.barcodes.create') }}" class="nav-link">Print Barcode</a>
-                        </li>
-
                     </ul>
                 </div>
             </li>
@@ -85,10 +82,16 @@
                     <ul class="nav sub-menu">
 
                         <li class="nav-item">
-                            <a href="{{ route('admin.customers.index') }}" class="nav-link">Customers</a>
+                            <a href="{{ route('admin.customers.create') }}" class="nav-link">Add Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">Suppliers</a>
+                            <a href="{{ route('admin.customers.index') }}" class="nav-link">List Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">List Supplier</a>
                         </li>
                     </ul>
                 </div>
