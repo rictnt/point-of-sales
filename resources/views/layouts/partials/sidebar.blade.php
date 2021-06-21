@@ -288,20 +288,6 @@
                     <span class="link-title">Settings</span>
                 </a>
             </li>
-            {{-- Profile --}}
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="link-icon" data-feather="user"></i>
-                    <span class="link-title">Profile</span>
-                </a>
-            </li>
-            {{-- Logout --}}
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="link-icon" data-feather="log-out"></i>
-                    <span class="link-title">Logout</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
