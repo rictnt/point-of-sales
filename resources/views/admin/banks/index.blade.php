@@ -36,7 +36,7 @@
                                                         data-target=".bd-example-modal-xl"> <i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i></button>
                                                     <button data-toggle="modal" data-target="#deleteModal"
-                                                        onclick="setDeleteForm({{ $bank->id }})"
+                                                        onclick="setDeleteForm({{ $bank }})"
                                                         class=" btn btn-outline-danger"><i data-feather="trash"
                                                             style="height: 15px;width: 15px;"></i>
                                                     </button>
@@ -52,10 +52,10 @@
             </div>
         </div>
     </div>
-    @include('admin.components.delete-modal')
+    @include('admin.components.common-crud.delete-modal')
 
 @endsection
 
 @push('page-js')
-    @include('admin.components.crud-js')
+    @include('admin.components.common-crud.crud-js')
 @endpush

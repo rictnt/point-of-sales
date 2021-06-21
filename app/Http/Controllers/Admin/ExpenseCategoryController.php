@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ExpenseCategory;
+use App\Http\Controllers\Controller;
 
 class ExpenseCategoryController extends Controller
 {
+
+    public $module = 'ExpenseCategory';
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,9 @@ class ExpenseCategoryController extends Controller
      */
     public function index()
     {
-        $expense_categories = ExpenseCategory::all();
-        return view('admin.expense_categories.index', compact('expense_categories'));
+        $items = ExpenseCategory::all();
+        $module = 'Expense Category';
+        return view('admin.components.common-crud.index', compact('items', 'module'));
     }
 
     /**
@@ -40,7 +43,7 @@ class ExpenseCategoryController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50|unique:expense_categories,name'
         ]);
-        
+
         ExpenseCategory::create($request->all());
         notify()->success('Category has been added');
         return back();
@@ -78,21 +81,10 @@ class ExpenseCategoryController extends Controller
     public function update(Request $request, ExpenseCategory $expense_category)
     {
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:expense_categories,name',
-            'status' => 'nullable'
-            ]);
-
-        if ($request->name) {
-            $expense_category->update($request->only(['name']));
-            notify()->success('Category has been updated', 'Success');
-        }
-
-        if ($request->status == 'toogle') {
-            $expense_category->update([
-                'status' => !$expense_category->status,
-            ]);
-            notify()->success('Category Status has been updated', 'Success');
-        }
+            'name' => 'required|string',
+        ]);
+        $expense_category->update($request->all());
+        notify()->success('Category has been updated', 'Success');
         return back();
     }
 
@@ -105,7 +97,7 @@ class ExpenseCategoryController extends Controller
     public function destroy(ExpenseCategory $expense_category)
     {
         $expense_category->delete();
-        notify()->success('Category status has been deleted', 'Success');
+        notify()->success('Category has been deleted', 'Success');
         return back();
     }
 }

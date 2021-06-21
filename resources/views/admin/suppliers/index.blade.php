@@ -38,7 +38,7 @@
                                                             <button
                                                             data-toggle="modal"
                                                             data-target="#deleteModal"
-                                                            onclick="setDeleteForm({{ $supplier->id }})"
+                                                            onclick="setDeleteForm({{ $supplier->toJson() }})"
                                                             class=" btn btn-outline-danger"><i data-feather="trash"
                                                             style="height: 15px;width: 15px;"></i>
                                                         </button>
@@ -56,18 +56,9 @@
     </div>
 @endsection
 
-@include('admin.components.delete-modal')
+
+@include('admin.components.common-crud.delete-modal')
 
 @push('page-js')
-    <script>
-        function makeUrl(id) {
-            return `{{ route('admin.suppliers.index') }}/${id}`;
-        }
-
-        
-        function setDeleteForm(id) {
-            $('#deleteForm').attr('action', makeUrl(id));
-
-        }
-    </script>
+    @include('admin.components.common-crud.crud-js')
 @endpush

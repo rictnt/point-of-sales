@@ -37,9 +37,9 @@
                                                     <a href="{{ route('admin.users.edit', $user->id) }}"
                                                         class="btn btn-outline-primary"> <i data-feather="edit"
                                                             style="height: 15px;width: 15px;"></i></a>
-                                                    <button
-                                                        onclick="confirm('Are you sure want to delete this item?') ? deleteItem({{ $user->id }}):false"
-                                                        class="btn btn-outline-danger"><i data-feather="trash"
+                                                    <button data-toggle="modal" data-target="#deleteModal"
+                                                        onclick="setDeleteForm({{ $user->toJson() }})"
+                                                        class=" btn btn-outline-danger"><i data-feather="trash"
                                                             style="height: 15px;width: 15px;"></i>
                                                     </button>
                                                 </div>
@@ -54,19 +54,9 @@
             </div>
         </div>
     </div>
+    @include('admin.components.common-crud.delete-modal',['module' => 'user'])
 @endsection
 
-@include('admin.components.delete-modal')
-
 @push('page-js')
-    <script>
-        function makeUrl(id) {
-            return `{{ route('admin.users.index') }}/${id}`;
-        }
-
-        function deleteItem(id) {
-            $('#deleteForm').attr('action', makeUrl(id)).submit();
-        }
-
-    </script>
+    @include('admin.components.common-crud.crud-js')
 @endpush

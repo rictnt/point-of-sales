@@ -7,6 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Add User</h6>
+                        @include('admin.components.errors')
                         <form action="{{ route('admin.users.store') }}" method="POST" class="forms-sample row">
                             @csrf
                             <div class="col-md-6">

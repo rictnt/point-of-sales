@@ -35,8 +35,8 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
-        notify()->success('Added Successfully', 'Success');
-        return back();
+        notify()->success('User has been added', 'Success');
+        return redirect(route('admin.users.index'));
     }
 
     public function show(User $user)
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        notify()->info('Deleted Successfully', 'Success');
+        notify()->success('User has been deleted', 'Success');
         return back();
     }
 }

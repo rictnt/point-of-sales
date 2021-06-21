@@ -52,7 +52,7 @@
 
 
                                                     <button data-toggle="modal" data-target="#deleteModal"
-                                                        onclick="setDeleteForm({{ $product->id }})"
+                                                        onclick="setDeleteForm({{ $product->toJson() }})"
                                                         class=" btn btn-outline-danger"><i data-feather="trash" style="height: 15px;width: 15px;"></i>
                                                     </button>
                                                 </div>
@@ -69,9 +69,9 @@
             </div>
         </div>
     </div>
-    @include('admin.components.delete-modal',['module' => 'product'])
+    @include('admin.components.common-crud.delete-modal',['module' => 'product'])
 @endsection
 
 @push('page-js')
-    @include('admin.components.crud-js')
+    @include('admin.components.common-crud.crud-js')
 @endpush

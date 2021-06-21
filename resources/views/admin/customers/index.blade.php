@@ -32,11 +32,11 @@
                                             <div class="rapid_action">
                                                 <a href="{{ route('admin.customers.edit', $customer->id) }}" class="btn btn-outline-primary"> <i data-feather="edit"
                                                         style="height: 15px;width: 15px;"></i></a>
-                                                        <button
-                                                        onclick="confirm('Are you sure want to delete this item?') ? deleteItem({{ $customer->id }}):false"
-                                                        class="btn btn-outline-danger"><i data-feather="trash"
-                                                            style="height: 15px;width: 15px;"></i>
-                                                    </button>
+                                                       <button data-toggle="modal" data-target="#deleteModal"
+                                                            onclick="setDeleteForm({{ $customer->toJson() }})"
+                                                            class=" btn btn-outline-danger"><i data-feather="trash"
+                                                                style="height: 15px;width: 15px;"></i>
+                                                        </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -51,16 +51,8 @@
     </div>
 @endsection
 
-@include('admin.components.delete-modal')
+@include('admin.components.common-crud.delete-modal')
 
 @push('page-js')
-    <script>
-        function makeUrl(id) {
-            return `{{ route('admin.customers.index') }}/${id}`;
-        }
-
-        function deleteItem(id) {
-            $('#deleteForm').attr('action', makeUrl(id)).submit();
-        }
-    </script>
+    @include('admin.components.common-crud.crud-js')
 @endpush
