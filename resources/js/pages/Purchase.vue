@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="form-group" v-if="added_products.length">
+  <div v-if="added_products.length" class="form-group">
     <table>
       <thead>
         <tr>
@@ -49,6 +49,7 @@
           <input
             v-model="product.cost_price"
             type="number"
+            min="1"
             class="form-control"
           />
         </td>
@@ -56,11 +57,17 @@
           <input
             v-model="product.sell_price"
             type="number"
+            min="1"
             class="form-control"
           />
         </td>
         <td>
-          <input v-model="product.qty" type="number" class="form-control" />
+          <input
+            v-model="product.qty"
+            min="1"
+            type="number"
+            class="form-control"
+          />
         </td>
         <td>
           <input
@@ -73,10 +80,13 @@
           <input
             v-model="product.discount"
             type="number"
+            min="0"
             class="form-control"
           />
         </td>
-        <td  class="text-center font-weight-bold">{{ (product.total = getTotal(product)) }}</td>
+        <td class="text-center font-weight-bold">
+          {{ (product.total = getTotal(product)) }}
+        </td>
         <td>
           <button
             @click="removeProduct(product)"
@@ -90,14 +100,12 @@
 
       <tfoot class="bg-light font-weight-bold">
         <tr>
-          <td colspan="7" class="text-right">Sub Total = </td>
+          <td colspan="7" class="text-right">Sub Total:</td>
           <td class="text-center">{{ getSubTotal }}</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="7" class="text-right">
-             Discount in Sub-total (-)
-          </td>
+          <td colspan="7" class="text-right">Purchase Discount:</td>
           <td class="text-center">
             <input
               v-model="discount_in_total"
@@ -108,15 +116,40 @@
           <td></td>
         </tr>
         <tr>
-          <td colspan="7" class="text-right">Net Payable Amount = </td>
+          <td colspan="7" class="text-right">Grand Total:</td>
           <td class="text-center">
-            {{ getNetAmount }}
+            {{ getGrandTotal }}
           </td>
           <td></td>
         </tr>
       </tfoot>
     </table>
-    <!-- {{ added_products }} -->
+  </div>
+  <div v-if="added_products.length" class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select>
+          <option value="">Bank</option>
+          <option value="">Cash</option>
+          <option value="">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Status</label>
+        <select>
+          <option value="">Received</option>
+          <option value="">Not Received</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <button class="btn mx-3 btn-success">Save</button>
+      <button class="btn mx-3 btn-warning">Draft</button>
+      <button class="btn mx-3 btn-secondary" @click="this.$router.go()">Reset</button>
+    </div>
   </div>
 </template>
 
@@ -154,9 +187,9 @@ export default {
 
       if (find) {
         // toastr.info("Product Already Added");
-        this.added_products.forEach(product => {
+        this.added_products.forEach((product) => {
           if (find.id == product.id) {
-            product.qty++
+            product.qty++;
           }
         });
       } else {
@@ -201,7 +234,7 @@ export default {
       return (this.sub_total = total - this.discount_total);
     },
 
-    getNetAmount() {
+    getGrandTotal() {
       console.log("net amount called");
 
       return (this.net_amount = this.sub_total - this.discount_in_total);
