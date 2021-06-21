@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonCrudRequest;
 
 class BrandController extends Controller
 {
@@ -14,14 +15,12 @@ class BrandController extends Controller
         return view('admin.brands.index', compact('brands'));
     }
 
-    public function store(Request $request)
+    public function store(CommonCrudRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|min:3|max:50|unique:brands,name'
-        ]);
-
         Brand::create($request->all());
+
         notify()->success('Brand has been added', 'Success');
+
         return back();
     }
 

@@ -7,11 +7,13 @@
                     <form action="{{ request()->url() }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" required class="form-control">
+                            <input type="text" name="name" required class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" rows="5" class="form-control" placeholder="Description"></textarea>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                             <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
                         </div>
                     </form>

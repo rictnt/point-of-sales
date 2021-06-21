@@ -28,8 +28,10 @@ class CustomerController extends Controller
         ]);
 
         Customer::create($request->all());
-        notify()->info('Customer has been added', 'Success');
-        return back();
+
+        notify()->success('Customer has been added', 'Success');
+
+        return redirect(route('admin.customers.index'));
     }
 
     public function show(Customer $customer)
@@ -52,15 +54,15 @@ class CustomerController extends Controller
         ]);
 
         $customer->update($request->all());
-        notify()->info('Customer has been updated', 'Success');
+        notify()->success('Customer has been updated', 'Success');
 
-        return back();
+        return redirect(route('admin.customers.index'));
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        notify()->info('Customer has been deleted', 'Success');
+        notify()->success('Customer has been deleted', 'Success');
         return back();
     }
 }

@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','status'];
+    
+    protected $fillable = ['name', 'description', 'status'];
 
     protected $casts = [
         'status' => 'boolean'

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\CommonCrudRequest;
 
 class CategoryController extends Controller
 {
@@ -18,13 +18,10 @@ class CategoryController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(CommonCrudRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|min:3|max:50|unique:categories,name'
-        ]);
-        Category::create($request->only(['name']));
-        notify()->success('New category has been added', 'Success');
+        Category::create($request->all());
+        notify()->success('Category has been added', 'Success');
         return back();
     }
 
@@ -38,13 +35,8 @@ class CategoryController extends Controller
         //
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CommonCrudRequest $request, Category $category)
     {
-        $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:categories,name',
-            'status' => 'nullable'
-            ]);
-
         if ($request->name) {
             $category->update($request->only(['name']));
             notify()->success('Category has been updated', 'Success');
@@ -56,6 +48,7 @@ class CategoryController extends Controller
             ]);
             notify()->success('Category status has been updated', 'Success');
         }
+
         return back();
     }
 

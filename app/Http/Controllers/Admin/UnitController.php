@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonCrudRequest;
 use Illuminate\Http\Request;
 use App\Models\Unit;
 
@@ -35,12 +36,8 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|unique:units,name'
-        ]);
-        
+    public function store(CommonCrudRequest $request)
+    {       
         Unit::create($request->all());
         notify()->success('Unit has been added', 'Success');
         return back();
@@ -79,20 +76,26 @@ class UnitController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|string|unique:units,name'
+            'name' => 'required|string|unique:units,name',
+            'description' => 'nullable|string'
         ]);
 
         if ($request->name) {
-            $unit->update($request->only(['name']));
+
+            $unit->update($request->all('name', 'description'));
+
             notify()->success('Unit has been updated', 'Success');
         }
 
         if ($request->status == 'toogle') {
+
             $unit->update([
                 'status' => !$unit->status,
             ]);
+
             notify()->success('Unit status has been updated', 'Success');
         }
+
         return back();
     }
 
