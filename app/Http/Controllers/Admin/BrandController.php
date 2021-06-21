@@ -5,22 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CommonCrudRequest;
 
 class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::all();
-        return view('admin.brands.index', compact('brands'));
+        $items = Brand::all();
+        $module = 'brand';
+        return view('admin.components.common-crud.index', compact('items','module'));
     }
 
-    public function store(CommonCrudRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|unique:brands,name',
+        ]);
         Brand::create($request->all());
-
         notify()->success('Brand has been added', 'Success');
-
         return back();
     }
 
@@ -56,12 +57,11 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $request->validate([
-            'name' => 'nullable|string|min:3|max:50|unique:brands,name,' .$brand->id,
-            'status' => 'nullable'
-            ]);
+            'name' => 'required|string|unique:brands,name',
+        ]);
 
-        if ($request->name) {
-            $brand->update($request->only(['name']));
+        if ($request->name || $request->description) {
+            $brand->update($request->all());
             notify()->success('Brand has been updated', 'Success');
         }
 

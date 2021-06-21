@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CommonCrudRequest;
-use Illuminate\Http\Request;
 use App\Models\Unit;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UnitController extends Controller
 {
@@ -16,8 +15,9 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::all();
-        return view('admin.units.index', compact('units'));
+        $items = Unit::all();
+        $module = 'unit';
+        return view('admin.components.common-crud.index', compact('items', 'module'));
     }
 
     /**
@@ -36,8 +36,12 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CommonCrudRequest $request)
-    {       
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'string|unique:units,name',
+        ]);
+
         Unit::create($request->all());
         notify()->success('Unit has been added', 'Success');
         return back();
@@ -74,27 +78,12 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
-
         $request->validate([
-            'name' => 'required|string|unique:units,name',
-            'description' => 'nullable|string'
+            'name' => 'required|string',
         ]);
-
-        if ($request->name) {
-
-            $unit->update($request->all('name', 'description'));
-
-            notify()->success('Unit has been updated', 'Success');
-        }
-
-        if ($request->status == 'toogle') {
-
-            $unit->update([
-                'status' => !$unit->status,
-            ]);
-
-            notify()->success('Unit status has been updated', 'Success');
-        }
+        
+        $unit->update($request->all());
+        notify()->success('Unit has been updated', 'Success');
 
         return back();
     }

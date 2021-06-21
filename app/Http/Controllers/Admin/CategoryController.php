@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use App\Http\Requests\CommonCrudRequest;
+use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        $items = Category::all();
+        $module = 'category';
+        return view('admin.components.common-crud.index', compact('items', 'module'));
     }
 
     public function create()
@@ -18,8 +20,11 @@ class CategoryController extends Controller
         //
     }
 
-    public function store(CommonCrudRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|unique:categories,name',
+        ]);
         Category::create($request->all());
         notify()->success('Category has been added', 'Success');
         return back();
@@ -35,10 +40,14 @@ class CategoryController extends Controller
         //
     }
 
-    public function update(CommonCrudRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'name' => 'nullable|string',
+        ]);
+
         if ($request->name) {
-            $category->update($request->only(['name']));
+            $category->update($request->all());
             notify()->success('Category has been updated', 'Success');
         }
 

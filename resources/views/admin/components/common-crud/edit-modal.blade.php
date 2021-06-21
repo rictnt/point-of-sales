@@ -9,10 +9,18 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" required class="form-control" placeholder="Name">
                             </div>
-                            <input type="hidden" name="status">
+                            <div class="form-group">
+                                <textarea name="description" rows="5" class="form-control"
+                                    placeholder="Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <select name="status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
