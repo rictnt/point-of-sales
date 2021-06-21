@@ -280,31 +280,7 @@
                     </ul>
                 </div>
             </li>
-            {{-- Barcode --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#barcode" role="button" aria-expanded="false"
-                    aria-controls="barcode">
-                    <i class="link-icon" data-feather="bar-chart-2"></i>
-                    <span class="link-title">Barcode</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="barcode">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.barcodes.create') }}" class="nav-link">Create Barcode</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Barcode List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Print Barcode</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Barcode Settings</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+           
             {{-- Settings --}}
             <li class="nav-item">
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
