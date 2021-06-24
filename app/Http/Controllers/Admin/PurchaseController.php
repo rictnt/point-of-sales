@@ -15,7 +15,8 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        return view('admin.purchases.index');
+        $purchases = Purchase::all();
+        return view('admin.purchases.index',compact('purchases'));
     }
 
     /**
@@ -82,6 +83,8 @@ class PurchaseController extends Controller
      */
     public function destroy(Purchase $purchase)
     {
-        //
+        $purchase->delete();
+        notify()->success('Purchase has been deleted', 'Success');
+        return back();
     }
 }

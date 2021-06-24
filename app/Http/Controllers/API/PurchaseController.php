@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Purchase;
+use App\Models\PurchaseItem;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -25,7 +26,37 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
+
+        $purchase = Purchase::create([
+            'sub_total' => $request->sub_total,
+            // 'discount_type' => $request->discount_type,
+            'discount' => $request->discount,
+            'grand_total' => $request->grand_total,
+            'paid' => $request->paid,
+            'due' => $request->due,
+            'payment_method' => $request->payment_method,
+            'product_status' => $request->product_status,
+            // 'status' => $request->status,
+            // 'expire_date' => $request->expire_date,
+        ]);
+
+        if ($purchase) {
+        //    return $purchase;
+            foreach ($request->products as $item) {
+                PurchaseItem::create([
+                    'purchase_id' => $purchase->id,
+                    'product_id' => $item['id'],
+                    'qty' => $item['qty'],
+                    'cost' => $item['cost_price'],
+                    'price' => $item['sell_price'],
+                    'discount' => $item['discount'],
+                    'total' => $item['total'],
+                ]);
+            }
+        }
+
+        return response($purchase);
     }
 
     /**
