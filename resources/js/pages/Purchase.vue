@@ -1,122 +1,196 @@
 <template>
-  <div class="form-group row">
-    <label class="col-sm-3 col-form-label"
-      >Select Product to add in list:</label
-    >
-    <div class="col-sm-9">
-      <input
-        @keyup="getProduct"
-        v-model="search"
-        type="text"
-        class="form-control"
-        autofocus
-        placeholder="Enter product name or ID"
-      />
-      <div v-if="found_products.length">
-        <ul class="list-group">
-          <li
-            class="list-group-item cursor-pointer"
-            v-for="product in found_products"
-            :key="product.id"
-            @click="addProduct(product)"
-          >
-            {{ product.name }}
-          </li>
-        </ul>
+  <h4 class="card-title">Add Purchase</h4>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="control-label">Supplier</label>
+        <select v-model="supplier_id" class="js-example-basic-single w-100">
+          <option value="">SELECT SUPPLIER</option>
+          <option value="1">Emon Khan</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="control-label">Purchase Date</label>
+        <input type="date" class="form-control" v-model="date" />
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="control-label">Invoice No</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="invoice"
+          placeholder="Invoice No"
+        />
       </div>
     </div>
   </div>
-  <div class="form-group" v-if="added_products.length">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Product</th>
-          <th>Cost Price</th>
-          <th>Sell Price</th>
-          <th>Quantity</th>
-          <th>Expire</th>
-          <th>Discount</th>
-          <th>Total</th>
-          <th>Action</th>
-        </tr>
-      </thead>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label"
+          >Select Product to add in list:</label
+        >
+        <div class="col-sm-9">
+          <input
+            v-model="query"
+            type="text"
+            class="form-control"
+            autofocus
+            placeholder="Enter product name or ID"
+          />
+          <div v-if="products_found.length">
+            <ul class="list-group">
+              <li
+                class="list-group-item cursor-pointer"
+                v-for="product in products_found"
+                :key="product.id"
+                @click="addProduct(product)"
+              >
+                {{ product.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div v-if="products_added.length" class="form-group">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product</th>
+              <th>Cost Price</th>
+              <th>Sell Price</th>
+              <th>Quantity</th>
+              <th>Expire</th>
+              <th>Discount</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-      <tr v-for="product in added_products" :key="product.id">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>
-          <input
-            v-model="product.cost_price"
-            type="number"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <input
-            v-model="product.sell_price"
-            type="number"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <input v-model="product.qty" type="number" class="form-control" />
-        </td>
-        <td>
-          <input
-            v-model="product.expire"
-            type="date"
-            class="form-control date"
-          />
-        </td>
-        <td>
-          <input
-            v-model="product.discount"
-            type="number"
-            class="form-control"
-          />
-        </td>
-        <td  class="text-center font-weight-bold">{{ (product.total = getTotal(product)) }}</td>
-        <td>
-          <button
-            @click="removeProduct(product)"
-            type="button"
-            class="btn btn-danger"
-          >
-            X
+          <tr v-for="product in products_added" :key="product.id">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>
+              <input
+                v-model="product.cost_price"
+                type="number"
+                min="1"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                v-model="product.sell_price"
+                type="number"
+                min="1"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                v-model="product.qty"
+                min="1"
+                type="number"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                v-model="product.expire"
+                type="date"
+                class="form-control date"
+              />
+            </td>
+            <td>
+              <input
+                v-model="product.discount"
+                type="number"
+                min="0"
+                class="form-control"
+              />
+            </td>
+            <td class="text-center font-weight-bold">
+              {{ product.total }}
+            </td>
+            <td>
+              <button
+                @click="removeProduct(product)"
+                type="button"
+                class="btn btn-danger"
+              >
+                X
+              </button>
+            </td>
+          </tr>
+
+          <tfoot class="bg-light font-weight-bold">
+            <tr>
+              <td colspan="7" class="text-right">Sub Total:</td>
+              <td class="text-center">{{ sub_total }}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="7" class="text-right">Purchase Discount:</td>
+              <td class="text-center">
+                <input
+                  v-model="discount"
+                  type="number"
+                  min="0"
+                  class="form-control text-center"
+                />
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="7" class="text-right">Grand Total:</td>
+              <td class="text-center">{{ grand_total }}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div v-if="products_added.length" class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select v-model="payment_method">
+              <option value="">Cash</option>
+              <option value="">Bank</option>
+              <option value="">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Paid Amount</label>
+            <input type="number" class="form-control" v-model="paid" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Status</label>
+            <select v-model="product_status">
+              <option value="1">Received</option>
+              <option value="0">Not Received</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Payment Due</label>
+            <input type="number" class="form-control" :value="due" readonly />
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn mx-3 btn-success" @click="save()">Save</button>
+          <button class="btn mx-3 btn-warning">Draft</button>
+          <button class="btn mx-3 btn-secondary" @click="this.$router.go()">
+            Reset
           </button>
-        </td>
-      </tr>
-
-      <tfoot class="bg-light font-weight-bold">
-        <tr>
-          <td colspan="7" class="text-right">Sub Total = </td>
-          <td class="text-center">{{ getSubTotal }}</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td colspan="7" class="text-right">
-             Discount in Sub-total (-)
-          </td>
-          <td class="text-center">
-            <input
-              v-model="discount_in_total"
-              type="number"
-              class="form-control text-center"
-            />
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td colspan="7" class="text-right">Net Payable Amount = </td>
-          <td class="text-center">
-            {{ getNetAmount }}
-          </td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
-    <!-- {{ added_products }} -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -124,87 +198,120 @@
 export default {
   data() {
     return {
-      search: "",
-      found_products: [],
-      added_products: [],
-      sub_total: 0,
-      net_amount: 0,
-      discount_total: 0,
-      discount_in_total: 0,
+      supplier_id: "",
+      date: new Date().toISOString().substr(0, 10),
+      invoice: Math.floor(Math.random() * (999999 - 100000) + 100000),
+      query: "",
+      products_found: [],
+      products_added: [],
+      discount: 0,
+      paid: 0,
+      payment_method: "",
+      product_status: 1,
     };
   },
+
+  computed: {
+    sub_total() {
+      return this.products_added.reduce((value, item) => value + item.total, 0);
+    },
+
+    grand_total() {
+      return (
+        this.products_added.reduce((value, item) => value + item.total, 0) -
+        this.discount
+      );
+    },
+
+    due() {
+      return this.grand_total - this.paid;
+    },
+  },
+
   methods: {
-    async getProduct() {
-      let route = `/api/products?q=${this.search}`;
-      if (this.search != "") {
-        await axios(route)
+    addProduct(product) {
+      let check = this.products_added.find((item) => item.id == product.id);
+
+      if (check) {
+        this.products_added.forEach((product) => {
+          if (find.id == product.id) {
+            product.qty++;
+          }
+        });
+      } else {
+        product.qty = 1;
+        product.discount = 0;
+        product.total = product.cost_price;
+        this.products_added.push(product);
+        // console.log("product added");
+      }
+      this.query = "";
+      this.products_found = [];
+    },
+    removeProduct(product) {
+      // console.log("removing product from list");
+      return (this.products_added = this.products_added.filter(
+        (item) => item.id != product.id
+      ));
+    },
+
+    save() {
+      let url = `/api/purchases`;
+      let data = {
+        products: this.products_added,
+        sub_total: this.sub_total,
+        discount: parseInt(this.discount),
+        grand_total: this.grand_total,
+        paid: this.paid,
+        due: this.due,
+        payment_method: this.payment_method,
+        product_status: this.product_status,
+      };
+      // console.log(data)
+
+      axios
+        .post(url, data)
+        .then((res) => {
+          res.status === 200
+            ? toastr.success("Purchase has been added",'Success')
+            : toastr.warning("Something went wrong");
+          this.products_added = [];
+        })
+        .catch((e) => console.log(e));
+    },
+  },
+
+  watch: {
+    query() {
+      if (this.query != "") {
+        // console.log("Finding products...");
+        let route = `/api/products?q=${this.query}`;
+        axios
+          .get(route)
           .then((res) => {
-            this.found_products = res.data ?? "";
+            // console.log("Produts found");
+            this.products_found = res.data;
           })
           .catch((e) => {
             error = console.log(e.message);
           });
       } else {
-        this.found_products = [];
+        this.products_found = [];
       }
     },
 
-    addProduct(p) {
-      let find = this.added_products.find((product) => product.id == p.id);
-
-      if (find) {
-        // toastr.info("Product Already Added");
-        this.added_products.forEach(product => {
-          if (find.id == product.id) {
-            product.qty++
-          }
-        });
-      } else {
-        p.qty = 1;
-        p.discount = 0;
-        this.added_products.push(p);
-      }
-      this.search = "";
-      this.found_products = [];
+    products_added: {
+      handler() {
+        // console.log("updating products");
+        this.products_added.forEach(
+          (item) => (item.total = item.cost_price * item.qty - item.discount)
+        );
+      },
+      deep: true,
     },
 
-    removeProduct(p) {
-      this.added_products = this.added_products.filter(
-        (product) => product.id != p.id
-      );
-    },
-
-    getTotal(p) {
-      console.log("get total called");
-
-      return p.cost_price * p.qty - p.discount;
-    },
-  },
-  computed: {
-    getDiscountTotal() {
-      console.log("discount total called");
-
-      this.discount_total = this.added_products.reduce(
-        (value, product) => value + parseInt(product.discount),
-        0
-      );
-      return this.discount_total;
-    },
-
-    getSubTotal() {
-      console.log("grand total called");
-
-      let total = this.added_products.reduce(
-        (value, product) => value + product.total,
-        0
-      );
-      return (this.sub_total = total - this.discount_total);
-    },
-
-    getNetAmount() {
-      console.log("net amount called");
-
-      return (this.net_amount = this.sub_total - this.discount_in_total);
+    grand_total() {
+      this.paid = this.grand_total;
     },
   },
 };

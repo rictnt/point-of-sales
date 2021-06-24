@@ -11,47 +11,31 @@
                             <table id="dataTableExample" class="table cell-border">
                                 <thead>
                                     <tr>
-                                        <th>Sl No</th>
+                                        <th>Date</th>
                                         <th>Invoice No</th>
                                         <th>Supplier</th>
-                                        <th>Purchase Date</th>
-                                        <th>Total</th>
+                                        <th>Sub Total</th>
+                                        <th>Discount</th>
+                                        <th>Paid</th>
+                                        <th>Due</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>023</td>
-                                        <td>Taylor</td>
-                                        <td>02/05/2020</td>
-                                        <td>32000</td>
+                                    @foreach ($purchases as $purchase)
+                                        <tr>
+                                        <td>{{ $purchase->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $purchase->id }}</td>
+                                        <td>{{ 'supplier name' }}</td>
+                                        <td>{{ $purchase->sub_total }}</td>
+                                        <td>{{ $purchase->discount }}</td>
+                                        <td>{{ $purchase->paid }}</td>
+                                        <td>{{ $purchase->due }}</td>
                                         <td>
-                                            <div class="rapid_action">
-                                                <button class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target=".bd-example-modal-xl"> <i data-feather="edit"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                                <button class="btn btn-outline-danger"><i data-feather="trash"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                            </div>
+                                           @include('admin.components.common-crud.edit_delete_button',['item' => $purchase])
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>023</td>
-                                        <td>Taylor</td>
-                                        <td>02/05/2020</td>
-                                        <td>32000</td>
-                                        <td>
-                                            <div class="rapid_action">
-                                                <button class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target=".bd-example-modal-xl"> <i data-feather="edit"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                                <button class="btn btn-outline-danger"><i data-feather="trash"
-                                                        style="height: 15px;width: 15px;"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -60,4 +44,8 @@
             </div>
         </div>
     </div>
+    @include('admin.components.common-crud.delete-modal', ['module' => 'purchase'])
 @endsection
+@push('page-js')
+    @include('admin.components.common-crud.crud-js')    
+@endpush

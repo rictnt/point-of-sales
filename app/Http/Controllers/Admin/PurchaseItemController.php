@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Purchase;
-use App\Models\Supplier;
+use App\Models\PurchaseItem;
 use Illuminate\Http\Request;
 
-class PurchaseController extends Controller
+class PurchaseItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::all();
-        return view('admin.purchases.index',compact('purchases'));
+        //
     }
 
     /**
@@ -26,8 +24,7 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        $suppliers = Supplier::all();
-        return view('admin.purchases.create', compact('suppliers'));
+        //
     }
 
     /**
@@ -38,16 +35,16 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Purchase $purchase)
+    public function show(PurchaseItem $purchaseItem)
     {
         //
     }
@@ -55,10 +52,10 @@ class PurchaseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchase $purchase)
+    public function edit(PurchaseItem $purchaseItem)
     {
         //
     }
@@ -67,10 +64,10 @@ class PurchaseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchase $purchase)
+    public function update(Request $request, PurchaseItem $purchaseItem)
     {
         //
     }
@@ -78,13 +75,11 @@ class PurchaseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Purchase  $purchase
+     * @param  \App\Models\PurchaseItem  $purchaseItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Purchase $purchase)
+    public function destroy(PurchaseItem $purchaseItem)
     {
-        $purchase->delete();
-        notify()->success('Purchase has been deleted', 'Success');
-        return back();
+        //
     }
 }
