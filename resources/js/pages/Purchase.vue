@@ -6,17 +6,17 @@
     <div class="col-sm-9">
       <input
         @keyup="getProduct"
-        v-model="search"
+        v-model="product.search"
         type="text"
         class="form-control"
         autofocus
         placeholder="Enter product name or ID"
       />
-      <div v-if="found_products.length">
+      <div v-if="product.founds.length">
         <ul class="list-group">
           <li
             class="list-group-item cursor-pointer"
-            v-for="product in found_products"
+            v-for="product in product.founds"
             :key="product.id"
             @click="addProduct(product)"
           >
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div v-if="added_products.length" class="form-group">
+  <div v-if="product.added.length" class="form-group">
     <table>
       <thead>
         <tr>
@@ -42,7 +42,7 @@
         </tr>
       </thead>
 
-      <tr v-for="product in added_products" :key="product.id">
+      <tr v-for="product in product.added" :key="product.id">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>
@@ -108,7 +108,7 @@
           <td colspan="7" class="text-right">Purchase Discount:</td>
           <td class="text-center">
             <input
-              v-model="discount_in_total"
+              v-model="purchase_discount"
               type="number"
               class="form-control text-center"
             />
@@ -125,30 +125,50 @@
       </tfoot>
     </table>
   </div>
-  <div v-if="added_products.length" class="row">
+  <div v-if="product.added.length" class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label>Payment Method</label>
         <select>
-          <option value="">Bank</option>
           <option value="">Cash</option>
+          <option value="">Bank</option>
           <option value="">Other</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label>Paid Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          v-model="payment.paid"
+          @keyup="sycnDue($event.target.value)"
+        />
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Status</label>
-        <select>
-          <option value="">Received</option>
-          <option value="">Not Received</option>
+        <select v-model="product.status">
+          <option value="1">Received</option>
+          <option value="0">Not Received</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label>Payment Due</label>
+        <input
+          type="number"
+          class="form-control"
+          :value="payment.due"
+          readonly
+        />
       </div>
     </div>
     <div class="col-md-12 text-center">
-      <button class="btn mx-3 btn-success">Save</button>
+      <button class="btn mx-3 btn-success" @click="save()">Save</button>
       <button class="btn mx-3 btn-warning">Draft</button>
-      <button class="btn mx-3 btn-secondary" @click="this.$router.go()">Reset</button>
+      <button class="btn mx-3 btn-secondary" @click="this.$router.go()">
+        Reset
+      </button>
     </div>
   </div>
 </template>
@@ -157,67 +177,30 @@
 export default {
   data() {
     return {
-      search: "",
-      found_products: [],
-      added_products: [],
+      product: {
+        search: "",
+        founds: [],
+        added: [],
+        status: 1,
+      },
+
       sub_total: 0,
       net_amount: 0,
       discount_total: 0,
-      discount_in_total: 0,
+      purchase_discount: 0,
+
+      payment: {
+        method: "",
+        paid: "",
+        due: 0,
+      },
     };
-  },
-  methods: {
-    async getProduct() {
-      let route = `/api/products?q=${this.search}`;
-      if (this.search != "") {
-        await axios(route)
-          .then((res) => {
-            this.found_products = res.data ?? "";
-          })
-          .catch((e) => {
-            error = console.log(e.message);
-          });
-      } else {
-        this.found_products = [];
-      }
-    },
-
-    addProduct(p) {
-      let find = this.added_products.find((product) => product.id == p.id);
-
-      if (find) {
-        // toastr.info("Product Already Added");
-        this.added_products.forEach((product) => {
-          if (find.id == product.id) {
-            product.qty++;
-          }
-        });
-      } else {
-        p.qty = 1;
-        p.discount = 0;
-        this.added_products.push(p);
-      }
-      this.search = "";
-      this.found_products = [];
-    },
-
-    removeProduct(p) {
-      this.added_products = this.added_products.filter(
-        (product) => product.id != p.id
-      );
-    },
-
-    getTotal(p) {
-      console.log("get total called");
-
-      return p.cost_price * p.qty - p.discount;
-    },
   },
   computed: {
     getDiscountTotal() {
-      console.log("discount total called");
+      // console.log("discount total called");
 
-      this.discount_total = this.added_products.reduce(
+      this.discount_total = this.product.added.reduce(
         (value, product) => value + parseInt(product.discount),
         0
       );
@@ -225,9 +208,9 @@ export default {
     },
 
     getSubTotal() {
-      console.log("grand total called");
+      // console.log("grand total called");
 
-      let total = this.added_products.reduce(
+      let total = this.product.added.reduce(
         (value, product) => value + product.total,
         0
       );
@@ -235,9 +218,75 @@ export default {
     },
 
     getGrandTotal() {
-      console.log("net amount called");
+      // console.log("net amount called");
 
-      return (this.net_amount = this.sub_total - this.discount_in_total);
+      return (this.net_amount = this.payment.paid =
+        this.sub_total - this.purchase_discount);
+    },
+  },
+
+  methods: {
+    async getProduct() {
+      let route = `/api/products?q=${this.product.search}`;
+      if (this.product.search != "") {
+        await axios
+          .get(route)
+          .then((res) => {
+            this.product.founds = res.data ?? "";
+          })
+          .catch((e) => {
+            error = console.log(e.message);
+          });
+      } else {
+        this.product.founds = [];
+      }
+    },
+
+    addProduct(p) {
+      let find = this.product.added.find((product) => product.id == p.id);
+
+      if (find) {
+        // toastr.info("Product Already Added");
+        this.product.added.forEach((product) => {
+          if (find.id == product.id) {
+            product.qty++;
+          }
+        });
+      } else {
+        p.qty = 1;
+        p.discount = 0;
+        this.product.added.push(p);
+      }
+      this.product.search = "";
+      this.product.founds = [];
+    },
+
+    removeProduct(p) {
+      this.product.added = this.product.added.filter(
+        (product) => product.id != p.id
+      );
+    },
+
+    getTotal(p) {
+      // console.log("get total called");
+
+      return p.cost_price * p.qty - p.discount;
+    },
+
+    sycnDue(paidAmount) {
+      return (this.payment.due = this.getGrandTotal - paidAmount);
+    },
+
+   save() {
+     let route = `/api/purchases`;
+      axios
+        .post(route, this.$data)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          error = console.log(e.message);
+        });
     },
   },
 };
