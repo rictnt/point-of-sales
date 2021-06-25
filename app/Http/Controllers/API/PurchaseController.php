@@ -2,66 +2,40 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\PurchaseStoreRequest;
+use App\Models\Stock;
 use App\Models\Purchase;
 use App\Models\PurchaseItem;
-use App\Models\Stock;
+use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(PurchaseStoreRequest $request)
     {
-        // return $request;
+        DB::transaction(function() {
+            $purchase = Purchase::create([
+                'supplier_id' => request()->supplier_id,
+                'date' => request()->date ?? today(),
+                'invoice' => request()->invoice,
 
-        $request->validate([
-            'supplier_id' => 'required|integer',
-            'date' => 'nullable|date',
-            'invoice' => 'required',
-            'products' => 'required',
-            'products.*.cost' => 'required',
-            'sub_total' => 'required|integer',
-            'discount' => 'required|integer',
-            'grand_total' => 'required|integer',
-            'paid' => 'required|integer',
-            'due' => 'required|integer',
-            'payment_method' => 'required|string',
-            'product_status' => 'required|integer',
-        ]);
+                'sub_total' => request()->sub_total,
+                'discount' => request()->discount,
+                'grand_total' => request()->grand_total,
 
-        $purchase = Purchase::create([
-            'supplier_id' => $request->supplier_id,
-            'date' => $request->date ?? today(),
-            'invoice' => $request->invoice,
+                'paid' => request()->paid,
+                'due' => request()->due,
+                'payment_method' => request()->payment_method,
+                'product_status' => request()->product_status,
+            ]);
 
-            'sub_total' => $request->sub_total,
-            'discount' => $request->discount,
-            'grand_total' => $request->grand_total,
-
-            'paid' => $request->paid,
-            'due' => $request->due,
-            'payment_method' => $request->payment_method,
-            'product_status' => $request->product_status,
-        ]);
-
-        if ($purchase) {
-        //    return $purchase;
-            foreach ($request->products as $item) {
+            foreach (request()->products as $item) {
                 PurchaseItem::create([
                     'purchase_id' => $purchase->id,
                     'product_id' => $item['id'],
@@ -76,40 +50,20 @@ class PurchaseController extends Controller
                     'qty' => $item['qty']
                 ]);
             }
-        }
-
-        return response($purchase);
+        });
+        return response('success');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Purchase $purchase)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Purchase $purchase)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Purchase $purchase)
     {
         //

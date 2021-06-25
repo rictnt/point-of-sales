@@ -176,7 +176,7 @@
                 <div class="collapse" id="stock">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Stock Report</a>
+                            <a href="{{ route('admin.stocks.index') }}" class="nav-link">Stock Report</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Manage Stock Report</a>
