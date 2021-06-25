@@ -33,6 +33,8 @@ class PurchaseController extends Controller
             'supplier_id' => 'required|integer',
             'date' => 'nullable|date',
             'invoice' => 'required',
+            'products' => 'required',
+            'products.*.cost' => 'required',
             'sub_total' => 'required|integer',
             'discount' => 'required|integer',
             'grand_total' => 'required|integer',

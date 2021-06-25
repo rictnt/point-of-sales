@@ -5,8 +5,13 @@
       <div class="form-group">
         <label class="control-label">Supplier</label>
         <select v-model="supplier_id" class="js-example-basic-single w-100">
-          <!-- <option value="">SELECT SUPPLIER</option> -->
-          <option value="1">Emon Khan</option>
+          <option
+            v-for="supplier in suppliers"
+            :key="supplier.id"
+            :value="supplier.id"
+          >
+            {{ supplier.name }}
+          </option>
         </select>
       </div>
     </div>
@@ -56,8 +61,8 @@
           </div>
         </div>
       </div>
-      <div v-if="products_added.length" class="form-group">
-        <table class="table table-responsive">
+      <div class="form-group">
+        <table v-if="products_added.length" class="table table-responsive">
           <thead>
             <tr>
               <th>ID</th>
@@ -124,7 +129,7 @@
             </td>
           </tr>
 
-          <tfoot class="bg-light font-weight-bold">
+          <tfoot class="font-weight-bold">
             <tr>
               <td colspan="7" class="text-right">Sub Total:</td>
               <td class="text-center">{{ sub_total }}</td>
@@ -193,10 +198,11 @@
 export default {
   data() {
     return {
+      query: "",
+      suppliers: [],
       supplier_id: 1,
       date: new Date().toISOString().substr(0, 10),
       invoice: Math.floor(Math.random() * (999999 - 100000) + 100000),
-      query: "",
       products_found: [],
       products_added: [],
       discount: 0,
@@ -243,7 +249,6 @@ export default {
         // console.log("product added");
       }
       this.query = "";
-      this.products_found = [];
     },
     removeProduct(product) {
       // console.log("removing product from list");
@@ -274,11 +279,28 @@ export default {
         .then((res) => {
           res.status === 200
             ? toastr.success("Purchase has been added", "Success")
-            : toastr.warning("Something went wrong");
-          // this.products_added = [];
+            : toastr.info("Something went wrong");
+          this.products_added = [];
+          setTimeout(() => (location.href = "/admin/purchases"), 2000);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log(e);
+          toastr.warning("Something went wrong")
+        });
     },
+  },
+
+  mounted() {
+    let url = `/api/suppliers`;
+    axios
+      .get(url)
+      .then((res) => {
+        // console.log("Suppliers found");
+        this.suppliers = res.data;
+      })
+      .catch((e) => {
+        error = console.log(e.message);
+      });
   },
 
   watch: {
