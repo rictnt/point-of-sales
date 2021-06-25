@@ -24,38 +24,24 @@
                                             required>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">SKU:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="SKU" name="sku">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Cost Price:</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Default cost price"
-                                            name="cost_price" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Sell Price:</label>
+                                    <label class="col-sm-3 col-form-label">Price:</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" placeholder="Default unit price"
-                                            name="sell_price" required>
+                                            name="price" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Stock Alert:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 2"
-                                            name="alert_stock_quantity">
+                                        <input type="number" class="form-control" placeholder="Ex: 2" name="stock_alert">
                                     </div>
                                 </div>
-                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Weight:</label>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">SKU:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Ex: 10 kg" name="weight"
-                                            value="0">
+                                        <input type="text" class="form-control" placeholder="SKU" name="sku">
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +91,7 @@
                                     <label class="col-sm-3 col-form-label">Select Barcode:</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <select class="js-example-basic-single w-100" name="barcode_id">
+                                            <select class="js-example-basic-single w-100" name="barcode_type">
                                                 <option value="">Select Barcode</option>
                                                 <option value="1">Code 128 (C128)</option>
                                                 <option value="2">Code 39 (C39)</option>
@@ -115,13 +101,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Tax / Vat(%):</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Ex: 10" name="tax" value="0">
-                                    </div>
-                                </div>
-                               
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Product Details:</label>

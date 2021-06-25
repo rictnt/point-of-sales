@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,28 +48,25 @@ class ProductController extends Controller
             'category_id' => 'required|numeric',
             'brand_id' => 'required|numeric',
             'unit_id' => 'required|numeric',
-
+            'barcode_type' => 'nullable|numeric',
+            
             'name' => 'required|string|max:100|min:2|unique:products,name',
-            'alert_stock_quantity' => 'nullable|numeric',
-            'barcode_id' => 'nullable|numeric',
-            'weight' => 'nullable|string',
+            'price' => 'required|numeric',
+            'stock_alert' => 'nullable|numeric',
             'sku' => 'nullable|string',
-            'cost_price' => 'required|not_in:0',
-            'sell_price' => 'required|not_in:0',
-            'tax' => 'integer',
+
             'details' => 'required|max:500',
-            'image' => 'nullable|file|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
+            'image' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
         ]);
 
 
         $product =  new Product($request->except('image'));
 
-        $product->barcode = $this->createBarCode($product);
+        $product->sku = $this->createBarCode($product);
 
         if ($request->file('image')) {
             $product->image = $request->image->store('images/products');
         }
-
         $product->save();
 
         notify()->success('Product has been added', 'Success');
@@ -124,7 +122,7 @@ class ProductController extends Controller
             'sell_price' => 'required|not_in:0',
             'tax' => 'integer',
             'details' => 'required|max:500',
-            'image' => 'nullable|file|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:max_width=5000,max_height=5000',
+            'image' => 'image|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
         ]);
 
 
@@ -162,7 +160,7 @@ class ProductController extends Controller
 
     public function createBarCode($product)
     {
-        $type = $product->barcode_id ?? 1;
+        $type = $product->barcode_id;
         $number = $product->id;
 
         if ($type == 4) {

@@ -5,8 +5,13 @@
       <div class="form-group">
         <label class="control-label">Supplier</label>
         <select v-model="supplier_id" class="js-example-basic-single w-100">
-          <option value="">SELECT SUPPLIER</option>
-          <option value="1">Emon Khan</option>
+          <option
+            v-for="supplier in suppliers"
+            :key="supplier.id"
+            :value="supplier.id"
+          >
+            {{ supplier.name }}
+          </option>
         </select>
       </div>
     </div>
@@ -56,15 +61,15 @@
           </div>
         </div>
       </div>
-      <div v-if="products_added.length" class="form-group">
-        <table>
+      <div class="form-group">
+        <table v-if="products_added.length" class="table table-responsive">
           <thead>
             <tr>
               <th>ID</th>
               <th>Product</th>
-              <th>Cost Price</th>
-              <th>Sell Price</th>
-              <th>Quantity</th>
+              <th>Price</th>
+              <th>Cost</th>
+              <th>Qty</th>
               <th>Expire</th>
               <th>Discount</th>
               <th>Total</th>
@@ -76,21 +81,17 @@
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>
-              <input
-                v-model="product.cost_price"
-                type="number"
-                min="1"
-                class="form-control"
-              />
+              {{ product.price }}
             </td>
             <td>
               <input
-                v-model="product.sell_price"
+                v-model="product.cost"
                 type="number"
                 min="1"
                 class="form-control"
               />
             </td>
+
             <td>
               <input
                 v-model="product.qty"
@@ -128,7 +129,7 @@
             </td>
           </tr>
 
-          <tfoot class="bg-light font-weight-bold">
+          <tfoot class="font-weight-bold">
             <tr>
               <td colspan="7" class="text-right">Sub Total:</td>
               <td class="text-center">{{ sub_total }}</td>
@@ -159,9 +160,8 @@
           <div class="form-group">
             <label>Payment Method</label>
             <select v-model="payment_method">
-              <option value="">Cash</option>
-              <option value="">Bank</option>
-              <option value="">Other</option>
+              <option value="cash">Cash</option>
+              <option value="bank">Bank</option>
             </select>
           </div>
           <div class="form-group">
@@ -198,15 +198,16 @@
 export default {
   data() {
     return {
-      supplier_id: "",
+      query: "",
+      suppliers: [],
+      supplier_id: 1,
       date: new Date().toISOString().substr(0, 10),
       invoice: Math.floor(Math.random() * (999999 - 100000) + 100000),
-      query: "",
       products_found: [],
       products_added: [],
       discount: 0,
       paid: 0,
-      payment_method: "",
+      payment_method: "cash",
       product_status: 1,
     };
   },
@@ -239,14 +240,15 @@ export default {
           }
         });
       } else {
+        product.cost = product.price + 10;
         product.qty = 1;
         product.discount = 0;
-        product.total = product.cost_price;
+        product.expire = null;
+        product.total = 0;
         this.products_added.push(product);
         // console.log("product added");
       }
       this.query = "";
-      this.products_found = [];
     },
     removeProduct(product) {
       // console.log("removing product from list");
@@ -258,6 +260,9 @@ export default {
     save() {
       let url = `/api/purchases`;
       let data = {
+        supplier_id: this.supplier_id,
+        date: this.date,
+        invoice: this.invoice,
         products: this.products_added,
         sub_total: this.sub_total,
         discount: parseInt(this.discount),
@@ -273,12 +278,29 @@ export default {
         .post(url, data)
         .then((res) => {
           res.status === 200
-            ? toastr.success("Purchase has been added",'Success')
-            : toastr.warning("Something went wrong");
+            ? toastr.success("Purchase has been added", "Success")
+            : toastr.info("Something went wrong");
           this.products_added = [];
+          setTimeout(() => (location.href = "/admin/purchases"), 2000);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log(e);
+          toastr.warning("Something went wrong")
+        });
     },
+  },
+
+  mounted() {
+    let url = `/api/suppliers`;
+    axios
+      .get(url)
+      .then((res) => {
+        // console.log("Suppliers found");
+        this.suppliers = res.data;
+      })
+      .catch((e) => {
+        error = console.log(e.message);
+      });
   },
 
   watch: {
@@ -304,7 +326,7 @@ export default {
       handler() {
         // console.log("updating products");
         this.products_added.forEach(
-          (item) => (item.total = item.cost_price * item.qty - item.discount)
+          (item) => (item.total = item.cost * item.qty - item.discount)
         );
       },
       deep: true,

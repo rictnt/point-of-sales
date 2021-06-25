@@ -16,11 +16,10 @@
                                 <thead>
                                     <tr>
                                         <th>Sl No</th>
-                                        <th>Category</th>
                                         <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
                                         <th>SKU</th>
-                                        <th>Buy Price</th>
-                                        <th>Sell Price</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -29,31 +28,34 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $product->category->name ?? '' }}</td>
                                             <td>{{ $product->name }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->category->name ?? '' }}</td>
                                             <td>{{ $product->sku }}</td>
-                                            <td>{{ $product->cost_price }}</td>
-                                            <td>{{ $product->sell_price }}</td>
                                             <td>
-                                                @if($product->image)         
+                                                @if ($product->image)
                                                     <div class="figure mb-3">
                                                         <img src="{{ url('uploads/' . $product->image) }} " alt="">
-                                                    </div>      
+                                                    </div>
                                                 @else
                                                     <div class="figure mb-3">
-                                                    <img src="https://www.chanchao.com.tw/dtg/images/default.jpg" alt="">
-                                                    </div>   
+                                                        <img src="https://www.chanchao.com.tw/dtg/images/default.jpg"
+                                                            alt="">
+                                                    </div>
                                                 @endif
-                                                
+
                                             </td>
                                             <td>
                                                 <div class="rapid_action">
-                                                    <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-outline-primary"> <i data-feather="edit" style="height: 15px;width: 15px;"></i></a>
+                                                    <a href="{{ route('admin.products.show', $product->id) }}"
+                                                        class="btn btn-outline-primary"> <i data-feather="edit"
+                                                            style="height: 15px;width: 15px;"></i></a>
 
 
                                                     <button data-toggle="modal" data-target="#deleteModal"
                                                         onclick="setDeleteForm({{ $product->toJson() }})"
-                                                        class=" btn btn-outline-danger"><i data-feather="trash" style="height: 15px;width: 15px;"></i>
+                                                        class=" btn btn-outline-danger"><i data-feather="trash"
+                                                            style="height: 15px;width: 15px;"></i>
                                                     </button>
                                                 </div>
                                             </td>

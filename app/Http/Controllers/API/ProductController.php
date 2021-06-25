@@ -15,6 +15,6 @@ class ProductController extends Controller
             $products = Product::where('name','LIKE',"%{$sFor}%")->orWhere('id', $sFor);
         }
 
-        return response($products->limit(5)->get(['id','name','barcode','sell_price','cost_price']));
+        return response($products->limit(5)->get(['id','name','price']));
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\API;
 
-use App\Models\Stock;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class StockController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +15,7 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::all();
-        return view('admin.stocks.index',compact('stocks'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response(Supplier::all());
     }
 
     /**
@@ -42,21 +32,10 @@ class StockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Stock  $stock
+     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show(Stock $stock)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Stock $stock)
+    public function show(Supplier $supplier)
     {
         //
     }
@@ -65,10 +44,10 @@ class StockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Stock  $stock
+     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Stock $stock)
+    public function update(Request $request, Supplier $supplier)
     {
         //
     }
@@ -76,10 +55,10 @@ class StockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Stock  $stock
+     * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Stock $stock)
+    public function destroy(Supplier $supplier)
     {
         //
     }

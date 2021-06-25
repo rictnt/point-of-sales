@@ -19,9 +19,9 @@ class CreatePurchaseItemsTable extends Migration
             $table->foreignId('purchase_id');
             $table->string('qty');
             $table->string('cost');
-            $table->string('price');
             $table->string('discount');
             $table->string('total');
+            $table->date('expire')->nullable();
             $table->timestamps();
         });
     }
