@@ -6,7 +6,11 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Manage Bank</h6>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="card-title">List Banks</h6>
+                            <a href="{{ route('admin.banks.create') }}" class="btn btn btn-success">
+                                <i data-feather='plus'></i> Add New</a>
+                        </div>
                         <div class="table-responsive cell-border">
                             <table id="dataTableExample" class="table cell-border">
                                 <thead>

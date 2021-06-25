@@ -14,27 +14,31 @@
                                         <th>Date</th>
                                         <th>Invoice No</th>
                                         <th>Supplier</th>
-                                        <th>Sub Total</th>
-                                        <th>Discount</th>
-                                        <th>Paid</th>
-                                        <th>Due</th>
+                                        <th>Total Amount</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($purchases as $purchase)
                                         <tr>
-                                        <td>{{ $purchase->created_at->format('d-m-Y') }}</td>
-                                        <td>{{ $purchase->id }}</td>
-                                        <td>{{ 'supplier name' }}</td>
-                                        <td>{{ $purchase->sub_total }}</td>
-                                        <td>{{ $purchase->discount }}</td>
-                                        <td>{{ $purchase->paid }}</td>
-                                        <td>{{ $purchase->due }}</td>
-                                        <td>
-                                           @include('admin.components.common-crud.edit_delete_button',['item' => $purchase])
-                                        </td>
-                                    </tr>
+                                            <td>{{ $purchase->created_at->format('d-m-Y') }}</td>
+                                            <td><a
+                                                    href="{{ route('admin.purchases.show', $purchase->id) }}">{{ $purchase->invoice }}</a>
+                                            </td>
+                                            <td><a
+                                                    href="{{ route('admin.suppliers.show', $purchase->supplier_id) }}">{{ $purchase->supplier->name }}</a>
+                                            </td>
+
+                                            <td>{{ $purchase->sub_total }}</td>
+
+                                            <td>
+                                                <button data-toggle="modal" data-target="#deleteModal"
+                                                    onclick="setDeleteForm({{ $purchase->toJson() }})"
+                                                    class=" btn btn-outline-danger"><i data-feather="trash"
+                                                        style="height: 15px;width: 15px;"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -47,5 +51,5 @@
     @include('admin.components.common-crud.delete-modal', ['module' => 'purchase'])
 @endsection
 @push('page-js')
-    @include('admin.components.common-crud.crud-js')    
+    @include('admin.components.common-crud.crud-js')
 @endpush

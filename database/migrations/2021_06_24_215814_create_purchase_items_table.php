@@ -22,6 +22,7 @@ class CreatePurchaseItemsTable extends Migration
             $table->string('price');
             $table->string('discount');
             $table->string('total');
+            $table->date('expire')->nullable();
             $table->timestamps();
         });
     }

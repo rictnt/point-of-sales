@@ -29,16 +29,21 @@ class PurchaseController extends Controller
         // return $request;
 
         $purchase = Purchase::create([
+            'supplier_id' => $request->supplier_id,
+            'date' => $request->date,
+            'invoice' => $request->invoice,
+
             'sub_total' => $request->sub_total,
             // 'discount_type' => $request->discount_type,
             'discount' => $request->discount,
             'grand_total' => $request->grand_total,
+
             'paid' => $request->paid,
             'due' => $request->due,
             'payment_method' => $request->payment_method,
             'product_status' => $request->product_status,
+
             // 'status' => $request->status,
-            // 'expire_date' => $request->expire_date,
         ]);
 
         if ($purchase) {
@@ -52,6 +57,7 @@ class PurchaseController extends Controller
                     'price' => $item['sell_price'],
                     'discount' => $item['discount'],
                     'total' => $item['total'],
+                    'expire' => $item['expire'],
                 ]);
             }
         }

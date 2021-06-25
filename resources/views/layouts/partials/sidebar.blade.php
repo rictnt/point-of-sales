@@ -70,32 +70,7 @@
                     </ul>
                 </div>
             </li>
-            {{-- People --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#people" role="button" aria-expanded="false"
-                    aria-controls="people">
-                    <i class="link-icon" data-feather="user-plus"></i>
-                    <span class="link-title">Peoples</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="people">
-                    <ul class="nav sub-menu">
 
-                        <li class="nav-item">
-                            <a href="{{ route('admin.customers.create') }}" class="nav-link">Add Customer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.customers.index') }}" class="nav-link">List Customer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">List Supplier</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             {{-- Purchase --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#purchase" role="button" aria-expanded="false"
@@ -140,21 +115,28 @@
                     </ul>
                 </div>
             </li>
-            {{-- Payments --}}
+            {{-- People --}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#payment" role="button" aria-expanded="false"
-                    aria-controls="payment">
-                    <i class="link-icon" data-feather="pocket"></i>
-                    <span class="link-title">Payment</span>
+                <a class="nav-link" data-toggle="collapse" href="#people" role="button" aria-expanded="false"
+                    aria-controls="people">
+                    <i class="link-icon" data-feather="user-plus"></i>
+                    <span class="link-title">Peoples</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="payment">
+                <div class="collapse" id="people">
                     <ul class="nav sub-menu">
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Make Payment</a>
+                            <a href="{{ route('admin.customers.create') }}" class="nav-link">Add Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Manage Payment</a>
+                            <a href="{{ route('admin.customers.index') }}" class="nav-link">List Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.suppliers.create') }}" class="nav-link">Add Supplier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.suppliers.index') }}" class="nav-link">List Supplier</a>
                         </li>
                     </ul>
                 </div>
@@ -280,7 +262,7 @@
                     </ul>
                 </div>
             </li>
-           
+
             {{-- Settings --}}
             <li class="nav-item">
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">

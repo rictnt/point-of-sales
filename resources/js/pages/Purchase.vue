@@ -5,7 +5,7 @@
       <div class="form-group">
         <label class="control-label">Supplier</label>
         <select v-model="supplier_id" class="js-example-basic-single w-100">
-          <option value="">SELECT SUPPLIER</option>
+          <!-- <option value="">SELECT SUPPLIER</option> -->
           <option value="1">Emon Khan</option>
         </select>
       </div>
@@ -57,15 +57,15 @@
         </div>
       </div>
       <div v-if="products_added.length" class="form-group">
-        <table>
+        <table class="table table-responsive">
           <thead>
             <tr>
               <th>ID</th>
               <th>Product</th>
+              <th>Unit Price</th>
               <th>Cost Price</th>
-              <th>Sell Price</th>
               <th>Quantity</th>
-              <th>Expire</th>
+              <th>Expire Date</th>
               <th>Discount</th>
               <th>Total</th>
               <th>Action</th>
@@ -76,6 +76,9 @@
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>
+              {{ product.sell_price }}
+            </td>
+            <td>
               <input
                 v-model="product.cost_price"
                 type="number"
@@ -83,14 +86,7 @@
                 class="form-control"
               />
             </td>
-            <td>
-              <input
-                v-model="product.sell_price"
-                type="number"
-                min="1"
-                class="form-control"
-              />
-            </td>
+
             <td>
               <input
                 v-model="product.qty"
@@ -159,9 +155,8 @@
           <div class="form-group">
             <label>Payment Method</label>
             <select v-model="payment_method">
-              <option value="">Cash</option>
-              <option value="">Bank</option>
-              <option value="">Other</option>
+              <option value="cash">Cash</option>
+              <option value="bank">Bank</option>
             </select>
           </div>
           <div class="form-group">
@@ -198,7 +193,7 @@
 export default {
   data() {
     return {
-      supplier_id: "",
+      supplier_id: 1,
       date: new Date().toISOString().substr(0, 10),
       invoice: Math.floor(Math.random() * (999999 - 100000) + 100000),
       query: "",
@@ -206,7 +201,7 @@ export default {
       products_added: [],
       discount: 0,
       paid: 0,
-      payment_method: "",
+      payment_method: "cash",
       product_status: 1,
     };
   },
@@ -241,6 +236,7 @@ export default {
       } else {
         product.qty = 1;
         product.discount = 0;
+        product.expire = null;
         product.total = product.cost_price;
         this.products_added.push(product);
         // console.log("product added");
@@ -258,6 +254,9 @@ export default {
     save() {
       let url = `/api/purchases`;
       let data = {
+        supplier_id: this.supplier_id,
+        date: this.date,
+        invoice: this.invoice,
         products: this.products_added,
         sub_total: this.sub_total,
         discount: parseInt(this.discount),
@@ -273,9 +272,9 @@ export default {
         .post(url, data)
         .then((res) => {
           res.status === 200
-            ? toastr.success("Purchase has been added",'Success')
+            ? toastr.success("Purchase has been added", "Success")
             : toastr.warning("Something went wrong");
-          this.products_added = [];
+          // this.products_added = [];
         })
         .catch((e) => console.log(e));
     },
