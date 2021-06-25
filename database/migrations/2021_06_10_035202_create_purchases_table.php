@@ -17,7 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->foreignId('supplier_id');
             $table->date('date')->default(now());
-            $table->string('invoice_no');
+            $table->string('invoice');
 
             $table->integer('sub_total');
             $table->string('discount_type')->default('fixed');

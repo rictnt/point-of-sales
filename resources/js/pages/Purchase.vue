@@ -1,6 +1,5 @@
 <template>
   <h4 class="card-title">Add Purchase</h4>
-  {{ products_added }}
   <div class="row">
     <div class="col-sm-4">
       <div class="form-group">

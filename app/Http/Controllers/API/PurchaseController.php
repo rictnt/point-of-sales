@@ -45,10 +45,9 @@ class PurchaseController extends Controller
         $purchase = Purchase::create([
             'supplier_id' => $request->supplier_id,
             'date' => $request->date ?? today(),
-            'invoice_no' => $request->invoice,
+            'invoice' => $request->invoice,
 
             'sub_total' => $request->sub_total,
-            // 'discount_type' => $request->discount_type,
             'discount' => $request->discount,
             'grand_total' => $request->grand_total,
 
@@ -56,8 +55,6 @@ class PurchaseController extends Controller
             'due' => $request->due,
             'payment_method' => $request->payment_method,
             'product_status' => $request->product_status,
-
-            // 'status' => $request->status,
         ]);
 
         if ($purchase) {
