@@ -1,5 +1,6 @@
 <template>
   <h4 class="card-title">Add Purchase</h4>
+  {{ products_added }}
   <div class="row">
     <div class="col-sm-4">
       <div class="form-group">
@@ -62,10 +63,10 @@
             <tr>
               <th>ID</th>
               <th>Product</th>
-              <th>Unit Price</th>
-              <th>Cost Price</th>
-              <th>Quantity</th>
-              <th>Expire Date</th>
+              <th>Price</th>
+              <th>Cost</th>
+              <th>Qty</th>
+              <th>Expire</th>
               <th>Discount</th>
               <th>Total</th>
               <th>Action</th>
@@ -76,11 +77,11 @@
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>
-              {{ product.sell_price }}
+              {{ product.price }}
             </td>
             <td>
               <input
-                v-model="product.cost_price"
+                v-model="product.cost"
                 type="number"
                 min="1"
                 class="form-control"
@@ -234,10 +235,11 @@ export default {
           }
         });
       } else {
+        product.cost = product.price + 10;
         product.qty = 1;
         product.discount = 0;
         product.expire = null;
-        product.total = product.cost_price;
+        product.total = 0;
         this.products_added.push(product);
         // console.log("product added");
       }
@@ -303,7 +305,7 @@ export default {
       handler() {
         // console.log("updating products");
         this.products_added.forEach(
-          (item) => (item.total = item.cost_price * item.qty - item.discount)
+          (item) => (item.total = item.cost * item.qty - item.discount)
         );
       },
       deep: true,

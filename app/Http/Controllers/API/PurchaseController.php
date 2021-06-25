@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Purchase;
 use App\Models\PurchaseItem;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -28,10 +29,23 @@ class PurchaseController extends Controller
     {
         // return $request;
 
+        $request->validate([
+            'supplier_id' => 'required|integer',
+            'date' => 'nullable|date',
+            'invoice' => 'required',
+            'sub_total' => 'required|integer',
+            'discount' => 'required|integer',
+            'grand_total' => 'required|integer',
+            'paid' => 'required|integer',
+            'due' => 'required|integer',
+            'payment_method' => 'required|string',
+            'product_status' => 'required|integer',
+        ]);
+
         $purchase = Purchase::create([
             'supplier_id' => $request->supplier_id,
-            'date' => $request->date,
-            'invoice' => $request->invoice,
+            'date' => $request->date ?? today(),
+            'invoice_no' => $request->invoice,
 
             'sub_total' => $request->sub_total,
             // 'discount_type' => $request->discount_type,
@@ -53,11 +67,14 @@ class PurchaseController extends Controller
                     'purchase_id' => $purchase->id,
                     'product_id' => $item['id'],
                     'qty' => $item['qty'],
-                    'cost' => $item['cost_price'],
-                    'price' => $item['sell_price'],
+                    'cost' => $item['cost'],
                     'discount' => $item['discount'],
                     'total' => $item['total'],
                     'expire' => $item['expire'],
+                ]);
+                Stock::create([
+                    'product_id' => $item['id'],
+                    'qty' => $item['qty']
                 ]);
             }
         }

@@ -15,12 +15,8 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id');
-            $table->string('invoice');
-            $table->date('purchase_date')->default(today());
-            $table->float('total');
-            $table->float('discount')->default(0);
-            $table->float('net_total');
+            $table->foreignId('product_id');
+            $table->unsignedBigInteger('qty')->default(0);
             $table->timestamps();
         });
     }
